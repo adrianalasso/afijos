@@ -1,0 +1,120 @@
+{% extends '::base.html.twig' %}
+
+{% block titulo %}Baja de Bienes{%endblock%}
+
+{% block mapasitio%}
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="{{path('usuario_index')}}">Inicio</a>
+            <span class="divider"><i class="icon-angle-right arrow-icon"></i></span>
+        </li>
+        <li class="active">Baja de Bienes</li>
+    </ul><!--.breadcrumb-->
+</div>
+{%endblock%}
+
+{% block pagecontent%}
+<div class="page-content">
+    <div class="page-header position-relative">
+        <h1>Baja de Bienes<small><i class="icon-double-angle-right"></i> Listado general</small></h1>
+    </div><!--/.page-header-->
+    
+    <div class="row-fluid">
+        <div class="span12">
+            <!--PAGE CONTENT BEGINS-->
+            <a class="btn btn-small btn-danger" href="{{ path('bajas_new') }}"><i class="icon-trash"></i>
+                Dar de baja un bien
+            </a>
+            <br><br>
+            {%if entities%}       
+            <table  id="sample-table-2" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Activo</th>
+                        <th>Descripción</th>
+                        <th>Detalle</th>
+                        <th>Estado</th>
+                        <th>Fecha y hora solicitada</th>
+                        <th>Fecha y hora de aprobación</th>
+                        <th>Acciones</th>
+                    </tr>
+                 </thead>                
+                <tbody>
+                    {% for entity in entities %}
+                        <tr>
+                            <td><a href="{{ path('bajas_show', { 'id': entity.id }) }}">{{ entity.bienesCustodio.codigo }}</a></td>
+                            <td>
+                                {{ entity.bienesCustodio.descripcion }}<br>
+                                {{ entity.bienesCustodio.trabajador }}<br>
+                                {{ entity.bienesCustodio.serie }}<br>
+                                {{ entity.bienesCustodio.marca }}<br>
+                                {{ entity.bienesCustodio.estado }}            
+                            </td>
+                            <td>{{ entity.descripcion }}</td>
+                            <td>{{ entity.detalle }}</td>
+                            <td>{{ entity.estado }}</td>
+                            <td>{% if entity.fechaSolicitada %}{{ entity.fechaSolicitada|date('Y-m-d H:i:s') }}{% endif %}</td>
+                            <td>{% if entity.fechaAprobado %}{{ entity.fechaAprobado|date('Y-m-d H:i:s') }}{% endif %}</td>
+                            <td  class="td-actions">
+                                <div class="hidden-phone visible-desktop action-buttons">
+                                        <a class="blue" href="{{ path('bajas_show', { 'id': entity.id }) }}">
+                                                <i class="icon-zoom-in bigger-150"></i>
+                                        </a>
+                                    {%if entity.bienesCustodio.eliminado == 'NO'%}
+                                    <a class="red" href="#" id="bteliminar{{entity.bienesCustodio.id}}">
+                                        <i class="icon-trash bigger-150"></i>
+                                    </a>
+                                    {%endif%}
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>                
+            </table>
+            {%else%}
+            <div class="alert alert-error"> 
+                <strong><i class="icon-remove"></i>  Opps!</strong>
+                No hay solicitudes pendientes.
+                <br>
+            </div>
+            {%endif%}
+            <div class="hr hr32 hr-dotted"></div>
+            <!--PAGE CONTENT ENDS-->
+        </div><!--/.span-->
+    </div><!--/.row-fluid-->
+</div><!--/.page-content-->
+{%endblock%}
+
+{%block plugins%}<script src="{{asset('bundles/ace/assets/js/bootbox.min.js')}}"></script>{%endblock%}
+
+{%block script%}
+{{parent()}}
+<script src="{{asset('bundles/ace/assets/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('bundles/ace/assets/js/jquery.dataTables.bootstrap.js')}}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var elemento=document.getElementById("mnbajas");
+        elemento.classList.add('active');
+        elemento.classList.add('open');
+        elemento.parentNode.parentNode.classList.add('open');
+        elemento.parentNode.parentNode.classList.add('active');
+        
+    });
+        $(function() {    
+    {% for entity in entities %}
+    $("#bteliminar{{entity.bienesCustodio.id}}").on(ace.click_event, function() {
+            bootbox.confirm("Estas seguro de eliminar registro?", function(result) {
+                if(result){
+                    location.href="{{ path('bienescustodio_eliminar', { 'id': entity.bienescustodio.id }) }}";
+                }
+            });
+    });
+    {% endfor %}
+});
+    $(function() {var oTable1 = $('#sample-table-2').dataTable({"aoColumns": [null,null,null,null,null,null,null,{"bSortable": false }]});});
+    
+</script>
+{%endblock%}

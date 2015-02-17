@@ -1,0 +1,81 @@
+{% extends "MainBundle::new.html.twig" %}
+{% block titulo %}Usuarios{%endblock%}
+{%block pluginstyle%}
+<link rel="stylesheet" href="{{asset('bundles/ace/assets/css/chosen.css')}}" />
+{%endblock%}
+{%block entidad%}
+<a href="{{ path('usuario') }}">Usuarios</a>
+{%endblock%}
+
+{%block mapatitulo%}Nuevo Usuario{%endblock%}
+{%block pagetitulo%}Usuarios{%endblock%}
+{%block pagedetalle%}Nuevo Usuario{%endblock%}
+
+{%block formulario%}
+<form action="{{ path('usuario_create') }}" method="post" {{ form_enctype(form) }}>   
+<div class="control-group">
+    <label class="control-label" for="">Cedula</label>
+    <div class="controls">
+            {{ form_widget(form.id) }}
+    </div>
+</div>        
+<div class="control-group">
+    <label class="control-label" for="">Apellidos</label>
+    <div class="controls">
+            {{ form_widget(form.apellidos) }}
+    </div>
+</div>        
+<div class="control-group">
+    <label class="control-label" for="">Nombres</label>
+    <div class="controls">
+            {{ form_widget(form.nombres) }}
+    </div>
+</div>        
+<div class="control-group">
+    <label class="control-label" for="">Roles</label>
+    <div class="controls">
+            {{ form_widget(form.userRoles, {'attr' :  {'multiple':'multiple','class' : 'chzn-select input-large', 'data-placeholder':'Escoja varias opciones..'}}) }}
+    </div>
+</div>        
+<div class="control-group">
+    <label class="control-label" for="">Nombre de usuario</label>
+    <div class="controls">
+            {{ form_widget(form.username) }}
+    </div>
+</div>        
+<div class="control-group">
+    <label class="control-label" for="">Contraseña</label>
+    <div class="controls">
+            {{ form_widget(form.password) }}
+    </div>
+</div>            
+<div class="control-group">
+   <label class="control-label" for="">Confirmar Contraseña</label>
+   <div class="controls">
+       <input type="password" id="pass"/>
+   </div>
+</div>      
+{{ form_rest(form) }}
+{%endblock%}
+{%block link%}
+<a href="{{ path('usuario') }}"  
+{%endblock%}
+{%block plugins%}
+<script src="{{asset('bundles/ace/assets/js/chosen.jquery.min.js')}}"></script>
+{%endblock %}
+   
+{%block scripthijo%}
+<script type="text/javascript">
+window.onload = function(){
+    var elemento=document.getElementById("mnusuarios");
+    elemento.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('open');
+    $(".chzn-select").chosen(); 
+    $("#afijos_ustype_password").get(0).type = 'password';    
+};    
+</script>
+{%endblock%}
+
+
+

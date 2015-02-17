@@ -1,0 +1,39 @@
+cuentacontable:
+    pattern:  /
+    defaults: { _controller: MainBundle:CuentaContable:index }
+    
+cuentacontable_new:
+    pattern:  /new
+    defaults: { _controller: MainBundle:CuentaContable:new }
+
+cuentacontable_show:
+    pattern:  /{id}/show
+    defaults: { _controller: MainBundle:CuentaContable:show }
+
+cuentacontable_create:
+    pattern:  /create
+    defaults: { _controller: MainBundle:CuentaContable:create }
+
+cuentacontable_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: MainBundle:CuentaContable:edit }
+
+cuentacontable_update:
+    pattern:  /{id}/update
+    defaults: { _controller: MainBundle:CuentaContable:update }
+
+cuentacontable_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: MainBundle:CuentaContable:delete }
+    
+cuentacontable_eliminar:
+    pattern:  /{id}/eliminar
+    defaults: { _controller: MainBundle:CuentaContable:eliminar }
+    
+buscar_cuentacontable:
+    pattern:  /buscar-cuentacontable
+    defaults: { _controller: MainBundle:CuentaContable:buscarCuentaContable}
+    
+cuentacontable_listar:
+    pattern:  /listar-cuentacontable
+    defaults: { _controller: MainBundle:CuentaContable:listarCuentaContable}

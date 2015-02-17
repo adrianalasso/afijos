@@ -1,0 +1,39 @@
+abajas:
+    pattern:  /
+    defaults: { _controller: MainBundle:Bajas:solicitadas }
+    
+abajas_new:
+    pattern:  /new
+    defaults: { _controller: MainBundle:Bajas:new }
+
+abajas_show:
+    pattern:  /{id}/show
+    defaults: { _controller: MainBundle:Bajas:show }
+
+abajas_create:
+    pattern:  /create
+    defaults: { _controller: MainBundle:Bajas:create }
+
+abajas_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: MainBundle:Bajas:edit }
+
+abajas_update:
+    pattern:  /{id}/update
+    defaults: { _controller: MainBundle:Bajas:update }
+
+abajas_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: MainBundle:Bajas:delete }
+    
+abajas_eliminar:
+    pattern:  /{id}/eliminar
+    defaults: { _controller: MainBundle:Bajas:eliminar }
+    
+abajas_aprobar:
+    pattern:  /{id}/aprobar
+    defaults: { _controller: MainBundle:Bajas:aprobar }
+
+abajas_imprimir:
+    pattern:  /{id}/aimprimir
+    defaults: { _controller: MainBundle:Bajas:aimprimir }

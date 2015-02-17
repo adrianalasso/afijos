@@ -1,0 +1,54 @@
+{% extends "MainBundle::edit.html.twig" %}
+{% block titulo %}Provincias{%endblock%}
+
+{%block entidad%}
+<i class="icon-exchange exchange-icon"></i>
+<a href="{{ path('provincia') }}">Provincias</a>
+{%endblock%}
+
+{%block mapatitulo%}Editar Provincia{%endblock%}
+{%block pagetitulo%}Provincias{%endblock%}
+{%block pagedetalle%}Editar Provincia{%endblock%}
+
+ {%block formulario%}
+<form action="{{ path('provincia_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+<div class="control-group">
+        <label class="control-label" for="afijos_lsubbundle_subtransmisiontype_subestacionLlegada">  Nombre</label>
+        <div class="controls">
+                {{ form_widget(edit_form.nombre) }}
+        </div>
+</div>        
+{{ form_rest(edit_form) }}
+{%endblock%}
+
+{%block link%}
+<a href="{{ path('provincia') }}"  
+{%endblock%}
+
+{%block linkeliminar%}
+<a href="#"
+{%endblock%}
+   
+{%block plugins%}
+{{parent()}}
+{%endblock%}
+
+{%block scripthijo%}
+<script type="text/javascript">
+window.onload = function(){
+    var elemento=document.getElementById("mnprovincias");
+    elemento.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('open');
+};
+$(function() {
+    $("#bteliminar").on(ace.click_event, function() {
+            bootbox.confirm("Estas seguro de eliminar registro?", function(result) {
+                if(result){
+                    location.href="{{ path('provincia_eliminar', { 'id': entity.id }) }}";
+                }
+            });
+    });
+});
+</script>
+{%endblock%}

@@ -1,0 +1,48 @@
+{% extends "MainBundle::new.html.twig" %}
+{% block titulo %}Subsistemas{%endblock%}
+
+{%block entidad%}
+<a href="{{ path('subsistema') }}">Subsistemas</a>
+{%endblock%}
+
+{%block mapatitulo%}Nueva Subsistema{%endblock%}
+{%block pagetitulo%}Subsistemas{%endblock%}
+{%block pagedetalle%}Nueva Subsistema{%endblock%}
+
+{%block formulario%}
+<form action="{{ path('subsistema_create') }}" method="post" {{ form_enctype(form) }}>
+<div class="control-group">
+        <label class="control-label" for="">
+            Código
+        </label>
+        <div class="controls">
+                {{ form_widget(form.codigo) }}
+        </div>
+</div>
+<div class="control-group">
+        <label class="control-label" for="">
+            Descripción
+        </label>
+        <div class="controls">
+                {{ form_widget(form.descripcion) }}
+        </div>
+</div>
+{{ form_rest(form) }}
+{%endblock%}
+{%block link%}
+<a href="{{ path('subsistema') }}"  
+{%endblock%}
+
+{%block scripthijo%}
+<script type="text/javascript">
+    window.onload = function(){
+        var elemento=document.getElementById("mnsubsistemas");
+        elemento.classList.add('active');
+        elemento.parentNode.parentNode.classList.add('active');
+        elemento.parentNode.parentNode.classList.add('open');
+    };
+</script>
+{%endblock%}
+
+
+

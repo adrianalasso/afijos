@@ -1,0 +1,55 @@
+{% extends "MainBundle::show.html.twig" %}
+{% block titulo %}Roles{%endblock%}
+
+{%block entidad%}
+<i class="icon-exchange exchange-icon"></i>
+<a href="{{ path('rol') }}">Roles</a>
+{%endblock%}
+
+{%block mapatitulo%}Ver Rol{%endblock%}
+{%block pagetitulo%}Roles{%endblock%}
+{%block pagedetalle%}Ver Rol{%endblock%}
+
+{%block datos%}
+<div class="profile-info-row">
+        <div class="profile-info-name"> Nombre </div>
+        <div class="profile-info-value">
+            <span>
+            {{ entity.nombre }} 
+            </span>
+        </div>
+</div>                                 
+{%endblock%}
+{%block linkeliminar%}
+<a href="#"
+{%endblock%}  
+{%block link%}
+<a href="{{path('rol')}}"
+{%endblock%}
+{%block linkedit%}
+<a href="{{ path('rol_edit', { 'id': entity.id }) }}" 
+{%endblock%}
+   
+{%block plugins%}
+{{parent()}}
+{%endblock%}
+    
+{%block scripthijo%}
+<script type="text/javascript">
+window.onload = function(){
+    var elemento=document.getElementById("mnroles");
+    elemento.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('open');
+};
+$(function() {
+    $("#bteliminar").on(ace.click_event, function() {
+            bootbox.confirm("Estas seguro de eliminar registro?", function(result) {
+                    if(result){
+                        location.href="{{ path('rol_eliminar', { 'id': entity.id }) }}";
+                    }
+            });
+    });
+});
+</script>
+{%endblock%}

@@ -1,0 +1,19 @@
+bajas:
+    pattern:  /
+    defaults: { _controller: MainBundle:Bajas:index }
+    
+bajas_new:
+    pattern:  /new
+    defaults: { _controller: MainBundle:Bajas:new }
+
+bajas_show:
+    pattern:  /{id}/show
+    defaults: { _controller: MainBundle:Bajas:show }
+
+bajas_create:
+    pattern:  /create
+    defaults: { _controller: MainBundle:Bajas:create }
+    
+bajas_imprimir:
+    pattern:  /{id}/imprimir
+    defaults: { _controller: MainBundle:Bajas:imprimir }

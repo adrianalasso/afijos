@@ -1,0 +1,47 @@
+lsubtransmision:
+    pattern:  /
+    defaults: { _controller: MainBundle:LSubtransmision:index }
+    
+lsubtransmision_new:
+    pattern:  /new
+    defaults: { _controller: MainBundle:LSubtransmision:new }
+
+lsubtransmision_show:
+    pattern:  /{id}/show
+    defaults: { _controller: MainBundle:LSubtransmision:show }
+
+lsubtransmision_create:
+    pattern:  /create
+    defaults: { _controller: MainBundle:LSubtransmision:create }
+
+lsubtransmision_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: MainBundle:LSubtransmision:edit }
+
+lsubtransmision_update:
+    pattern:  /{id}/update
+    defaults: { _controller: MainBundle:LSubtransmision:update }
+
+lsubtransmision_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: MainBundle:LSubtransmision:delete }
+    
+lsubtransmision_eliminar:
+    pattern:  /{id}/eliminar
+    defaults: { _controller: MainBundle:LSubtransmision:eliminar }
+    
+buscar_lsubtransmision:
+    pattern:  /buscar-lsubtransmision
+    defaults: { _controller: MainBundle:LSubtransmision:buscarLSubtransmision}
+    
+lsubtransmision_listar:
+    pattern:  /listar-lsubtransmision
+    defaults: { _controller: MainBundle:LSubtransmision:listarLSubtransmision }
+    
+lsubtransmision_rformulario:
+    pattern:  /rformulario
+    defaults: { _controller: MainBundle:LSubtransmision:rformulario }
+
+lsubtransmision_reporte:
+    pattern:  /reporte
+    defaults: { _controller: MainBundle:LSubtransmision:reporte }

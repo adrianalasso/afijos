@@ -1,0 +1,595 @@
+{% extends '::base.html.twig' %}
+
+{% block titulo %}Líneas de Subtransmisión{%endblock%}
+
+{%block pluginstyle%}
+{%endblock%}
+
+{% block mapasitio%}
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="{{path('usuario_index')}}">Inicio</a>
+            <span class="divider"><i class="icon-angle-right arrow-icon"></i></span>
+        </li>
+        <li>
+            <i class="icon-exchange exchange-icon"></i>
+            <a href="{{path('lsubtransmision')}}">Líneas de Subtransmisión</a>
+            <span class="divider"><i class="icon-angle-right arrow-icon"></i></span>
+        </li>
+        <li class="active">Ver Línea de Subtransmisión</li>
+    </ul><!--.breadcrumb-->
+</div>
+{%endblock%}
+
+{% block pagecontent%}
+<div class="page-content">
+    <div class="page-header position-relative">
+        <h1>Líneas de Subtransmisión<small><i class="icon-double-angle-right"></i> Ver Línea de Subtransmisión</small></h1>
+    </div><!--/.page-header-->
+    <div class="row-fluid">
+        <div class="span10">
+            <!--PAGE CONTENT BEGINS-->         
+                    <div class="tabbable">
+                            <ul class="nav nav-tabs" id="myTab">
+                                    <li class="active">
+                                            <a data-toggle="tab" href="#general">
+                                                    Información General
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a data-toggle="tab" href="#especifica">
+                                                    Información Específica
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a data-toggle="tab" href="#estructura">
+                                                    Estructura
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a data-toggle="tab" href="#ptierra">
+                                                    Puesta Tierra
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a data-toggle="tab" href="#tensor">
+                                                    Tensor
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a data-toggle="tab" href="#cfase">
+                                                    Conductor Fase
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a data-toggle="tab" href="#cguardia">
+                                                    Cable Guardia
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a data-toggle="tab" href="#valores">
+                                                    <i class="green icon-usd bigger-110"></i>
+                                                    Valoración
+                                            </a>
+                                    </li>
+                            </ul>
+                            <div class="tab-content">
+                                    <div id="general" class="tab-pane in active">
+                                        <div class="row-fluid">
+                                            <div class="span6">
+                                                <div class="profile-user-info profile-user-info-striped">
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Código</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.codigo }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Etiqueta</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.etiqueta}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Responsable</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.trabajador }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Línea de Subtransmisión</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.subtransmision }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Agencia</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.agencia}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Provincia</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.canton.provincia}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Cantón</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.canton }}</span>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            <div class="span6">
+                                                <div class="profile-user-info profile-user-info-striped">
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Área Operativa</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.areaOperativa }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Cuenta Contable</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.cuentaContable }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row" style="height:50px">
+                                                    <div class="profile-info-name">Unidad de Propiedad</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.unidadPropiedad }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row" style="height:50px">
+                                                    <div class="profile-info-name">Plan o Programa</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.plan }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Subsistema</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.departamento.subsistema }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Departamento</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.departamento }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Dependencia</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.dependencia}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Estado</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.estado }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Observaciones</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.observaciones }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="especifica" class="tab-pane">    
+                                        <div class="row-fluid">
+                                            <div class="span6"><div class="profile-user-info profile-user-info-striped">
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Coordenada este</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.coordeEste }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Coordenada Norte</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.coordeNorte }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Etapa funcional</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.etapaFuncional }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Altura</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.altura }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Año de fabricación</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.anioFabricacion|date('Y')  }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Voltaje</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.voltaje }}</span>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            <div class="span6"><div class="profile-user-info profile-user-info-striped">
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Postería</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.posteria }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Material</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.material }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Tipo</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.tipo }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                <div id="estructura" class="tab-pane">    
+                                        <div class="row-fluid">
+                                            <div class="span6"><div class="profile-user-info profile-user-info-striped">
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Nombre</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.nombrEstructura }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Tipo</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.tipoEstructura }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Estado</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.estadoEstructura }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Observación</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.observEstructura }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                <div id="ptierra" class="tab-pane">    
+                                        <div class="row-fluid">
+                                            <div class="span6"><div class="profile-user-info profile-user-info-striped">
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Descripción</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.descripcionPTierra }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Tipo</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.tipoPTierra }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Calibre</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.calibrePTierra }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Estado</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.estadoPTierra }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Observación</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.observPTierra }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                <div id="tensor" class="tab-pane">    
+                                        <div class="row-fluid">
+                                            <div class="span6"><div class="profile-user-info profile-user-info-striped">
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Cantidad</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.cantidadTensor }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Tipo</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.tipoTensor }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Calibre</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.calibreTensor }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Estado</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.estadoTensor }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Observación</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.observTensor }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                <div id="cfase" class="tab-pane">    
+                                        <div class="row-fluid">
+                                            <div class="span6"><div class="profile-user-info profile-user-info-striped">
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Longitud</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.longitudCFase }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Tipo</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.tipoCFase }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Material</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.materialCFase }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Calibre</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.calibreCFase }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Estado</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.estadoCFase }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Observación</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.observCFase }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                <div id="cguardia" class="tab-pane">    
+                                        <div class="row-fluid">
+                                            <div class="span6"><div class="profile-user-info profile-user-info-striped">
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Longitud</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.longitudCGuardia }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Tipo</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.tipoCGuardia }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Material</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.materialCGuardia }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Calibre</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.calibreCGuardia }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Estado</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.estadoCGuardia }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Observación</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.observCGuardia }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="valores" class="tab-pane">
+                                        <div class="row-fluid">
+                                            <div class="span6">
+                                                <div class="profile-user-info profile-user-info-striped">
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Fecha de Adquisición</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.fechAdquisicion|date('Y-m-d')  }}</span>
+                                                    </div>
+                                                </div>                                        
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Fecha en Marcha</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.fechaMarcha |date('Y-m-d') }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Tipo de Documento</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.tipoDocumento  }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Nº de Documento</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.numeroDocumento }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Procedencia</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.procedencia }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Financiamiento</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.financiamiento }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Bien Asegurable</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.bienAsegurable }}</span>
+                                                    </div>
+                                                </div>       
+                                                </div>
+                                            </div>
+                                            <div class="span6">
+                                                <div class="profile-user-info profile-user-info-striped">
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Calidad</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.calidad }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Factor de Estado</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.factorEstado }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Valor de Adquisicion</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.valorAdquisicion }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Valor Residual</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.valorResidual }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Valor Depreciable</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.valorDepreciable }}</span>
+                                                    </div>
+                                                </div>
+                                                    {#
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">Depreciación Acumulada</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.valorDepreciacionAcumulada }}</span>
+                                                    </div>
+                                                </div>                                        
+                                                <div class="profile-info-row" style="height:50px">
+                                                    <div class="profile-info-name">Última fecha de depreciación</div>
+                                                    <div class="profile-info-value"><span >
+                                                            {{entity.ultimaFechaDepreciacion|date('Y-m-d')  }}</span>
+                                                    </div>
+                                                </div>
+                                                #}
+                                                </div>
+                                            </div>
+                                    </div>
+                            </div>
+                    </div>
+                <div class='space-10'></div> 
+                <div class="row-fluid">
+                    <div class="span2"></div>
+                    <div class="span6">
+                        <div class="well well-small"> 
+                            <div class="center">                            
+                                    <a href="{{ path('lsubtransmision') }}" class="btn btn-small">
+                                        <i class="icon-undo bigger-150"></i> Regresar
+                                    </a>
+                                    <a href="{{ path('lsubtransmision_edit', { 'id': entity.id }) }}" class="btn btn-small btn-primary">
+                                        <i class="icon-edit bigger-150"></i> Editar
+                                    </a>                         
+                            </div>
+                        </div>                    
+                    </div>
+                </div>      
+                </div>
+            <!--PAGE CONTENT ENDS-->
+        </div><!--/.span-->
+    </div><!--/.row-fluid-->
+</div><!--/.page-content-->
+{%endblock%}
+
+{%block plugins%}
+<script src="{{asset('bundles/ace/assets/js/chosen.jquery.min.js')}}"></script>
+<script src="{{asset('bundles/ace/assets/js/jquery.autosize-min.js')}}"></script>
+<script src="{{asset('bundles/ace/assets/js/bootbox.min.js')}}"></script>
+{%endblock%}
+
+{%block script%}
+{{parent()}}
+<script type="text/javascript">
+jQuery(document).ready(function() {
+    var elemento=document.getElementById("mnlsubtransmisiones");
+    elemento.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('open');                
+});
+$(function() {
+    $("#bteliminar").on(ace.click_event, function() {
+        bootbox.confirm("Estas seguro de eliminar registro?", function(result) {
+                if(result){
+                    location.href="{{ path('lsubtransmision_eliminar', { 'id': entity.id }) }}";
+                }
+        });
+    });
+});
+</script>
+{%endblock%}

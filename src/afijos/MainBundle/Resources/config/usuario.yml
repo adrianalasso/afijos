@@ -1,0 +1,39 @@
+usuario:
+    pattern:  /
+    defaults: { _controller: MainBundle:Usuario:index }
+    
+usuario_new:
+    pattern:  /new
+    defaults: { _controller: MainBundle:Usuario:new }
+
+usuario_show:
+    pattern:  /{id}/show
+    defaults: { _controller: MainBundle:Usuario:show }
+
+usuario_create:
+    pattern:  /create
+    defaults: { _controller: MainBundle:Usuario:create }
+
+usuario_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: MainBundle:Usuario:edit }
+
+usuario_update:
+    pattern:  /{id}/update
+    defaults: { _controller: MainBundle:Usuario:update }
+
+usuario_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: MainBundle:Usuario:delete }
+    
+usuario_eliminar:
+    pattern:  /{id}/eliminar
+    defaults: { _controller: MainBundle:Usuario:eliminar }
+    
+buscar_usuarios:
+    pattern:  /buscar-usuario
+    defaults: { _controller: MainBundle:Usuario:buscarUsuarios}
+    
+usuario_listar:
+    pattern:  /listar-usuarios
+    defaults: { _controller: MainBundle:Usuario:listarUsuarios }

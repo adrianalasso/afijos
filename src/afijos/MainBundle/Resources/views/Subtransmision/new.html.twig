@@ -1,0 +1,55 @@
+{% extends "MainBundle::new.html.twig" %}
+{% block titulo %}Líneas de Subtransmisión{%endblock%}
+
+{%block pluginstyle%}
+<link rel="stylesheet" href="{{asset('bundles/ace/assets/css/chosen.css')}}" />
+{%endblock%}
+
+{%block entidad%}
+<i class="icon-exchange exchange-icon"></i>
+<a href="{{ path('subtransmision') }}">Líneas de Subtransmisión</a>
+{%endblock%}
+
+{%block mapatitulo%}Nueva Línea de Subtransmisión{%endblock%}
+{%block pagetitulo%}Líneas de Subtransmisión{%endblock%}
+{%block pagedetalle%}Nueva Línea{%endblock%}
+
+{%block formulario%}
+<form action="{{ path('subtransmision_create') }}" method="post" {{ form_enctype(form) }}>
+<div class="control-group">
+        <label class="control-label" for="">Subestación de Llegada</label>
+        <div class="controls">
+                {{ form_widget(form.subestacionSalida,{'attr' :  {'class' : 'chzn-select input-large', 'data-placeholder':'Escoja una opcion..'}}) }}
+        </div>
+</div>
+<div class="control-group">
+        <label class="control-label" for="">Subestación de Salida</label>
+        <div class="controls">
+                {{ form_widget(form.subestacionLlegada, {'attr' :  {'class' : 'chzn-select input-large', 'data-placeholder':'Escoja una opcion..'}}) }}
+        </div>
+</div>        
+    {{ form_rest(form) }}
+{%endblock%}
+                
+{%block link%}
+<a href="{{ path('subtransmision') }}"  
+{%endblock%}
+       
+{%block plugins%}
+<script src="{{asset('bundles/ace/assets/js/chosen.jquery.min.js')}}"></script>
+{%endblock%}
+
+{%block scripthijo%}
+<script type="text/javascript">
+window.onload = function(){
+    var elemento=document.getElementById("mnsubtransmisiones");
+    elemento.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('open');
+};
+$(function() {
+        $(".chzn-select").chosen(); 
+    });    
+</script>
+{%endblock%}
+

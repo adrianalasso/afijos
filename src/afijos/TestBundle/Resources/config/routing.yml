@@ -1,0 +1,96 @@
+test_index:
+    pattern:  /
+    defaults: { _controller: TestBundle:Default:index }
+test_supdate:
+    pattern:  /supdate
+    defaults: { _controller: TestBundle:Default:supdate }
+test_hupdate:
+    pattern:  /hupdate
+    defaults: { _controller: TestBundle:Default:hupdate }
+test_unit:
+    pattern:  /unit
+    defaults: { _controller: TestBundle:Default:unit }
+test_bug:
+    pattern:  /bug
+    defaults: { _controller: TestBundle:Default:bug }
+test_tareas:
+    pattern:  /tareas
+    defaults: { _controller: TestBundle:Default:tareas }
+test_new_comments:
+    pattern:  /ncomments
+    defaults: { _controller: TestBundle:Default:ncomments }
+test_signedup:
+    pattern:  /signedup
+    defaults: { _controller: TestBundle:Default:signedup }
+test_new_orders:
+    pattern:  /norders
+    defaults: { _controller: TestBundle:Default:norders }
+test_seguidores:
+    pattern:  /seguidores
+    defaults: { _controller: TestBundle:Default:seguidores }
+test_ver_notific:
+    pattern:  /vernotific
+    defaults: { _controller: TestBundle:Default:vernotific }
+test_tipografia:
+    pattern:  /tipografia
+    defaults: { _controller: TestBundle:Default:tipografia }
+test_elements:
+    pattern:  /elements
+    defaults: { _controller: TestBundle:Default:elements }
+test_buttons:
+    pattern:  /buttons
+    defaults: { _controller: TestBundle:Default:buttons }
+test_treeview:
+    pattern:  /treeview
+    defaults: { _controller: TestBundle:Default:treeview }
+test_tablas:
+    pattern:  /tablas
+    defaults: { _controller: TestBundle:Default:tablas }
+test_forms:
+    pattern:  /forms
+    defaults: { _controller: TestBundle:Default:forms }
+test_form_wizard:
+    pattern:  /frmwizard
+    defaults: { _controller: TestBundle:Default:frmwizard }
+test_wysiwyg:
+    pattern:  /wysiwyg
+    defaults: { _controller: TestBundle:Default:wysiwyg }
+test_widgets:
+    pattern:  /widgets
+    defaults: { _controller: TestBundle:Default:widgets }
+test_calendario:
+    pattern:  /calendario
+    defaults: { _controller: TestBundle:Default:calendario }
+test_galeria:
+    pattern:  /galeria
+    defaults: { _controller: TestBundle:Default:galeria }
+test_user_perfil:
+    pattern:  /perfil
+    defaults: { _controller: TestBundle:Default:uperfil }
+test_tabla_precio:
+    pattern:  /tbprecio
+    defaults: { _controller: TestBundle:Default:tbprecio }
+test_factura:
+    pattern:  /factura
+    defaults: { _controller: TestBundle:Default:factura }
+test_user_login:
+    pattern:  /login
+    defaults: { _controller: TestBundle:Default:login }
+test_error4:
+    pattern:  /error4
+    defaults: { _controller: TestBundle:Default:error4 }
+test_error5:
+    pattern:  /error5
+    defaults: { _controller: TestBundle:Default:error5 }
+test_grid:
+    pattern:  /grid
+    defaults: { _controller: TestBundle:Default:grid }
+test_blanco:
+    pattern:  /blanco
+    defaults: { _controller: TestBundle:Default:blanco }
+test_user_logout:
+    pattern:  /logout
+    defaults: { _controller: TestBundle:Default:logout }
+test_prueba:
+    pattern:  /pruebach
+    defaults: { _controller: TestBundle:Default:pruebach }

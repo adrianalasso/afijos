@@ -1,0 +1,54 @@
+{% extends "MainBundle::edit.html.twig" %}
+{% block titulo %}Agencias{%endblock%}
+
+{%block entidad%}
+<i class="icon-exchange exchange-icon"></i>
+<a href="{{ path('agencia') }}">Agencias</a>
+{%endblock%}
+
+{%block mapatitulo%}Editar Agencia{%endblock%}
+{%block pagetitulo%}Agencias{%endblock%}
+{%block pagedetalle%}Editar Agencia{%endblock%}
+
+ {%block formulario%}
+<form action="{{ path('agencia_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+<div class="control-group">
+        <label class="control-label" for="">Descripción</label>
+        <div class="controls">
+                {{ form_widget(edit_form.nombre) }}
+        </div>
+</div>        
+{{ form_rest(edit_form) }}
+{%endblock%}
+
+{%block link%}
+<a href="{{ path('agencia') }}"  
+{%endblock%}
+
+{%block linkeliminar%}
+<a action="#"
+{%endblock%}
+   
+{%block plugins%}
+{{parent()}}
+{%endblock%}
+    
+{%block scripthijo%}
+<script type="text/javascript">
+window.onload = function(){
+    var elemento=document.getElementById("mnagencias");
+    elemento.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('open');
+};
+$(function() {
+    $("#bteliminar").on(ace.click_event, function() {
+            bootbox.confirm("Estas seguro de eliminar registro?", function(result) {
+                    if(result){
+                        location.href="{{ path('agencia_eliminar', { 'id': entity.id }) }}";
+                    }
+            });
+    });
+});
+</script>
+{%endblock%}

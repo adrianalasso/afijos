@@ -1,0 +1,40 @@
+{% extends "MainBundle::new.html.twig" %}
+{% block titulo %}Agencias{%endblock%}
+
+{%block entidad%}
+<a href="{{ path('agencia') }}">Agencias</a>
+{%endblock%}
+
+{%block mapatitulo%}Nueva Agencia{%endblock%}
+{%block pagetitulo%}Agencias{%endblock%}
+{%block pagedetalle%}Nueva Agencia{%endblock%}
+
+{%block formulario%}
+<form action="{{ path('agencia_create') }}" method="post" {{ form_enctype(form) }}>
+<div class="control-group">
+        <label class="control-label" for="">
+            Nombre
+        </label>
+        <div class="controls">
+                {{ form_widget(form.nombre) }}
+        </div>
+</div>
+{{ form_rest(form) }}
+{%endblock%}
+{%block link%}
+<a href="{{ path('agencia') }}"  
+{%endblock%}
+
+{%block scripthijo%}
+<script type="text/javascript">
+    window.onload = function(){
+        var elemento=document.getElementById("mnagencias");
+        elemento.classList.add('active');
+        elemento.parentNode.parentNode.classList.add('active');
+        elemento.parentNode.parentNode.classList.add('open');
+    };
+</script>
+{%endblock%}
+
+
+

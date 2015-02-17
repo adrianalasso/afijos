@@ -1,0 +1,37 @@
+subtransmision:
+    pattern:  /
+    defaults: { _controller: MainBundle:Subtransmision:index }
+    
+subtransmision_new:
+    pattern:  /new
+    defaults: { _controller: MainBundle:Subtransmision:new }
+
+subtransmision_show:
+    pattern:  /{id}/show
+    defaults: { _controller: MainBundle:Subtransmision:show }
+
+subtransmision_create:
+    pattern:  /create
+    defaults: { _controller: MainBundle:Subtransmision:create }
+
+subtransmision_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: MainBundle:Subtransmision:edit }
+
+subtransmision_update:
+    pattern:  /{id}/update
+    defaults: { _controller: MainBundle:Subtransmision:update }
+
+subtransmision_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: MainBundle:Subtransmision:delete }
+
+subtransmision_eliminar:
+    pattern:  /{id}/eliminar
+    defaults: { _controller: MainBundle:Subtransmision:eliminar }
+
+subtransmision_listar:
+    pattern:  /listar
+    defaults: { _controller: MainBundle:Subtransmision:listar }
+    
+    

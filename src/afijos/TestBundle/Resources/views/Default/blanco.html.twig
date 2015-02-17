@@ -1,0 +1,61 @@
+{% extends "TestBundle::index.html.twig" %}
+{% block titulo %}Página en blanco{%endblock%}
+{%block pluginstyle%}
+{%endblock%}
+{%block mapasitio%}
+                            <div class="breadcrumbs" id="breadcrumbs">
+                                    <ul class="breadcrumb">
+                                            <li>
+                                                    <i class="icon-home home-icon"></i>
+                                                    <a href="#">Home</a>
+
+                                                    <span class="divider">
+                                                            <i class="icon-angle-right arrow-icon"></i>
+                                                    </span>
+                                            </li>
+
+                                            <li>
+                                                    <a href="#">Other Pages</a>
+
+                                                    <span class="divider">
+                                                            <i class="icon-angle-right arrow-icon"></i>
+                                                    </span>
+                                            </li>
+                                            <li class="active">Blank Page</li>
+                                    </ul><!--.breadcrumb-->
+
+                                    <div class="nav-search" id="nav-search">
+                                            <form class="form-search" />
+                                                    <span class="input-icon">
+                                                            <input type="text" placeholder="Search ..." class="input-small nav-search-input" id="nav-search-input" autocomplete="off" />
+                                                            <i class="icon-search nav-search-icon"></i>
+                                                    </span>
+                                            </form>
+                                    </div><!--#nav-search-->
+                            </div>
+{%endblock%}
+
+{%block pagecontent%}
+                            <div class="page-content">
+                                    <div class="row-fluid">
+                                            <div class="span12">
+                                                    <!--PAGE CONTENT BEGINS-->
+
+                                                    <!--PAGE CONTENT ENDS-->
+                                            </div><!--/.span-->
+                                    </div><!--/.row-fluid-->
+                            </div><!--/.page-content-->
+{%endblock%}
+{%block plugins%}
+{%endblock %}
+{%block script%}
+                            {{parent()}}                            
+                            <script type="text/javascript">
+                                window.onload = function() {
+                                    var elemento=document.getElementById("mnblanco");
+                                    elemento.classList.add('active');
+                                    elemento.parentNode.parentNode.classList.add('active');
+                                    elemento.parentNode.parentNode.classList.add('open');
+                                }
+                            </script>
+{%endblock %}

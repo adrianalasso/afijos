@@ -1,0 +1,135 @@
+{% extends '::base.html.twig' %}
+
+{% block titulo %}Bienes en Custodio{%endblock%}
+
+{%block pluginstyle%}
+{%endblock%}
+
+{% block mapasitio%}
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="{{path('usuario_index')}}">Inicio</a>
+            <span class="divider"><i class="icon-angle-right arrow-icon"></i></span>
+        </li>
+        <li>
+            <i class="icon-exchange exchange-icon"></i>
+            <a href="{{path('bienescustodio')}}">Bienes en Custodio</a>
+            <span class="divider"><i class="icon-angle-right arrow-icon"></i></span>
+        </li>
+        <li class="active">Listado de Reportes</li>
+    </ul><!--.breadcrumb-->
+</div>
+{%endblock%}
+
+{% block pagecontent%}
+<div class="page-content">
+    <div class="page-header position-relative">
+        <h1>Bienes en Custodio<small><i class="icon-double-angle-right"></i> Listado de Reportes</small></h1>
+    </div><!--/.page-header-->
+    <div class="row-fluid">
+        <div class="span10">
+            <!--PAGE CONTENT BEGINS-->        
+            <div class="widget-box">
+                <div class="widget-header">
+                        <h4>{%block pagetitulo%}Bienes en Custodio{%endblock%}
+                            <small><i class="icon-double-angle-right"></i> 
+                            {%block pagedetalle%}Listado de Reportes{%endblock%}</small>
+                        </h4>        
+                </div>
+                <div class="widget-body">
+                        <div class="widget-main">
+                            <div class="profile-user-info profile-user-info-striped">
+                            <div class="profile-info-row">
+                                        <div class="profile-info-name"> 1 </div>
+                                        <div class="profile-info-value">
+                                                <span > 
+                                                    Activos por Responsable
+                                                </span>
+                                        </div>
+                                </div>
+                                <div class="profile-info-row">
+                                        <div class="profile-info-name"> 2 </div>
+                                        <div class="profile-info-value">
+                                            <span>
+                                                Activos por Departamento
+                                            </span>
+                                        </div>
+                                </div>
+                                <div class="profile-info-row">
+                                        <div class="profile-info-name"> 3 </div>
+                                        <div class="profile-info-value">
+                                            <span>
+                                                Alta de Activos por rango de fecha
+                                            </span>
+                                        </div>
+                                </div>
+                                <div class="profile-info-row">
+                                        <div class="profile-info-name"> 3 </div>
+                                        <div class="profile-info-value">
+                                            <span>
+                                                Baja de Activos por rango de fecha
+                                            </span>
+                                        </div>
+                                </div>
+                                <div class="profile-info-row">
+                                        <div class="profile-info-name"> 3 </div>
+                                        <div class="profile-info-value">
+                                            <span>
+                                                Activos en mal estado por departamento
+                                            </span>
+                                        </div>
+                                </div>
+                                <div class="profile-info-row">
+                                        <div class="profile-info-name"> 4 </div>
+                                        <div class="profile-info-value">
+                                            <span>
+                                                Activos en mal estado por línea de subtransmisión
+                                            </span>
+                                        </div>
+                                </div>
+                                <div class="profile-info-row">
+                                        <div class="profile-info-name"> 4 </div>
+                                        <div class="profile-info-value">
+                                            <span>
+                                                Activos en mal estado por subestación
+                                            </span>
+                                        </div>
+                                </div>
+                                <div class="profile-info-row">
+                                        <div class="profile-info-name"> 4 </div>
+                                        <div class="profile-info-value">
+                                            <span>
+                                                Ubicación del Activo
+                                            </span>
+                                        </div>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>           
+            <!--PAGE CONTENT ENDS-->
+        </div><!--/.span-->
+    </div><!--/.row-fluid-->
+</div><!--/.page-content-->
+{%endblock%}
+
+{%block plugins%}
+<script src="{{asset('bundles/ace/assets/js/chosen.jquery.min.js')}}"></script>
+<script src="{{asset('bundles/ace/assets/js/jquery.autosize-min.js')}}"></script>
+<script src="{{asset('bundles/ace/assets/js/bootbox.min.js')}}"></script>
+{%endblock%}
+
+{%block script%}
+{{parent()}}
+<script type="text/javascript">
+jQuery(document).ready(function() {
+    var elemento=document.getElementById("mnrpbienes");
+    elemento.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('open');                
+});
+</script>
+{%endblock%}

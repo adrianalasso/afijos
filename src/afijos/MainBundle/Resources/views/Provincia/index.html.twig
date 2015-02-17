@@ -1,0 +1,62 @@
+{% extends "MainBundle::index.html.twig" %}
+{% block titulo %}Provincias{%endblock%}
+{%block mapatitulo%}Provincias{%endblock%}
+{%block pagetitulo%}Provincias{%endblock%}
+{%block link%}href="{{ path('provincia_new') }}"{%endblock%}
+{%block tabla%}
+<table id="sample-table-2" class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+{% for entity in entities %}
+        <tr>
+            <td class="center"><a href="{{ path('provincia_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.nombre }}</td>
+            <td class="td-actions">
+                <div class="hidden-phone visible-desktop action-buttons">
+                    <a class="blue" href="{{ path('provincia_show', { 'id': entity.id }) }}">
+                        <i class="icon-zoom-in bigger-150"></i>
+                    </a>
+                    <a class="green" href="{{ path('provincia_edit', { 'id': entity.id }) }}">
+                        <i class="icon-pencil bigger-150"></i>
+                    </a>
+                    <a class="red" href="#" id="bteliminar{{entity.id}}">
+                        <i class="icon-trash bigger-150"></i>
+                    </a>
+                </div>
+            </td>
+        </tr>
+{% endfor %}
+    </tbody>
+</table>
+{%endblock%}
+{%block plugins%}
+{{parent()}}
+{%endblock%}
+{%block scripthijo%}
+<script type="text/javascript">
+    window.onload = function(){
+        var elemento=document.getElementById("mnprovincias");
+        elemento.classList.add('active');
+        elemento.parentNode.parentNode.classList.add('active');
+        elemento.parentNode.parentNode.classList.add('open');
+    };
+    $(function() {
+        {%for entity in entities%}
+        $("#bteliminar{{entity.id}}").on(ace.click_event, function() {
+                bootbox.confirm("Estas seguro de eliminar registro?", function(result) {
+                    if(result){
+                        location.href="{{ path('provincia_eliminar', { 'id': entity.id }) }}";
+                    }
+                });
+        });
+        {%endfor%}
+    });
+    $(function() {var oTable1 = $('#sample-table-2').dataTable( {"aoColumns": [null, null,{ "bSortable": false }]} );});
+</script>
+{%endblock%}

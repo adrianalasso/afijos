@@ -1,0 +1,70 @@
+          
+        
+    function aesmayorm(){
+        if($("#afijos_mainbundle_bienescustodiotype_fechAdquisicion").val()>$("#afijos_mainbundle_bienescustodiotype_fechaMarcha").val()){
+            bootbox.dialog("La fecha de puesta en marcha debe ser mayor que la fecha de adquisición", [{
+                    "label" : "Aceptar",
+                    "class" : "btn-small btn-success",
+                    "callback": function() {}
+                }]
+            );
+            $("#afijos_mainbundle_bienescustodiotype_fechaMarcha").val("");
+        }
+    }
+    function mesmayoru(){
+        if($("#afijos_mainbundle_bienescustodiotype_fechaMarcha").val()>$("#afijos_mainbundle_bienescustodiotype_ultimaFechaDepreciacion").val()){
+            bootbox.dialog("La ultima fecha de depreciacion debe ser mayor que la fecha de puesta en marcha", [{
+                    "label" : "Aceptar",
+                    "class" : "btn-small btn-success",
+                    "callback": function() {}
+                }]
+            );
+            $("#afijos_mainbundle_bienescustodiotype_ultimaFechaDepreciacion").val("");
+        }
+    }
+    function mensajeu(){
+        bootbox.dialog("Debe ingresar fecha de puesta en marcha", [{
+                "label" : "Aceptar",
+                "class" : "btn-small btn-success",
+                "callback": function() {}
+            }]
+        );
+        $("#afijos_mainbundle_bienescustodiotype_ultimaFechaDepreciacion").val("");
+    }
+    function mensajem(){
+        bootbox.dialog("Debe ingresar fecha de adquisicion", [{
+                "label" : "Aceptar",
+                "class" : "btn-small btn-success",
+                "callback": function() {}
+            }]
+        );
+        $("#afijos_mainbundle_bienescustodiotype_fechaMarcha").val("");
+    }
+    
+    $("#afijos_mainbundle_bienescustodiotype_fechaMarcha").change(function(){
+        var fechAdq=$("#afijos_mainbundle_bienescustodiotype_fechAdquisicion").val();
+        if(fechAdq==""){
+            mensajem();
+        }
+        aesmayorm();
+        if(!($("#afijos_mainbundle_bienescustodiotype_ultimaFechaDepreciacion").val(""))){
+            mesmayoru();
+        }
+    });     
+    
+    $("#afijos_mainbundle_bienescustodiotype_ultimaFechaDepreciacion").change(function(){
+        var fechMarc=$("#afijos_mainbundle_bienescustodiotype_fechaMarcha").val();
+        if(fechMarc==""){
+            mensajeu();
+        }
+        mesmayoru();
+    });
+    
+    $("#afijos_mainbundle_bienescustodiotype_fechAdquisicion").change(function(){
+        if(!($("#afijos_mainbundle_bienescustodiotype_fechaMarcha").val(""))){
+            aesmayorm();
+        }
+        if(!($("#afijos_mainbundle_bienescustodiotype_ultimaFechaDepreciacion").val(""))){
+            mesmayoru();
+        }
+    });

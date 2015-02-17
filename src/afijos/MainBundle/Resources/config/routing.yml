@@ -1,0 +1,125 @@
+usuario_login:
+    pattern:  /login
+    defaults: { _controller: MainBundle:Default:login }
+    
+usuario_login_check:
+    pattern: /login_check
+    
+usuario_logout:
+    pattern: /logout
+    
+usuario_index:
+    pattern:  /index
+    defaults: { _controller: MainBundle:Default:index }
+    
+usuario_cambiar_pass:
+    pattern:  /usuario/cambiar-pass
+    defaults: { _controller: MainBundle:Usuario:cambiarpassUsuarios }
+    
+usuario_editperfil:
+    pattern:  /usuario/{id}/editperfil
+    defaults: { _controller: MainBundle:Usuario:editperfil }
+
+usuario_perfil:
+    pattern:  /usuario/{id}/perfil
+    defaults: { _controller: MainBundle:Usuario:perfil }
+    
+usuario_updateperfil:
+    pattern:  /usuario/{id}/updateperfil
+    defaults: { _controller: MainBundle:Usuario:updateperfil }
+    
+usuario_editpass:
+    pattern:  /usuario/{id}/editpass
+    defaults: { _controller: MainBundle:Usuario:editpass }
+    
+usuario_updatepass:
+    pattern:  /usuario/{id}/updatepass
+    defaults: { _controller: MainBundle:Usuario:updatepass }
+    
+MainBundle_usuario:
+     resource: "@MainBundle/Resources/config/usuario.yml"
+     prefix:   /admin/usuario
+     
+MainBundle_trabajador:
+     resource: "@MainBundle/Resources/config/trabajador.yml"
+     prefix:   /empadmin/trabajador
+
+MainBundle_rol:
+     resource: "@MainBundle/Resources/config/rol.yml"
+     prefix:   /admin/rol
+     
+MainBundle_provincia:
+     resource: "@MainBundle/Resources/config/provincia.yml"
+     prefix:   /admin/provincia
+     
+MainBundle_canton:
+     resource: "@MainBundle/Resources/config/canton.yml"
+     prefix:   /admin/canton
+     
+MainBundle_parroquia:
+     resource: "@MainBundle/Resources/config/parroquia.yml"
+     prefix:   /admin/parroquia
+
+MainBundle_subsistema:
+     resource: "@MainBundle/Resources/config/subsistema.yml"
+     prefix:   /empadmin/subsistema
+     
+MainBundle_departamento:
+     resource: "@MainBundle/Resources/config/departamento.yml"
+     prefix:   /empadmin/departamento
+
+MainBundle_agencia:
+     resource: "@MainBundle/Resources/config/agencia.yml"
+     prefix:   /admin/agencia
+
+MainBundle_areaoperativa:
+     resource: "@MainBundle/Resources/config/areaoperativa.yml"
+     prefix:   /empadmin/areaoperativa
+     
+MainBundle_dependencia:
+     resource: "@MainBundle/Resources/config/dependencia.yml"
+     prefix:   /empadmin/dependencia
+     
+MainBundle_cuentacontable:
+     resource: "@MainBundle/Resources/config/cuentacontable.yml"
+     prefix:   /empadmin/cuentacontable
+     
+MainBundle_unidadpropiedad:
+     resource: "@MainBundle/Resources/config/unidadpropiedad.yml"
+     prefix:   /empadmin/unidadpropiedad
+     
+MainBundle_plan:
+     resource: "@MainBundle/Resources/config/plan.yml"
+     prefix:   /empadmin/plan
+     
+MainBundle_subestacion:
+     resource: "@MainBundle/Resources/config/subestacion.yml"
+     prefix:   /empadmin/subestacion
+     
+MainBundle_subtransmision:
+     resource: "@MainBundle/Resources/config/subtransmision.yml"
+     prefix:   /empadmin/subtransmision
+     
+MainBundle_bienescustodio:
+     resource: "@MainBundle/Resources/config/bienescustodio.yml"
+     prefix:   /empadmin/bienescustodio
+     
+MainBundle_lsubestacion:
+     resource: "@MainBundle/Resources/config/lsubestacion.yml"
+     prefix:   /empadmin/lsubestacion
+     
+MainBundle_lsubtransmision:
+     resource: "@MainBundle/Resources/config/lsubtransmision.yml"
+     prefix:   /empadmin/lsubtransmision
+     
+MainBundle_bajas:
+     resource: "@MainBundle/Resources/config/bajas.yml"
+     prefix:   /empadmin/bajas
+     
+MainBundle_abajas:
+     resource: "@MainBundle/Resources/config/abajas.yml"
+     prefix:   /directivo/abajas
+     
+MainBundle_reportes:
+     resource: "@MainBundle/Resources/config/reportes.yml"
+     prefix:   /empadmin/reportes

@@ -1,0 +1,80 @@
+{% extends "MainBundle::show.html.twig" %}
+{% block titulo %}Usuarios{%endblock%}
+
+{%block entidad%}
+<i class="icon-exchange exchange-icon"></i>
+<a href="{{ path('usuario') }}">Usuarios</a>
+{%endblock%}
+
+{%block mapatitulo%}Ver Usuario{%endblock%}
+{%block pagetitulo%}Usuarios{%endblock%}
+{%block pagedetalle%}Ver Usuario{%endblock%}
+
+
+{%block datos%}         
+<div class="profile-info-row">
+    <div class="profile-info-name">Cedula</div>
+    <div class="profile-info-value"><span >
+            {{ entity.id }}</span>
+    </div>
+</div>        
+<div class="profile-info-row">
+    <div class="profile-info-name">Apellidos</div>
+    <div class="profile-info-value"><span >
+            {{ entity.apellidos }}</span>
+    </div>
+</div>        
+<div class="profile-info-row">
+    <div class="profile-info-name">Nombres</div>
+    <div class="profile-info-value"><span >
+            {{ entity.nombres }}</span>
+    </div>
+</div>        
+<div class="profile-info-row">
+    <div class="profile-info-name">Roles</div>
+    <div class="profile-info-value"><span >
+            {% for rol in entity.userRoles %}
+            {{ rol }}<br>
+            {% endfor %}</span>
+    </div>
+</div>        
+<div class="profile-info-row"  style="height:50px">
+<div class="profile-info-name">Nombre de usuario</div>
+    <div class="profile-info-value"><span >
+            {{ entity.username }}</span>
+    </div>
+</div>                 
+{%endblock%}
+{%block linkeliminar%}
+<a href="#"
+{%endblock%}  
+{%block link%}
+<a href="{{path('usuario')}}"
+{%endblock%}
+{%block linkedit%}
+<a href="{{ path('usuario_edit', { 'id': entity.id }) }}" 
+{%endblock%}
+   
+{%block plugins%}
+{{parent()}}
+{%endblock%}
+    
+{%block scripthijo%}
+<script type="text/javascript">
+window.onload = function(){
+    var elemento=document.getElementById("mnusuarioes");
+    elemento.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('open');
+};
+$(function() {
+    $("#bteliminar").on(ace.click_event, function() {
+            bootbox.confirm("Estas seguro de eliminar registro?", function(result) {
+                    if(result){
+                        location.href="{{ path('usuario_eliminar', { 'id': entity.id }) }}";
+                    }
+            });
+    });
+});
+</script>
+{%endblock%}

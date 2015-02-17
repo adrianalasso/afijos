@@ -1,0 +1,67 @@
+reportes_hello:
+    pattern:  /{name}/hello
+    defaults: { _controller: MainBundle:Reportes:hello }
+
+reportes_rform1:
+    pattern:  /rform1
+    defaults: { _controller: MainBundle:Reportes:rform1 }
+    
+reportes_rform2:
+    pattern:  /rform2
+    defaults: { _controller: MainBundle:Reportes:rform2 }
+    
+reportes_rform3:
+    pattern:  /rform3
+    defaults: { _controller: MainBundle:Reportes:rform3 }
+    
+reportes_rform4:
+    pattern:  /rform4
+    defaults: { _controller: MainBundle:Reportes:rform4 }
+    
+reportes_rform5:
+    pattern:  /rform5
+    defaults: { _controller: MainBundle:Reportes:rform5 }
+    
+reportes_rform6:
+    pattern:  /rform6
+    defaults: { _controller: MainBundle:Reportes:rform6 }
+    
+reportes_rform7:
+    pattern:  /rform7
+    defaults: { _controller: MainBundle:Reportes:rform7 }
+    
+reportes_rform8:
+    pattern:  /rform8
+    defaults: { _controller: MainBundle:Reportes:rform8 }
+    
+reportes_reporte1:
+    pattern:  /{desdestr}/{hastastr}/reporte1
+    defaults: { _controller: MainBundle:Reportes:reporte1 }
+    
+reportes_reporte2:
+    pattern:  /{desdestr}/{hastastr}/reporte2
+    defaults: { _controller: MainBundle:Reportes:reporte2 }
+    
+reportes_reporte3:
+    pattern:  /{dpto}/reporte3
+    defaults: { _controller: MainBundle:Reportes:reporte3 }
+    
+reportes_reporte4:
+    pattern:  /{lsubtrans}/reporte4
+    defaults: { _controller: MainBundle:Reportes:reporte4 }
+    
+reportes_reporte5:
+    pattern:  /{lsubest}/reporte5
+    defaults: { _controller: MainBundle:Reportes:reporte5 }
+    
+reportes_reporte6:
+    pattern:  /{emp}/reporte6
+    defaults: { _controller: MainBundle:Reportes:reporte6 }
+    
+reportes_reporte7:
+    pattern:  /{dpto}/reporte7
+    defaults: { _controller: MainBundle:Reportes:reporte7 }
+    
+reportes_reporte8:
+    pattern:  /{actv}/reporte8
+    defaults: { _controller: MainBundle:Reportes:reporte8 }

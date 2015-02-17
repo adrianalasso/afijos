@@ -1,0 +1,63 @@
+{% extends "MainBundle::show.html.twig" %}
+{% block titulo %}Programas{%endblock%}
+
+{%block entidad%}
+<i class="icon-exchange exchange-icon"></i>
+<a href="{{ path('plan') }}">Programas</a>
+{%endblock%}
+
+{%block mapatitulo%}Ver Plan{%endblock%}
+{%block pagetitulo%}Programas{%endblock%}
+{%block pagedetalle%}Ver Plan{%endblock%}
+
+{%block datos%}    
+<div class="profile-info-row">
+        <div class="profile-info-name"> Código </div>
+        <div class="profile-info-value">
+                <span >
+                    {{ entity.id }}
+                </span>
+        </div>
+</div>
+<div class="profile-info-row">
+        <div class="profile-info-name"> Descripción </div>
+        <div class="profile-info-value">
+            <span>
+            {{ entity.descripcion }} 
+            </span>
+        </div>
+</div>                                 
+{%endblock%}
+{%block linkeliminar%}
+<a href="#"
+{%endblock%}  
+{%block link%}
+<a href="{{path('plan')}}"
+{%endblock%}
+{%block linkedit%}
+<a href="{{ path('plan_edit', { 'id': entity.id }) }}" 
+{%endblock%}
+   
+{%block plugins%}
+{{parent()}}
+{%endblock%}
+    
+{%block scripthijo%}
+<script type="text/javascript">
+window.onload = function(){
+    var elemento=document.getElementById("mnplan");
+    elemento.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('open');
+};
+$(function() {
+    $("#bteliminar").on(ace.click_event, function() {
+            bootbox.confirm("Estas seguro de eliminar registro?", function(result) {
+                    if(result){
+                        location.href="{{ path('plan_eliminar', { 'id': entity.id }) }}";
+                    }
+            });
+    });
+});
+</script>
+{%endblock%}

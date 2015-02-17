@@ -1,0 +1,47 @@
+lsubestacion:
+    pattern:  /
+    defaults: { _controller: MainBundle:LSubestacion:index }
+    
+lsubestacion_new:
+    pattern:  /new
+    defaults: { _controller: MainBundle:LSubestacion:new }
+
+lsubestacion_show:
+    pattern:  /{id}/show
+    defaults: { _controller: MainBundle:LSubestacion:show }
+
+lsubestacion_create:
+    pattern:  /create
+    defaults: { _controller: MainBundle:LSubestacion:create }
+
+lsubestacion_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: MainBundle:LSubestacion:edit }
+
+lsubestacion_update:
+    pattern:  /{id}/update
+    defaults: { _controller: MainBundle:LSubestacion:update }
+
+lsubestacion_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: MainBundle:LSubestacion:delete }
+    
+lsubestacion_eliminar:
+    pattern:  /{id}/eliminar
+    defaults: { _controller: MainBundle:LSubestacion:eliminar }
+    
+buscar_lsubestacion:
+    pattern:  /buscar-lsubestacion
+    defaults: { _controller: MainBundle:LSubestacion:buscarLSubestacion}
+    
+lsubestacion_listar:
+    pattern:  /listar-lsubestacion
+    defaults: { _controller: MainBundle:LSubestacion:listarLSubestacion }
+    
+lsubestacion_rformulario:
+    pattern:  /rformulario
+    defaults: { _controller: MainBundle:LSubestacion:rformulario }
+
+lsubestacion_reporte:
+    pattern:  /reporte
+    defaults: { _controller: MainBundle:LSubestacion:reporte }

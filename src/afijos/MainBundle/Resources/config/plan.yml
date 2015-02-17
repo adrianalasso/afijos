@@ -1,0 +1,39 @@
+plan:
+    pattern:  /
+    defaults: { _controller: MainBundle:Plan:index }
+    
+plan_new:
+    pattern:  /new
+    defaults: { _controller: MainBundle:Plan:new }
+
+plan_show:
+    pattern:  /{id}/show
+    defaults: { _controller: MainBundle:Plan:show }
+
+plan_create:
+    pattern:  /create
+    defaults: { _controller: MainBundle:Plan:create }
+
+plan_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: MainBundle:Plan:edit }
+
+plan_update:
+    pattern:  /{id}/update
+    defaults: { _controller: MainBundle:Plan:update }
+
+plan_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: MainBundle:Plan:delete }
+    
+plan_eliminar:
+    pattern:  /{id}/eliminar
+    defaults: { _controller: MainBundle:Plan:eliminar }
+    
+buscar_plan:
+    pattern:  /buscar-plan
+    defaults: { _controller: MainBundle:Plan:buscarPlan}
+    
+plan_listar:
+    pattern:  /listar-plan
+    defaults: { _controller: MainBundle:Plan:listarPlan }

@@ -1,0 +1,64 @@
+{% extends "MainBundle::new.html.twig" %}
+{% block titulo %}Baja de Activos{%endblock%}
+{%block pluginstyle%}
+<link rel="stylesheet" href="{{asset('bundles/ace/assets/css/chosen.css')}}" />
+{%endblock%}
+{%block entidad%}
+<a href="{{ path('bajas') }}">Baja de Activos</a>
+{%endblock%}
+
+{%block mapatitulo%}Nueva Baja{%endblock%}
+{%block pagetitulo%}Baja de Activos{%endblock%}
+{%block pagedetalle%}Nueva Baja{%endblock%}
+
+{%block formulario%}
+<form action="{{ path('bajas_create') }}" method="post" {{ form_enctype(form) }}>
+<div class="control-group">
+        <label class="control-label" for="">
+            Activo
+        </label>
+        <div class="controls">
+                {{ form_widget(form.bienesCustodio, {'attr' :  {'class' : 'chzn-select input-large', 'data-placeholder':'Escoja una opcion..'}}) }}
+        </div>
+</div>
+<div class="control-group">
+    <label class="control-label" for="">
+        Descripción
+    </label>
+    <div class="controls">
+            {{ form_widget(form.descripcion) }}
+    </div>
+</div>
+<div class="control-group">
+    <label class="control-label" for="">
+        Detalle
+    </label>
+    <div class="controls">
+            {{ form_widget(form.detalle) }}
+    </div>
+</div>
+{{ form_rest(form) }}
+{%endblock%}
+{%block link%}
+<a href="{{ path('bajas') }}"  
+{%endblock%}
+   
+   {%block plugins%}
+{{parent()}}
+   <script src="{{asset('bundles/ace/assets/js/chosen.jquery.min.js')}}"></script>
+{%endblock%}
+
+{%block scripthijo%}
+<script type="text/javascript">
+    window.onload = function(){
+        var elemento=document.getElementById("mnbajas");
+        elemento.classList.add('active');
+        elemento.parentNode.parentNode.classList.add('active');
+        elemento.parentNode.parentNode.classList.add('open');
+        $(".chzn-select").chosen(); 
+    };
+</script>
+{%endblock%}
+
+
+

@@ -1,0 +1,392 @@
+{% extends '::base.html.twig' %}
+
+{% block titulo %}Subestaciones{%endblock%}
+
+{%block pluginstyle%}
+<link rel="stylesheet" href="{{asset('bundles/ace/assets/css/chosen.css')}}" />
+{%endblock%}
+
+{% block mapasitio%}
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="{{path('usuario_index')}}">Inicio</a>
+            <span class="divider"><i class="icon-angle-right arrow-icon"></i></span>
+        </li>
+        <li>
+            <i class="icon-exchange exchange-icon"></i>
+            <a href="{{path('lsubestacion')}}">Subestaciones</a>
+            <span class="divider"><i class="icon-angle-right arrow-icon"></i></span>
+        </li>
+        <li class="active">Editar Subestación</li>
+    </ul><!--.breadcrumb-->
+</div>
+{%endblock%}
+
+{% block pagecontent%}
+<div class="page-content">
+    <div class="page-header position-relative">
+        <h1>Subestaciones<small><i class="icon-double-angle-right"></i> Editar Subestación</small></h1>
+    </div><!--/.page-header-->
+    <div class="row-fluid">
+        <div class="span10">
+            <!--PAGE CONTENT BEGINS-->         
+            <form action="{{ path('lsubestacion_update', { 'id': entity.id })}}" method="post" {{ form_enctype(edit_form) }} class='form-horizontal'>
+                    <div class="tabbable">
+                            <ul class="nav nav-tabs" id="myTab">
+                                    <li class="active">
+                                            <a data-toggle="tab" href="#general">
+                                                    Información General
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a data-toggle="tab" href="#especifica">
+                                                    Información Específica
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a data-toggle="tab" href="#valores">
+                                                    <i class="green icon-usd bigger-110"></i>
+                                                    Valoración
+                                            </a>
+                                    </li>
+                            </ul>
+                            <div class="tab-content">
+                                    <div id="general" class="tab-pane in active">
+                                        <div class="row-fluid">
+                                            <div class="span6">
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Código</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.codigo, {'attr' :  {'readonly':'readonly'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Etiqueta</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.etiqueta, {'attr' :  {'readonly':'readonly'}}) }}
+                                                    </div>
+                                                </div>                                         
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Responsable</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.trabajador, {'attr' :  {'class' : 'chzn-select input-large', 'data-placeholder':'Escoja una opcion..'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Subestación</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.subestacion, {'attr' :  {'class' : 'chzn-select input-large', 'data-placeholder':'Escoja una opcion..'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Agencia</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.agencia, {'attr' :  {'class' : 'chzn-select input-large', 'data-placeholder':'Escoja una opcion..'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Cantón</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.canton, {'attr' :  {'class' : 'chzn-select input-large', 'data-placeholder':'Escoja una opcion..'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="span6">
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Área Operativa</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.areaOperativa, {'attr' :  {'class' : 'chzn-select input-large', 'data-placeholder':'Escoja una opcion..'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Cuenta Contable</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.cuentaContable, {'attr' :  {'class' : 'chzn-select input-large', 'data-placeholder':'Escoja una opcion..'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Unidad de Propiedad</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.unidadPropiedad, {'attr' :  {'class' : 'chzn-select input-large', 'data-placeholder':'Escoja una opcion..'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Plan o Programa</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.plan, {'attr' :  {'class' : 'chzn-select input-large', 'data-placeholder':'Escoja una opcion..'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Departamento</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.departamento, {'attr' :  {'class' : 'chzn-select input-large', 'data-placeholder':'Escoja una opcion..'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Dependencia</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.dependencia, {'attr' :  {'class' : 'chzn-select input-large', 'data-placeholder':'Escoja una opcion..'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Estado</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.estado) }}
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Observaciones</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.observaciones, {'attr' :  {'class' : 'autosize-transition'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="space-10"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="especifica" class="tab-pane">    
+                                        <div class="row-fluid">
+                                            <div class="span6">
+                                                <div class="control-group">
+                                            <label class="control-label" for="">Descripción</label>
+                                            <div class="controls">
+                                                    {{form_widget(edit_form.descripcion) }}
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label" for="">Tipo</label>
+                                            <div class="controls">
+                                                    {{form_widget(edit_form.tipo) }}
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label" for="">Año</label>
+                                            <div class="controls">
+                                                    {{form_widget(edit_form.anio) }}
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label" for="">Marca</label>
+                                            <div class="controls">
+                                                    {{form_widget(edit_form.marca) }}
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label" for="">Modelo</label>
+                                            <div class="controls">
+                                                    {{form_widget(edit_form.modelo) }}
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label" for="">Serie</label>
+                                            <div class="controls">
+                                                    {{form_widget(edit_form.serie) }}
+                                            </div>
+                                        </div>
+                                            </div>
+                                            <div class="span6">
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Color</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.color) }}
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Material</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.material) }}
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Productividad</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.productividad) }}
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Capacidad</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.capacidad) }}
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Unidades</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.unidades) }}
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Cantidad</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.cantidad) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="valores" class="tab-pane">
+                                        <div class="row-fluid">
+                                            <div class="span6">
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Fecha de Adquisición</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.fechAdquisicion) }}
+                                                    </div>
+                                                </div>                                        
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Fecha en Marcha</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.fechaMarcha) }}
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Tipo de Documento</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.tipoDocumento) }}
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Nº de Documento</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.numeroDocumento) }}
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Procedencia</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.procedencia) }}
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Financiamiento</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.financiamiento) }}
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Bien Asegurable</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.bienAsegurable) }}
+                                                    </div>
+                                                </div>                                                
+                                            </div>
+                                            <div class="span6">
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Calidad</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.calidad) }}
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Factor de Estado</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.factorEstado) }}
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Valor de Adquisicion</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.valorAdquisicion) }}
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Valor Residual</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.valorResidual, {'attr' :  {'readonly':'readonly'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Valor Depreciable</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.valorDepreciable, {'attr' :  {'readonly':'readonly'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                            </div>
+                    </div>
+                    {{ form_rest(edit_form) }}
+                <div class='space-10'></div> 
+                <div class="row-fluid">
+                    <div class="span2">                   
+
+                    </div>
+                    <div class="span6">
+                        <div class="well well-small"> 
+                            <div class="center">
+                                <button class="btn btn-small btn-success" type="submit">
+                                    <i class="icon-save bigger-150"></i>
+                                    Actualizar
+                                </button>                                                    
+                                <a href="{{path('lsubestacion')}}"  class="btn btn-small btn-grey">
+                                    <i class="icon-undo bigger-150"></i>
+                                    Regresar
+                                </a>     
+                            </div>
+                        </div>                    
+                    </div>
+                </div>            
+                <!--PAGE CONTENT ENDS-->
+            </form>
+        </div><!--/.span-->
+    </div><!--/.row-fluid-->
+</div><!--/.page-content-->
+{%endblock%}
+
+{%block plugins%}
+<script src="{{asset('bundles/ace/assets/js/chosen.jquery.min.js')}}"></script>
+<script src="{{asset('bundles/ace/assets/js/jquery.autosize-min.js')}}"></script>
+<script src="{{asset('bundles/ace/assets/js/bootbox.min.js')}}"></script>
+{%endblock%}
+
+{%block script%}
+{{parent()}}
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        var elemento=document.getElementById("mnlsubestaciones");
+        elemento.classList.add('active');
+        elemento.parentNode.parentNode.classList.add('active');
+        elemento.parentNode.parentNode.classList.add('open');     
+        
+        function aesmayorm(){
+            if($("#afijos_mainbundle_lsubestaciontype_fechAdquisicion").val()>$("#afijos_mainbundle_lsubestaciontype_fechaMarcha").val()){
+                bootbox.dialog("La fecha de puesta en marcha debe ser mayor que la fecha de adquisición", [{
+                        "label" : "Aceptar",
+                        "class" : "btn-small btn-success",
+                        "callback": function() {}
+                    }]
+                );
+                $("#afijos_mainbundle_lsubestaciontype_fechaMarcha").val("");
+            }
+        }
+        function mensajem(){
+            bootbox.dialog("Debe ingresar fecha de adquisicion", [{
+                    "label" : "Aceptar",
+                    "class" : "btn-small btn-success",
+                    "callback": function() {}
+                }]
+            );
+            $("#afijos_mainbundle_lsubestaciontype_fechaMarcha").val("");
+        }
+        $("#afijos_mainbundle_lsubestaciontype_fechaMarcha").change(function(){
+            var fechAdq=$("#afijos_mainbundle_lsubestaciontype_fechAdquisicion").val();
+            if(fechAdq==""){
+                mensajem();
+            }
+            aesmayorm();
+        });
+        $("#afijos_mainbundle_lsubestaciontype_fechAdquisicion").change(function(){
+            if(!($("#afijos_mainbundle_lsubestaciontype_fechaMarcha").val(""))){
+                aesmayorm();
+            }
+        });
+    });
+    $(function() {
+        $(".chzn-select").chosen(); 
+        $('textarea[class*=autosize]').autosize({append: "\n"});
+    });    
+</script>
+{%endblock%}

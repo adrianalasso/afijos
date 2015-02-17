@@ -1,0 +1,64 @@
+{% extends "MainBundle::edit.html.twig" %}
+{% block titulo %}Cantones{%endblock%}
+{%block pluginstyle%}
+<link rel="stylesheet" href="{{asset('bundles/ace/assets/css/chosen.css')}}" />
+{%endblock%}
+{%block entidad%}
+<i class="icon-exchange exchange-icon"></i>
+<a href="{{ path('canton') }}">Cantones</a>
+{%endblock%}
+
+{%block mapatitulo%}Editar Canton{%endblock%}
+{%block pagetitulo%}Cantones{%endblock%}
+{%block pagedetalle%}Editar Canton{%endblock%}
+
+ {%block formulario%}
+<form action="{{ path('canton_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+<div class="control-group">
+        <label class="control-label" for="">Provincia</label>
+        <div class="controls">
+                {{ form_widget(edit_form.provincia, {'attr' :  {'class' : 'chzn-select input-large', 'data-placeholder':'Escoja una opcion..'}}) }}
+        </div>
+</div>        
+    <div class="control-group">
+        <label class="control-label" for="">Nombre</label>
+        <div class="controls">
+                {{ form_widget(edit_form.nombre) }}
+        </div>
+</div>      
+{{ form_rest(edit_form) }}
+{%endblock%}
+
+{%block link%}
+<a href="{{ path('canton') }}"  
+{%endblock%}
+
+{%block linkeliminar%}
+<a action="#"
+{%endblock%}
+   
+{%block plugins%}
+{{parent()}}
+   <script src="{{asset('bundles/ace/assets/js/chosen.jquery.min.js')}}"></script>
+{%endblock%}
+    
+{%block scripthijo%}
+<script type="text/javascript">
+window.onload = function(){
+    var elemento=document.getElementById("mncantones");
+    elemento.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('open');
+    $(".chzn-select").chosen(); 
+};
+$(function() {
+    $("#bteliminar").on(ace.click_event, function() {
+            bootbox.confirm("Estas seguro de eliminar registro?", function(result) {
+                    if(result){
+                        location.href="{{ path('canton_eliminar', { 'id': entity.id }) }}";
+                    }
+            });
+    });
+});
+</script>
+{%endblock%}

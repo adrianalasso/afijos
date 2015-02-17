@@ -1,0 +1,63 @@
+rol:
+    pattern:  /
+    defaults: { _controller: MainBundle:Rol:index }
+    
+rol_new:
+    pattern:  /new
+    defaults: { _controller: MainBundle:Rol:new }
+
+rol_show:
+    pattern:  /{id}/show
+    defaults: { _controller: MainBundle:Rol:show }
+
+rol_create:
+    pattern:  /create
+    defaults: { _controller: MainBundle:Rol:create }
+
+rol_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: MainBundle:Rol:edit }
+
+rol_update:
+    pattern:  /{id}/update
+    defaults: { _controller: MainBundle:Rol:update }
+
+rol_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: MainBundle:Rol:delete }
+    
+rol_eliminar:
+    pattern:  /{id}/eliminar
+    defaults: { _controller: MainBundle:Rol:eliminar }
+    
+buscar_roles:
+    pattern:  /buscar-rol
+    defaults: { _controller: MainBundle:Rol:buscarRols}
+    
+rol_listar:
+    pattern:  /listar-rols
+    defaults: { _controller: MainBundle:Rol:listarRols }
+
+rol_cambiar_pass:
+    pattern:  /cambiar-pass
+    defaults: { _controller: MainBundle:Rol:cambiarpassRols }
+    
+rol_editperfil:
+    pattern:  /{id}/editperfil
+    defaults: { _controller: MainBundle:Rol:editperfil }
+
+rol_perfil:
+    pattern:  /{id}/perfil
+    defaults: { _controller: MainBundle:Rol:perfil }
+    
+rol_updateperfil:
+    pattern:  /{id}/updateperfil
+    defaults: { _controller: MainBundle:Rol:updateperfil }
+    
+rol_editpass:
+    pattern:  /{id}/editpass
+    defaults: { _controller: MainBundle:Rol:editpass }
+    
+rol_updatepass:
+    pattern:  /{id}/updatepass
+    defaults: { _controller: MainBundle:Rol:updatepass }

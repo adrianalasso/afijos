@@ -1,0 +1,112 @@
+{% extends "MainBundle::show.html.twig" %}
+{% block titulo %}Unidad de Propiedad{%endblock%}
+
+{%block entidad%}
+<i class="icon-exchange exchange-icon"></i>
+<a href="{{ path('unidadpropiedad') }}">Unidad de Propiedad</a>
+{%endblock%}
+
+{%block mapatitulo%}Ver Unidad de Propiedad{%endblock%}
+{%block pagetitulo%}Unidades de Propiedad{%endblock%}
+{%block pagedetalle%}Ver Unidad de Propiedad{%endblock%}
+
+
+{%block datos%}    
+<div class="profile-info-row">
+        <div class="profile-info-name"> Código </div>
+        <div class="profile-info-value">
+                <span >
+                    {{ entity.id }}
+                </span>
+        </div>
+</div>
+<div class="profile-info-row">
+        <div class="profile-info-name"> Cuenta de Activo </div>
+        <div class="profile-info-value">
+            <span>
+            {{ entity.cuentActivo }} 
+            </span>
+        </div>
+</div>        
+<div class="profile-info-row">
+        <div class="profile-info-name"> Cuenta de Depreciación </div>
+        <div class="profile-info-value">
+                <span >
+                    {{ entity.cuentaDeprec }}
+                </span>
+        </div>
+</div>
+<div class="profile-info-row">
+        <div class="profile-info-name"> Descripción </div>
+        <div class="profile-info-value">
+            <span>
+            {{ entity.descripcion }} 
+            </span>
+        </div>
+</div>    
+<div class="profile-info-row" style="height:50px">
+        <div class="profile-info-name"  heigth="100px">  Índice Depreciable </div>
+        <div class="profile-info-value">
+                <span >
+                    {{ entity.indiceDeprec }}
+                </span>
+        </div>
+</div>
+<div class="profile-info-row">
+        <div class="profile-info-name"> Índice Residual </div>
+        <div class="profile-info-value">
+            <span>
+            {{ entity.indiceResidual }} 
+            </span>
+        </div>
+</div>    
+<div class="profile-info-row">
+        <div class="profile-info-name"> Vida útil (años) </div>
+        <div class="profile-info-value">
+                <span >
+                    {{ entity.vidaUtilA }}
+                </span>
+        </div>
+</div>
+<div class="profile-info-row">
+        <div class="profile-info-name"> Vida útil (meses) </div>
+        <div class="profile-info-value">
+            <span>
+            {{ entity.vidaUtilM }} 
+            </span>
+        </div>
+</div>    
+{%endblock%}
+{%block linkeliminar%}
+<a href="#"
+{%endblock%}  
+{%block link%}
+<a href="{{path('unidadpropiedad')}}"
+{%endblock%}
+{%block linkedit%}
+<a href="{{ path('unidadpropiedad_edit', { 'id': entity.id }) }}" 
+{%endblock%}
+   
+{%block plugins%}
+{{parent()}}
+{%endblock%}
+    
+{%block scripthijo%}
+<script type="text/javascript">
+window.onload = function(){
+    var elemento=document.getElementById("mnunidadpropiedades");
+    elemento.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('open');
+};
+$(function() {
+    $("#bteliminar").on(ace.click_event, function() {
+            bootbox.confirm("Estas seguro de eliminar registro?", function(result) {
+                    if(result){
+                        location.href="{{ path('unidadpropiedad_eliminar', { 'id': entity.id }) }}";
+                    }
+            });
+    });
+});
+</script>
+{%endblock%}

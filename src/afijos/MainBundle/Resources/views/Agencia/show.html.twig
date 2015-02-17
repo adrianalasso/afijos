@@ -1,0 +1,63 @@
+{% extends "MainBundle::show.html.twig" %}
+{% block titulo %}Agencias{%endblock%}
+
+{%block entidad%}
+<i class="icon-exchange exchange-icon"></i>
+<a href="{{ path('agencia') }}">Agencias</a>
+{%endblock%}
+
+{%block mapatitulo%}Ver Agencia{%endblock%}
+{%block pagetitulo%}Agencias{%endblock%}
+{%block pagedetalle%}Ver Agencia{%endblock%}
+
+{%block datos%}    
+<div class="profile-info-row">
+        <div class="profile-info-name"> Código </div>
+        <div class="profile-info-value">
+                <span >
+                    {{ entity.id }}
+                </span>
+        </div>
+</div>
+<div class="profile-info-row">
+        <div class="profile-info-name"> Nombre </div>
+        <div class="profile-info-value">
+            <span>
+            {{ entity.nombre }} 
+            </span>
+        </div>
+</div>                                 
+{%endblock%}
+{%block linkeliminar%}
+<a href="#"
+{%endblock%}  
+{%block link%}
+<a href="{{path('agencia')}}"
+{%endblock%}
+{%block linkedit%}
+<a href="{{ path('agencia_edit', { 'id': entity.id }) }}" 
+{%endblock%}
+   
+{%block plugins%}
+{{parent()}}
+{%endblock%}
+    
+{%block scripthijo%}
+<script type="text/javascript">
+window.onload = function(){
+    var elemento=document.getElementById("mnagencias");
+    elemento.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('open');
+};
+$(function() {
+    $("#bteliminar").on(ace.click_event, function() {
+            bootbox.confirm("Estas seguro de eliminar registro?", function(result) {
+                    if(result){
+                        location.href="{{ path('agencia_eliminar', { 'id': entity.id }) }}";
+                    }
+            });
+    });
+});
+</script>
+{%endblock%}

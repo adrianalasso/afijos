@@ -1,0 +1,39 @@
+areaoperativa:
+    pattern:  /
+    defaults: { _controller: MainBundle:AreaOperativa:index }
+    
+areaoperativa_new:
+    pattern:  /new
+    defaults: { _controller: MainBundle:AreaOperativa:new }
+
+areaoperativa_show:
+    pattern:  /{id}/show
+    defaults: { _controller: MainBundle:AreaOperativa:show }
+
+areaoperativa_create:
+    pattern:  /create
+    defaults: { _controller: MainBundle:AreaOperativa:create }
+
+areaoperativa_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: MainBundle:AreaOperativa:edit }
+
+areaoperativa_update:
+    pattern:  /{id}/update
+    defaults: { _controller: MainBundle:AreaOperativa:update }
+
+areaoperativa_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: MainBundle:AreaOperativa:delete }
+    
+areaoperativa_eliminar:
+    pattern:  /{id}/eliminar
+    defaults: { _controller: MainBundle:AreaOperativa:eliminar }
+    
+buscar_areaoperativa:
+    pattern:  /buscar-areaoperativa
+    defaults: { _controller: MainBundle:AreaOperativa:buscarAreaOperativa}
+    
+areaoperativa_listar:
+    pattern:  /listar-areaoperativa
+    defaults: { _controller: MainBundle:AreaOperativa:listarAreaOperativa }

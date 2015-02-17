@@ -1,0 +1,48 @@
+<br><br>
+{%if entities%}       
+            <table  id="sample-table-2" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Categoría</th>
+                        <th>Descripción</th>
+                        <th>Tipo</th>
+                        <th>Año</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Serie</th>
+                        <th>Color</th>
+                        <th>Productividad</th>
+                        <th>Capacidad</th>
+                        <th>Unidades</th>
+                        <th>Cantidad</th>
+                    </tr>
+                 </thead>                
+                <tbody>
+                    {% for entity in entities %}
+                        <tr>
+                            <td>{{ entity.codigo }}</td>
+                            <td>{{ entity.descripcion }}</td>
+                            <td>{{ entity.tipo }}</td>
+                            <td>{{ entity.anio }}</td>
+                            <td>{{ entity.marca }}</td>
+                            <td>{{ entity.modelo }}</td>
+                            <td>{{ entity.serie }}</td>
+                            <td>{{ entity.color }}</td>
+                            <td>{{ entity.material }}</td>
+                            <td>{{ entity.productividad }}</td>
+                            <td>{{ entity.capacidad }}</td>
+                            <td>{{ entity.unidades }}</td>
+                            <td>{{ entity.cantidad }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>                
+            </table>
+            {%else%}
+            <div class="alert alert-error"> 
+                <strong><i class="icon-remove"></i>  Opps!</strong>
+                No se han encontrado items para esta línea.
+                <br>
+            </div>
+            {%endif%}
+            <div class="hr hr32 hr-dotted"></div>

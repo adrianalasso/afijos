@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pdf SYSTEM "%resources%/dtd/doctype.dtd">
+<pdf>
+    <dynamic-page>
+        <div>
+            <h1><p>C E N E L   E P </p></h1>
+        </div>
+        <div>
+            <p>Machala, {{ "now"|date("d/m/Y", "America/Guayaquil") }}</p>
+        </div>
+        <div>
+            <p>
+                
+            </p>
+            <p>
+                <div>Ing. Milena Peñaloza</div>
+                <div>RESPONSABLE DE LA ADMINISTRACIÓN DE ACTIVOS FIJOS</div>
+            </p>
+        </div>
+        <div>
+            <p>
+                
+            </p>
+            <p>
+                <div>ADMINISTRACIÓN DE ACTIVOS FIJOS</div>
+            </p>
+        </div>
+        <div>
+            <p>
+                AUTORIZO:
+            </p>
+        </div>
+        <div>
+            <p>
+                Que el equipo:
+            </p>
+        </div>        
+        <div>
+            {%if entity%}       
+            <table  id="sample-table-2" class="table table-striped table-bordered table-hover">
+                <tr>
+                    <td width="6%">Código</td>
+                    <td width="16%">Descripción</td>
+                    <td width="14%">Departamento</td>
+                    <td width="14%">Responsable</td>
+                    <td width="5%">Nº de Documento</td>
+                    <td width="10%">Fecha de Documento</td>
+                    <td width="10%">Marca</td>
+                    <td width="10%">Serie</td>
+                    <td width="6%">Estado</td>
+                    <td width="9%">Fecha de baja</td>
+                </tr>
+                    <tr>
+                        <td>{{ entity.bienesCustodio.codigo }}</td>
+                        <td>{{ entity.bienesCustodio.descripcion }}</td>
+                        <td>{{ entity.bienesCustodio.trabajador.departamento}}</td>
+                        <td>{{ entity.bienesCustodio.trabajador}}</td>
+                        <td>{{ entity.bienesCustodio.numeroDocumento}}</td>
+                        <td>{{ entity.bienesCustodio.fechAdquisicion|date('d/m/Y')}}</td>
+                        <td>{{ entity.bienesCustodio.marca }}</td>
+                        <td>{{ entity.bienesCustodio.serie }}</td>
+                        <td>{{ entity.bienesCustodio.estado }}</td>
+                        <td>{{ entity.fechaAprobado|date('d/m/Y') }}</td>
+                    </tr>
+            </table>
+            {%endif%}
+        </div>
+        <div>
+            <p>
+                Con los siguientes problemas: {{entity.detalle}}
+            </p>
+            <p>
+                Tiene la debida aprobación para darlo de baja, quitando de toda responsabilidad al Sr (a) {{ entity.bienesCustodio.trabajador}}.
+            </p>
+            <p>
+                Es todo en cuanto puedo autorizar.
+            </p>
+            <p>
+                
+            </p>
+        </div>        
+    </dynamic-page>
+</pdf>

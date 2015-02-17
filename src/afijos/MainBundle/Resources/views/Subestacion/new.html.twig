@@ -1,0 +1,26 @@
+{% extends "MainBundle::new.html.twig" %}
+{%block entidad%}
+<i class="icon-bolt bolt-icon"></i>
+<a href="{{ path('subestacion') }}">Subestaciones</a>
+{%endblock%}
+{%block formulario%}
+<form action="{{ path('subestacion_create') }}" method="post" {{ form_enctype(form) }}>
+<div class="control-group">
+        <label class="control-label" for="">Descripción</label>
+        <div class="controls">
+                {{ form_widget(form.nombre) }}
+        </div>
+</div>
+    {{ form_rest(form) }}
+{%endblock%}
+
+{%block scripthijo%}
+<script type="text/javascript">
+window.onload = function(){
+    var elemento=document.getElementById("mnsubestaciones");
+    elemento.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('open');
+};
+</script>
+{%endblock%}

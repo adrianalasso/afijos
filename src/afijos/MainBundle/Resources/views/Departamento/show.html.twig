@@ -1,0 +1,72 @@
+{% extends "MainBundle::show.html.twig" %}
+{% block titulo %}Departamentos{%endblock%}
+
+{%block entidad%}
+<i class="icon-exchange exchange-icon"></i>
+<a href="{{ path('departamento') }}">Departamentos</a>
+{%endblock%}
+
+{%block mapatitulo%}Ver Departamento{%endblock%}
+{%block pagetitulo%}Departamentos{%endblock%}
+{%block pagedetalle%}Ver Departamento{%endblock%}
+
+
+{%block datos%}    
+<div class="profile-info-row">
+        <div class="profile-info-name"> Código </div>
+        <div class="profile-info-value">
+                <span >
+                    {{ entity.id }}
+                </span>
+        </div>
+</div>
+<div class="profile-info-row">
+        <div class="profile-info-name"> Dirección </div>
+        <div class="profile-info-value">
+            <span>
+            {{ entity.subsistema }} 
+            </span>
+        </div>
+</div>  
+<div class="profile-info-row">
+        <div class="profile-info-name"> Descripción </div>
+        <div class="profile-info-value">
+            <span>
+            {{ entity.descripcion }} 
+            </span>
+        </div>
+</div>                                 
+{%endblock%}
+{%block linkeliminar%}
+<a href="#"
+{%endblock%}  
+{%block link%}
+<a href="{{path('departamento')}}"
+{%endblock%}
+{%block linkedit%}
+<a href="{{ path('departamento_edit', { 'id': entity.id }) }}" 
+{%endblock%}
+   
+{%block plugins%}
+{{parent()}}
+{%endblock%}
+    
+{%block scripthijo%}
+<script type="text/javascript">
+window.onload = function(){
+    var elemento=document.getElementById("mndepartamentos");
+    elemento.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('open');
+};
+$(function() {
+    $("#bteliminar").on(ace.click_event, function() {
+            bootbox.confirm("Estas seguro de eliminar registro?", function(result) {
+                    if(result){
+                        location.href="{{ path('departamento_eliminar', { 'id': entity.id }) }}";
+                    }
+            });
+    });
+});
+</script>
+{%endblock%}

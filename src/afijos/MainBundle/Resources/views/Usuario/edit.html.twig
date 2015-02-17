@@ -1,0 +1,94 @@
+{% extends "MainBundle::edit.html.twig" %}
+{% block titulo %}Usuarios{%endblock%}
+{%block pluginstyle%}
+<link rel="stylesheet" href="{{asset('bundles/ace/assets/css/chosen.css')}}" />
+{%endblock%}
+{%block entidad%}
+<i class="icon-exchange exchange-icon"></i>
+<a href="{{ path('usuario') }}">Usuarios</a>
+{%endblock%}
+
+{%block mapatitulo%}Editar Usuario{%endblock%}
+{%block pagetitulo%}Usuarios{%endblock%}
+{%block pagedetalle%}Editar Usuario{%endblock%}
+
+ {%block formulario%}
+<form action="{{ path('usuario_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>  
+<div class="control-group">
+    <label class="control-label" for="">Cedula</label>
+    <div class="controls">
+            {{ form_widget(edit_form.id, {'attr' :  {'readonly':'readonly'}}) }}
+    </div>
+</div>        
+<div class="control-group">
+    <label class="control-label" for="">Apellidos</label>
+    <div class="controls">
+            {{ form_widget(edit_form.apellidos) }}
+    </div>
+</div>        
+<div class="control-group">
+    <label class="control-label" for="">Nombres</label>
+    <div class="controls">
+            {{ form_widget(edit_form.nombres) }}
+    </div>
+</div>        
+<div class="control-group">
+    <label class="control-label" for="">Roles</label>
+    <div class="controls">
+            {{ form_widget(edit_form.userRoles, {'attr' :  {'multiple':'multiple','class' : 'chzn-select input-large', 'data-placeholder':'Escoja varias opciones..'}}) }}
+    </div>
+</div>        
+<div class="control-group">
+    <label class="control-label" for="">Nombre de usuario</label>
+    <div class="controls">
+            {{ form_widget(edit_form.username) }}
+    </div>
+</div>        
+<div class="control-group">
+    <label class="control-label" for="">Contraseña</label>
+    <div class="controls">
+            {{ form_widget(edit_form.password) }}
+    </div>
+</div>            
+<div class="control-group">
+   <label class="control-label" for="">Confirmar Contraseña</label>
+   <div class="controls">
+       <input type="password" id="pass"/>
+   </div>
+</div>      
+{{ form_rest(edit_form) }}
+{%endblock%}
+
+{%block link%}
+<a href="{{ path('usuario') }}"  
+{%endblock%}
+
+{%block linkeliminar%}
+<a action="#"
+{%endblock%}
+   
+{%block plugins%}
+{{parent()}}
+<script src="{{asset('bundles/ace/assets/js/chosen.jquery.min.js')}}"></script>
+{%endblock%}
+{%block scripthijo%}
+<script type="text/javascript">
+window.onload = function(){
+    var elemento=document.getElementById("mnusuarios");
+    elemento.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('open');
+    $("#afijos_ustype_password").get(0).type = 'password';    
+    $(".chzn-select").chosen(); 
+};
+$(function() {
+    $("#bteliminar").on(ace.click_event, function() {
+            bootbox.confirm("Estas seguro de eliminar registro?", function(result) {
+                    if(result){
+                        location.href="{{ path('usuario_eliminar', { 'id': entity.id }) }}";
+                    }
+            });
+    });
+});
+</script>
+{%endblock%}

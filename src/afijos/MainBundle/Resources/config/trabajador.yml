@@ -1,0 +1,39 @@
+trabajador:
+    pattern:  /
+    defaults: { _controller: MainBundle:Trabajador:index }
+    
+trabajador_new:
+    pattern:  /new
+    defaults: { _controller: MainBundle:Trabajador:new }
+
+trabajador_show:
+    pattern:  /{id}/show
+    defaults: { _controller: MainBundle:Trabajador:show }
+
+trabajador_create:
+    pattern:  /create
+    defaults: { _controller: MainBundle:Trabajador:create }
+
+trabajador_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: MainBundle:Trabajador:edit }
+
+trabajador_update:
+    pattern:  /{id}/update
+    defaults: { _controller: MainBundle:Trabajador:update }
+
+trabajador_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: MainBundle:Trabajador:delete }
+    
+trabajador_eliminar:
+    pattern:  /{id}/eliminar
+    defaults: { _controller: MainBundle:Trabajador:eliminar }
+    
+buscar_trabajadores:
+    pattern:  /buscar-trabajador
+    defaults: { _controller: MainBundle:Trabajador:buscarTrabajadores}
+    
+trabajador_listar:
+    pattern:  /listar-trabajadores
+    defaults: { _controller: MainBundle:Trabajador:listarTrabajadores }

@@ -1,0 +1,141 @@
+{% extends "TestBundle::index.html.twig" %}
+{% block titulo %}Página del mapa del sitio{%endblock%}
+{%block pluginstyle%}
+{%endblock%}
+{%block mapasitio%}
+                            <div class="breadcrumbs" id="breadcrumbs">
+                                    <ul class="breadcrumb">
+                                            <li>
+                                                    <i class="icon-home home-icon"></i>
+                                                    <a href="#">Home</a>
+
+                                                    <span class="divider">
+                                                            <i class="icon-angle-right arrow-icon"></i>
+                                                    </span>
+                                            </li>
+
+                                            <li>
+                                                    <a href="#">UI Elements</a>
+
+                                                    <span class="divider">
+                                                            <i class="icon-angle-right arrow-icon"></i>
+                                                    </span>
+                                            </li>
+                                            <li class="active">Treeview</li>
+                                    </ul><!--.breadcrumb-->
+
+                                    <div class="nav-search" id="nav-search">
+                                            <form class="form-search" />
+                                                    <span class="input-icon">
+                                                            <input type="text" placeholder="Search ..." class="input-small nav-search-input" id="nav-search-input" autocomplete="off" />
+                                                            <i class="icon-search nav-search-icon"></i>
+                                                    </span>
+                                            </form>
+                                    </div><!--#nav-search-->
+                            </div>
+{%endblock%}
+
+{%block pagecontent%}
+                            <div class="page-content">
+                                    <div class="page-header position-relative">
+                                            <h1>
+                                                    Treeview
+                                                    <small>
+                                                            <i class="icon-double-angle-right"></i>
+                                                            with selectable items(single &amp; multiple) and custom icons
+                                                    </small>
+                                            </h1>
+                                    </div><!--/.page-header-->
+
+                                    <div class="row-fluid">
+                                            <div class="span12">
+                                                    <!--PAGE CONTENT BEGINS-->
+
+                                                    <div class="row-fluid">
+                                                            <div class="widget-box span6">
+                                                                    <div class="widget-header header-color-blue2">
+                                                                            <h4 class="lighter smaller">Choose Categories</h4>
+                                                                    </div>
+
+                                                                    <div class="widget-body">
+                                                                            <div class="widget-main padding-8">
+                                                                                    <div id="tree1" class="tree"></div>
+                                                                            </div>
+                                                                    </div>
+                                                            </div>
+
+                                                            <div class="widget-box span6">
+                                                                    <div class="widget-header header-color-green2">
+                                                                            <h4 class="lighter smaller">Browse Files</h4>
+                                                                    </div>
+
+                                                                    <div class="widget-body">
+                                                                            <div class="widget-main padding-8">
+                                                                                    <div id="tree2" class="tree"></div>
+                                                                            </div>
+                                                                    </div>
+                                                            </div>
+                                                    </div>
+
+                                                    <script type="text/javascript">
+                                                            var $assets = "assets";//this will be used in fuelux.tree-sampledata.js
+                                                    </script>
+
+                                                    <!--PAGE CONTENT ENDS-->
+                                            </div><!--/.span-->
+                                    </div><!--/.row-fluid-->
+                            </div><!--/.page-content-->
+{%endblock%}
+{%block plugins%}
+		<script src="{{asset('bundles/ace/assets/js/fuelux/data/fuelux.tree-sampledata.js')}}"></script>
+		<script src="{{asset('bundles/ace/assets/js/fuelux/fuelux.tree.min.js')}}"></script>
+{%endblock %}
+{%block script%}
+                            <script type="text/javascript">
+                                window.onload = function() {
+                                    var elemento=document.getElementById("mnarbol");
+                                    elemento.classList.add('active');
+                                    elemento.parentNode.parentNode.classList.add('active');
+                                    elemento.parentNode.parentNode.classList.add('open');
+                                }
+                                $(function(){
+
+		$('#tree1').ace_tree({
+			dataSource: treeDataSource ,
+			multiSelect:true,
+			loadingHTML:'<div class="tree-loading"><i class="icon-refresh icon-spin blue"></i></div>',
+			'open-icon' : 'icon-minus',
+			'close-icon' : 'icon-plus',
+			'selectable' : true,
+			'selected-icon' : 'icon-ok',
+			'unselected-icon' : 'icon-remove'
+		});
+
+		$('#tree2').ace_tree({
+			dataSource: treeDataSource2 ,
+			loadingHTML:'<div class="tree-loading"><i class="icon-refresh icon-spin blue"></i></div>',
+			'open-icon' : 'icon-folder-open',
+			'close-icon' : 'icon-folder-close',
+			'selectable' : false,
+			'selected-icon' : null,
+			'unselected-icon' : null
+		});
+
+
+
+		/**
+		$('#tree1').on('loaded', function (evt, data) {
+		});
+
+		$('#tree1').on('opened', function (evt, data) {
+		});
+
+		$('#tree1').on('closed', function (evt, data) {
+		});
+
+		$('#tree1').on('selected', function (evt, data) {
+		});
+		*/
+                            });
+                            </script>
+{%endblock %}

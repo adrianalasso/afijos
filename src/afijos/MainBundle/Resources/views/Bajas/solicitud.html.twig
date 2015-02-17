@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pdf SYSTEM "%resources%/dtd/doctype.dtd">
+<pdf>
+    <dynamic-page>
+        <div>
+            <h1><p>C E N E L   E P </p></h1>
+        </div>
+        <div>
+            <p>Machala, {{ "now"|date("d/m/Y", "America/Guayaquil") }}</p>
+        </div>
+        <div>
+            <div>
+                Ing. Milena Peñaloza
+            </div>
+            <div>                
+                RESPONSABLE DE LA ADMINISTRACIÓN DE ACTIVOS FIJOS
+            </div>
+            <div>                
+                Presente.-
+            </div>
+        </div>
+        <div>
+            <p>
+                De mi consideración:
+            </p>
+        </div>
+        <div>
+            <p>
+                Por el presente solicito de manera comedida autorice a la persona que corresponda, se proceda a dar de baja el siguiente equipo:
+            </p>
+        </div>        
+        <div>
+            {%if entity%}       
+            <table  id="sample-table-2" class="table table-striped table-bordered table-hover">
+                <tr>
+                    <td width="6%">Código</td>
+                    <td width="16%">Descripción</td>
+                    <td width="14%">Departamento</td>
+                    <td width="14%">Responsable</td>
+                    <td width="5%">Nº de Documento</td>
+                    <td width="10%">Fecha de Documento</td>
+                    <td width="10%">Marca</td>
+                    <td width="10%">Serie</td>
+                    <td width="6%">Estado</td>
+                    <td width="9%">Fecha de baja</td>
+                </tr>
+                    <tr>
+                        <td>{{ entity.bienesCustodio.codigo }}</td>
+                        <td>{{ entity.bienesCustodio.descripcion }}</td>
+                        <td>{{ entity.bienesCustodio.trabajador.departamento}}</td>
+                        <td>{{ entity.bienesCustodio.trabajador}}</td>
+                        <td>{{ entity.bienesCustodio.numeroDocumento}}</td>
+                        <td>{{ entity.bienesCustodio.fechAdquisicion|date('d/m/Y')}}</td>
+                        <td>{{ entity.bienesCustodio.marca }}</td>
+                        <td>{{ entity.bienesCustodio.serie }}</td>
+                        <td>{{ entity.bienesCustodio.estado }}</td>
+                        <td>{{ entity.fechaAprobado|date('d/m/Y') }}</td>
+                    </tr>
+            </table>
+            {%endif%}
+        </div>
+        <div>
+            <p>
+                Este equipo presenta problemas {{entity.detalle}}
+            </p>
+            <p>
+                Sin otro particular que comunicarle, me es grato suscribirme.
+            </p>
+            <p>
+                
+            </p>
+            <p>
+                Atentamente,
+            </p>
+            <p>
+                
+            </p>
+            <p>
+                <div>{{app.user.nombres~' '~app.user.apellidos}}</div>
+                <div>COLABORADOR DE LA ADMINISTRACIÓN DE ACTIVOS FIJOS</div>
+            </p>
+        </div>        
+    </dynamic-page>
+</pdf>

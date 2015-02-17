@@ -1,0 +1,39 @@
+unidadpropiedad:
+    pattern:  /
+    defaults: { _controller: MainBundle:UnidadPropiedad:index }
+    
+unidadpropiedad_new:
+    pattern:  /new
+    defaults: { _controller: MainBundle:UnidadPropiedad:new }
+
+unidadpropiedad_show:
+    pattern:  /{id}/show
+    defaults: { _controller: MainBundle:UnidadPropiedad:show }
+
+unidadpropiedad_create:
+    pattern:  /create
+    defaults: { _controller: MainBundle:UnidadPropiedad:create }
+
+unidadpropiedad_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: MainBundle:UnidadPropiedad:edit }
+
+unidadpropiedad_update:
+    pattern:  /{id}/update
+    defaults: { _controller: MainBundle:UnidadPropiedad:update }
+
+unidadpropiedad_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: MainBundle:UnidadPropiedad:delete }
+    
+unidadpropiedad_eliminar:
+    pattern:  /{id}/eliminar
+    defaults: { _controller: MainBundle:UnidadPropiedad:eliminar }
+    
+buscar_unidadpropiedad:
+    pattern:  /buscar-unidadpropiedad
+    defaults: { _controller: MainBundle:UnidadPropiedad:buscarUnidadPropiedad}
+    
+unidadpropiedad_listar:
+    pattern:  /listar-unidadpropiedad
+    defaults: { _controller: MainBundle:UnidadPropiedad:listarUnidadPropiedad }

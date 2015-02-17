@@ -1,0 +1,46 @@
+{% extends '::base.html.twig' %}
+{% block titulo %}Acceso Denegado{%endblock%}
+
+{% block mapasitio%}
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="{{path('usuario_index')}}">Inicio</a>
+            <span class="divider"><i class="icon-angle-right arrow-icon"></i></span>
+        </li>        
+        <li class="active">{%block mapatitulo%}{%endblock%}</li>
+    </ul><!--.breadcrumb-->
+</div>
+{%endblock%}
+
+{% block pagecontent%}
+<div class="page-content">
+    <div class="page-header position-relative">        
+        <h1>Acceso denegado al contenido solicitado.{#{ status_code }#} {#{ status_text }#}</h1>        
+    </div><!--/.page-header-->
+    <div class="row-fluid">
+        <div class="span12">
+            <!--PAGE CONTENT BEGINS-->
+            <div>
+                Usted no cuenta con los permisos necesarios para acceder al contenido solicitado.
+                Contacte con un Administrador, disculpe los inconvenientes causados.
+            </div>
+            <!--PAGE CONTENT ENDS-->
+        </div><!--/.span-->
+    </div><!--/.row-fluid-->
+</div><!--/.page-content-->
+{%endblock%}
+
+{%block plugins%}<script src="{{asset('bundles/ace/assets/js/bootbox.min.js')}}"></script>{%endblock%}
+
+{%block script%}
+{{parent()}}    
+    <script src="{{asset('bundles/ace/assets/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('bundles/ace/assets/js/jquery.dataTables.bootstrap.js')}}"></script>
+    
+    {%block scripthijo%}{%endblock%}
+    
+{%endblock%}
+
+

@@ -1,0 +1,68 @@
+{% extends "MainBundle::new.html.twig" %}
+{% block titulo %}Trabajadores{%endblock%}
+{%block pluginstyle%}
+<link rel="stylesheet" href="{{asset('bundles/ace/assets/css/chosen.css')}}" />
+{%endblock%}
+{%block entidad%}
+<a href="{{ path('trabajador') }}">Trabajadores</a>
+{%endblock%}
+
+{%block mapatitulo%}Nuevo Usuario{%endblock%}
+{%block pagetitulo%}Trabajadores{%endblock%}
+{%block pagedetalle%}Nuevo Usuario{%endblock%}
+
+{%block formulario%}
+<form action="{{ path('trabajador_create') }}" method="post" {{ form_enctype(form) }}>
+<div class="control-group">
+    <label class="control-label" for="">Código</label>
+    <div class="controls">
+            {{ form_widget(form.codigo) }}
+    </div>
+</div>        
+<div class="control-group">
+    <label class="control-label" for="">Cedula</label>
+    <div class="controls">
+            {{ form_widget(form.id) }}
+    </div>
+</div>        
+<div class="control-group">
+    <label class="control-label" for="">Apellidos</label>
+    <div class="controls">
+            {{ form_widget(form.apellidos) }}
+    </div>
+</div>        
+<div class="control-group">
+    <label class="control-label" for="">Nombres</label>
+    <div class="controls">
+            {{ form_widget(form.nombres) }}
+    </div>
+</div>        
+<div class="control-group">
+    <label class="control-label" for="">Departamentos</label>
+    <div class="controls">
+            {{ form_widget(form.departamento, {'attr' :  {'class' : 'chzn-select input-large', 'data-placeholder':'Escoja varias opciones..'}}) }}
+    </div>
+</div>
+{{ form_rest(form) }}
+{%endblock%}
+{%block link%}
+<a href="{{ path('trabajador') }}"  
+{%endblock%}
+{%block plugins%}
+<script src="{{asset('bundles/ace/assets/js/chosen.jquery.min.js')}}"></script>
+{%endblock %}
+   
+{%block scripthijo%}
+<script type="text/javascript">
+window.onload = function(){
+    var elemento=document.getElementById("mntrabajadores");
+    elemento.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('open');
+    $(".chzn-select").chosen(); 
+};    
+</script>
+{%endblock%}
+
+
+

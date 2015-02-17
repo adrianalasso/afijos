@@ -1,0 +1,113 @@
+{% extends '::base.html.twig' %}
+
+{% block titulo %}Subestaciones{%endblock%}
+
+{% block mapasitio%}
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="{{path('usuario_index')}}">Inicio</a>
+            <span class="divider"><i class="icon-angle-right arrow-icon"></i></span>
+        </li>
+        <li>
+            <i class="icon-cogs cogs-icon"></i>
+            <a href="#">Configuración</a>
+            <span class="divider"><i class="icon-angle-right arrow-icon"></i></span>
+        </li>
+        <li>
+            {%block entidad%}
+            <i class="icon-bolt bolt-icon"></i>
+            <a href="#">Subestaciones</a>
+            {%endblock%}
+            <span class="divider"><i class="icon-angle-right arrow-icon"></i></span>
+        </li>        
+        <li class="active">{%block mapatitulo%}Ver Subestación{%endblock%}</li>             
+    </ul><!--.breadcrumb-->
+</div>
+{%endblock%}
+
+{% block pagecontent%}
+<div class="page-content">
+    <div class="row-fluid">
+        <div class="span6">
+            <!--PAGE CONTENT BEGINS-->
+            {%block widget %}
+            <div class="widget-box">
+                <div class="widget-header">
+                        <h4>{%block pagetitulo%}Subestaciones{%endblock%}
+                            <small><i class="icon-double-angle-right"></i> 
+                            {%block pagedetalle%}Ver Subestación{%endblock%}</small>
+                        </h4>        
+                </div>
+
+                <div class="widget-body">
+                        <div class="widget-main">
+                            <div class="profile-user-info profile-user-info-striped">
+                            {%block datos%}    
+                            <div class="profile-info-row">
+                                        <div class="profile-info-name"> Código </div>
+                                        <div class="profile-info-value">
+                                                <span >
+                                                    {{ entity.id }}
+                                                </span>
+                                        </div>
+                                </div>
+
+                                <div class="profile-info-row">
+                                        <div class="profile-info-name"> Nombre </div>
+                                        <div class="profile-info-value">
+                                            <span>
+                                            {{ entity.nombSubestacion }}     
+                                            </span>
+                                        </div>
+                                </div>                                 
+                            {%endblock%}
+                            </div>
+                            <br>
+                            <div class="center">
+                                    <div class="well well-small"> 
+                                        <div class="center">
+                                                {%block linkeliminar%}
+                                                <a href="{{ path('subestacion_eliminar', { 'id': entity.id }) }}" 
+                                                     {%endblock%}
+                                                   class="btn  btn-danger btn-small" id="bteliminar">
+                                                    <i class="icon-trash bigger-150"></i>
+                                                    Dar de baja</a>
+                                                {%block linkedit%}
+                                                <a  href="{{ path('subestacion_edit', { 'id': entity.id }) }}" 
+                                                     {%endblock%}
+                                                    class="btn btn-primary btn-small" id="bteditar">
+                                                    <i class="icon-edit bigger-150"></i>
+                                                    Editar
+                                                </a>
+                                                 {%block link%}
+                                                <a href="{{ path('subestacion') }}"
+                                                {%endblock%}
+                                                   class="btn  btn-grey btn-small" id="btregresar">
+                                                    <i class="icon-undo bigger-150"></i>
+                                                    Regresar
+                                                </a>    
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>           
+            {%endblock%}
+            <!--PAGE CONTENT ENDS-->
+        </div><!--/.span-->
+    </div><!--/.row-fluid-->
+</div><!--/.page-content-->
+{%endblock%}
+
+{%block plugins%}
+<script src="{{asset('bundles/ace/assets/js/bootbox.min.js')}}"></script>
+{%endblock%}
+
+{%block script%}
+{{parent()}}
+{%block scripthijo%}
+{%endblock%}
+{%endblock%}

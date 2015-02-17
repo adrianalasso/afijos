@@ -1,0 +1,306 @@
+{% extends '::base.html.twig' %}
+
+{% block titulo %}Líneas de Subtransmisión{%endblock%}
+
+{% block mapasitio%}
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="{{path('usuario_index')}}">Inicio</a>
+            <span class="divider"><i class="icon-angle-right arrow-icon"></i></span>
+        </li>
+        <li class="active">Líneas de Subtransmisión</li>
+    </ul><!--.breadcrumb-->
+</div>
+{%endblock%}
+
+{% block pagecontent%}
+<div class="page-content">
+    <div class="page-header position-relative">
+        <h1>Líneas de Subtransmisión<small><i class="icon-double-angle-right"></i> Listado general</small></h1>
+    </div><!--/.page-header-->
+    
+    <div class="row-fluid">
+        <div class="span12">
+            <!--PAGE CONTENT BEGINS-->
+            <a class="btn btn-small btn-yellow" href="{{ path('lsubtransmision_new') }}"><i class="icon-plus"></i>
+                Crear una nueva entrada
+            </a>
+            
+            <br><br>
+            {%if entities%}       
+            <table  id="sample-table-2" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Responsable</th>
+                        <th>Categoría</th>
+                        <th>Coodenada este</th>
+                        <th>Coordenada norte</th>
+                        <th>Etapa funcional</th>
+                        <th>Altura</th>
+                        <th>Año de fabricación</th>
+                        <th>Voltaje</th>
+                        <th>Postería</th>
+                        <th>Material</th>
+                        <th>Tipo</th>
+                        <th>Herramientas</th>
+                        <th>Acciones</th>
+                    </tr>
+                 </thead>                
+                <tbody>
+                    {% for entity in entities %}
+                        <tr>
+                            <td>{{ entity.codigo }}</td>
+                            <td>{{ entity.trabajador}}</td>
+                            <td>{{ entity.subtransmision }}</td>
+                            <td>{{ entity.coordeEste }}</td>
+                            <td>{{ entity.coordeNorte }}</td>
+                            <td>{{ entity.etapaFuncional }}</td>
+                            <td>{{ entity.altura }}</td>
+                            <td>{{ entity.anioFabricacion|date('Y') }}</td>
+                            <td>{{ entity.voltaje }}</td>
+                            <td>{{ entity.posteria }}</td>
+                            <td>{{ entity.material }}</td>
+                            <td>{{ entity.tipo }}</td>
+                            <td>
+                                <span class="btn btn-info btn-mini tooltip-info btn-block" data-rel="popover" data-placement="left" title="Estructura" 
+                                      data-content="
+                                      <div class='profile-user-info profile-user-striped'>
+                                            <div class='profile-info-row'>
+                                                        <div class='profile-info-name'> Tipo</div>
+                                                        <div class='profile-info-value'>
+                                                                <span >{{entity.tipoEstructura}}</span>
+                                                        </div>
+                                                </div>
+                                                <div class='profile-info-row'>
+                                                        <div class='profile-info-name'> Nombre</div>
+                                                        <div class='profile-info-value'>
+                                                            <span>{{entity.nombrEstructura}}</span>
+                                                        </div>
+                                                </div>
+                                            <div class='profile-info-row'>
+                                                        <div class='profile-info-name'> Estado</div>
+                                                        <div class='profile-info-value'>
+                                                            <span>{{entity.estadoEstructura}}</span>
+                                                        </div>
+                                                </div>
+                                            <div class='profile-info-row'>
+                                                        <div class='profile-info-name'> Observación</div>
+                                                        <div class='profile-info-value'>
+                                                            <span>{{entity.observEstructura}}</span>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            ">
+                                    Estructura</span>
+                                <span class="btn btn-mini btn-block" data-rel="popover" data-placement="left" title="Puesta Tierra" 
+                                      data-content="
+                                      <div class='profile-user-info profile-user-striped'>
+                                            <div class='profile-info-row'>
+                                                        <div class='profile-info-name'> Tipo</div>
+                                                        <div class='profile-info-value'>
+                                                                <span >{{entity.tipoPTierra}}</span>
+                                                        </div>
+                                                </div>
+                                                <div class='profile-info-row'>
+                                                        <div class='profile-info-name'> Descripción</div>
+                                                        <div class='profile-info-value'>
+                                                            <span>{{entity.descripcionPTierra}}</span>
+                                                        </div>
+                                                </div>
+                                                <div class='profile-info-row'>
+                                                        <div class='profile-info-name'> Calibre</div>
+                                                        <div class='profile-info-value'>
+                                                            <span>{{entity.calibrePTierra}}</span>
+                                                        </div>
+                                                </div>
+                                            <div class='profile-info-row'>
+                                                        <div class='profile-info-name'> Estado</div>
+                                                        <div class='profile-info-value'>
+                                                            <span>{{entity.estadoPTierra}}</span>
+                                                        </div>
+                                                </div>
+                                            <div class='profile-info-row'>
+                                                        <div class='profile-info-name'> Observación</div>
+                                                        <div class='profile-info-value'>
+                                                            <span>{{entity.observPTierra}}</span>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            ">
+                                    Puesta Tierra</span>
+                                <span class="btn btn-warning btn-mini tooltip-warning btn-block" data-rel="popover" data-placement="left" title="Tensor" 
+                                      data-content="
+                                      <div class='profile-user-info profile-user-striped'>
+                                            <div class='profile-info-row'>
+                                                        <div class='profile-info-name'> Tipo</div>
+                                                        <div class='profile-info-value'>
+                                                                <span >{{entity.tipoTensor}}</span>
+                                                        </div>
+                                                </div>
+                                                <div class='profile-info-row'>
+                                                        <div class='profile-info-name'> Cantidad</div>
+                                                        <div class='profile-info-value'>
+                                                            <span>{{entity.cantidadTensor}}</span>
+                                                        </div>
+                                                </div>
+                                            <div class='profile-info-row'>
+                                                        <div class='profile-info-name'> Calibre</div>
+                                                        <div class='profile-info-value'>
+                                                            <span>{{entity.calibreTensor}}</span>
+                                                        </div>
+                                                </div>
+                                                <div class='profile-info-row'>
+                                                        <div class='profile-info-name'> Estado</div>
+                                                        <div class='profile-info-value'>
+                                                            <span>{{entity.estadoTensor}}</span>
+                                                        </div>
+                                                </div>
+                                                <div class='profile-info-row'>
+                                                        <div class='profile-info-name'> Observación</div>
+                                                        <div class='profile-info-value'>
+                                                            <span>{{entity.observTensor}}</span>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            ">
+                                    Tensor</span>
+                                <span class="btn btn-success btn-mini tooltip-success btn-block" data-rel="popover" data-placement="left" title="Conductur Fase" 
+                                      data-content="
+                                      <div class='profile-user-info profile-user-striped'>
+                                            <div class='profile-info-row'>
+                                                        <div class='profile-info-name'> Longitud</div>
+                                                        <div class='profile-info-value'>
+                                                                <span >{{entity.longitudCFase}}</span>
+                                                        </div>
+                                                </div>
+                                                <div class='profile-info-row'>
+                                                        <div class='profile-info-name'> Tipo</div>
+                                                        <div class='profile-info-value'>
+                                                            <span>{{entity.tipoCFase}}</span>
+                                                        </div>
+                                                </div>
+                                            <div class='profile-info-row'>
+                                                        <div class='profile-info-name'> Material</div>
+                                                        <div class='profile-info-value'>
+                                                            <span>{{entity.materialCFase}}</span>
+                                                        </div>
+                                                </div>
+                                            <div class='profile-info-row'>
+                                                        <div class='profile-info-name'> Calibre</div>
+                                                        <div class='profile-info-value'>
+                                                            <span>{{entity.calibreCFase}}</span>
+                                                        </div>
+                                                </div>
+                                                <div class='profile-info-row'>
+                                                        <div class='profile-info-name'> Estado</div>
+                                                        <div class='profile-info-value'>
+                                                            <span>{{entity.estadoCFase}}</span>
+                                                        </div>
+                                                </div>
+                                                <div class='profile-info-row'>
+                                                        <div class='profile-info-name'> Observación</div>
+                                                        <div class='profile-info-value'>
+                                                            <span>{{entity.observCFase}}</span>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            ">
+                                    Conductor Fase</span>
+                                <span class="btn btn-danger btn-mini tooltip-error btn-block" data-rel="popover" data-placement="left" title="Cable Guardia" 
+                                      data-content="
+                                      <div class='profile-user-info profile-user-striped'>
+                                        <div class='profile-info-row'>
+                                            <div class='profile-info-name'> Longitud</div>
+                                                <div class='profile-info-value'>
+                                                        <span >{{entity.longitudCGuardia}}</span>
+                                                </div>
+                                            </div>
+                                            <div class='profile-info-row'>
+                                                <div class='profile-info-name'> Tipo</div>
+                                                <div class='profile-info-value'>
+                                                    <span>{{entity.tipoCGuardia}}</span>
+                                                </div>
+                                            </div>
+                                            <div class='profile-info-row'>
+                                                <div class='profile-info-name'> Material</div>
+                                                <div class='profile-info-value'>
+                                                    <span>{{entity.materialCGuardia}}</span>
+                                                </div>
+                                            </div>
+                                            <div class='profile-info-row'>
+                                                <div class='profile-info-name'> Calibre</div>
+                                                    <div class='profile-info-value'>
+                                                        <span>{{entity.calibreCGuardia}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class='profile-info-row'>
+                                                        <div class='profile-info-name'> Estado</div>
+                                                        <div class='profile-info-value'>
+                                                            <span>{{entity.estadoCGuardia}}</span>
+                                                        </div>
+                                                </div>
+                                                <div class='profile-info-row'>
+                                                        <div class='profile-info-name'> Observación</div>
+                                                        <div class='profile-info-value'>
+                                                            <span>{{entity.observCGuardia}}</span>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            ">
+                                    Cable Guardia</span></td>
+                            <td  class="td-actions">
+                                <div class="hidden-phone visible-desktop action-buttons">
+                                        <a class="blue" href="{{ path('lsubtransmision_show', { 'id': entity.id }) }}">
+                                                <i class="icon-zoom-in bigger-150"></i>
+                                        </a>
+                                        <a class="green" href="{{ path('lsubtransmision_edit', { 'id': entity.id }) }}">
+                                                <i class="icon-pencil bigger-150"></i>
+                                        </a>
+                                        <a class="blue" href="/AFijos/web/bundles/afijos/listarimagenes.php?usa={{app.user.apellidos}}&usn={{app.user.nombres}}&md=ls&co={{entity.codigo}}">
+                                        {#<a class="blue" href="{{ path('lineassubtransmision_listarimagenes', { 'id': entity.id }) }}">#}
+                                                <i class="icon-picture bigger-150"></i>
+                                        </a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>                
+            </table>
+            {%else%}
+            <div class="alert alert-error"> 
+                <strong><i class="icon-remove"></i>  Opps!</strong>
+                No se han encontrado items para esta línea.
+                <br>
+            </div>
+            {%endif%}
+            <div class="hr hr32 hr-dotted"></div>
+            <!--PAGE CONTENT ENDS-->
+        </div><!--/.span-->
+    </div><!--/.row-fluid-->
+</div><!--/.page-content-->
+{%endblock%}
+
+{%block plugins%}<script src="{{asset('bundles/ace/assets/js/bootbox.min.js')}}"></script>{%endblock%}
+
+{%block script%}
+{{parent()}}
+<script src="{{asset('bundles/ace/assets/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('bundles/ace/assets/js/jquery.dataTables.bootstrap.js')}}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var elemento=document.getElementById("mnlsubtransmisiones");
+        elemento.classList.add('active');
+        elemento.classList.add('open');
+        elemento.parentNode.parentNode.classList.add('open');
+        elemento.parentNode.parentNode.classList.add('active');
+    });
+    $(function() {var oTable1 = $('#sample-table-2').dataTable( 
+                {"aoColumns": 
+                    [null,null,null,null,null,null,null,null,null,null,null,null,null,{ "bSortable": false }] 
+        } );});
+    $('[data-rel=popover]').popover({html:true});
+</script>
+{%endblock%}

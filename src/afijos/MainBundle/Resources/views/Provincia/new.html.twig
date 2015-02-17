@@ -1,0 +1,37 @@
+{% extends "MainBundle::new.html.twig" %}
+{% block titulo %}Provincias{%endblock%}
+
+{%block entidad%}
+<a href="{{ path('provincia') }}">Provincias</a>
+{%endblock%}
+
+{%block mapatitulo%}Nueva Provincia{%endblock%}
+{%block pagetitulo%}Provincias{%endblock%}
+{%block pagedetalle%}Nueva Provincia{%endblock%}
+
+            {%block formulario%}
+            <form action="{{ path('provincia_create') }}" method="post" {{ form_enctype(form) }}>
+<div class="control-group">
+        <label class="control-label" for="afijos_lsubbundle_subtransmisiontype_subestacionLlegada">
+            Nombre</label>
+        <div class="controls">
+                {{ form_widget(form.nombre) }}
+        </div>
+</div>
+    {{ form_rest(form) }}
+                {%endblock%}
+            {%block link%}
+            <a href="{{ path('provincia') }}"  
+            {%endblock%}
+
+{%block scripthijo%}
+<script type="text/javascript">
+    window.onload = function(){
+        var elemento=document.getElementById("mnprovincias");
+        elemento.classList.add('active');
+        elemento.parentNode.parentNode.classList.add('active');
+        elemento.parentNode.parentNode.classList.add('open');
+    };
+</script>
+{%endblock%}
+

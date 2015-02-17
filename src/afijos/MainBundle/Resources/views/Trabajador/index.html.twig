@@ -1,0 +1,115 @@
+{% extends '::base.html.twig' %}
+
+{% block titulo %}Trabajadores{%endblock%}
+
+{% block mapasitio%}
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="{{path('usuario_index')}}">Inicio</a>
+            <span class="divider"><i class="icon-angle-right arrow-icon"></i></span>
+        </li>
+        <li class="active">Trabajadores</li>
+    </ul><!--.breadcrumb-->
+</div>
+{%endblock%}
+
+{% block pagecontent%}
+<div class="page-content">
+    <div class="page-header position-relative">
+        <h1>Trabajadores<small><i class="icon-double-angle-right"></i> Listado general</small></h1>
+    </div><!--/.page-header-->
+    
+    <div class="row-fluid">
+        <div class="span12">
+            <!--PAGE CONTENT BEGINS-->
+            <a class="btn btn-small btn-yellow" href="{{ path('trabajador_new') }}"><i class="icon-plus"></i>
+                Crear una nueva entrada
+            </a>
+            
+            <br><br>
+            {%if entities%}              
+            <table  id="sample-table-2" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Cedula</th>
+                        <th>Apellidos</th>
+                        <th>Nombres</th>
+                        <th>Dirección</th>                        
+                        <th>Departamento</th>
+                        <th>Actions</th>
+                    </tr>
+                 </thead>                
+                <tbody>
+                    {% for entity in entities %}
+                        <tr>
+                            <td><a href="{{ path('trabajador_show', { 'id': entity.id }) }}">{{ entity.codigo }}</a></td>
+                            <td>{{ entity.id }}</td>
+                            <td>{{ entity.apellidos }}</td>
+                            <td>{{ entity.nombres }}</td>
+                            <td>{{ entity.departamento.subsistema }}</td>
+                            <td>{{ entity.departamento }}</td>
+                            <td  class="td-actions">
+                                <div class="hidden-phone visible-desktop action-buttons">
+                                        <a class="blue" href="{{ path('trabajador_show', { 'id': entity.id }) }}">
+                                                <i class="icon-zoom-in  bigger-150"></i>
+                                        </a>
+                                        <a class="green" href="{{ path('trabajador_edit', { 'id': entity.id }) }}">
+                                                <i class="icon-pencil  bigger-150"></i>
+                                        </a>
+                                        <a class="red" href="#"  id="bteliminar{{entity.id}}">
+                                                <i class="icon-trash  bigger-150"></i>
+                                        </a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>                
+            </table>
+            {%else%}
+            <div class="alert alert-error"> 
+                <strong><i class="icon-remove"></i>  Opps!</strong>
+                No se han encontrado items para esta línea.
+                <br>
+            </div>
+            {%endif%}
+            <div class="hr hr32 hr-dotted"></div>
+            <!--PAGE CONTENT ENDS-->
+        </div><!--/.span-->
+    </div><!--/.row-fluid-->
+</div><!--/.page-content-->
+{%endblock%}
+
+{%block plugins%}<script src="{{asset('bundles/ace/assets/js/bootbox.min.js')}}"></script>{%endblock%}
+
+{%block script%}
+{{parent()}}
+<script src="{{asset('bundles/ace/assets/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('bundles/ace/assets/js/jquery.dataTables.bootstrap.js')}}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var elemento=document.getElementById("mntrabajadores");
+        elemento.classList.add('active');
+        elemento.classList.add('open');
+        elemento.parentNode.parentNode.classList.add('open');
+        elemento.parentNode.parentNode.classList.add('active');
+    });
+    $(function() {    
+    {% for entity in entities %}
+    $("#bteliminar{{entity.id}}").on(ace.click_event, function() {
+            bootbox.confirm("Estas seguro de eliminar registro?", function(result) {
+                if(result){
+                    location.href="{{ path('trabajador_eliminar', { 'id': entity.id }) }}";
+                }
+            });
+    });
+    {% endfor %}
+});
+    $(function() {var oTable1 = $('#sample-table-2').dataTable( 
+                {"aoColumns": 
+                    [null,null,null,null,null,null,{ "bSortable": false }] 
+        } );});
+</script>
+{%endblock%}

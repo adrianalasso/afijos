@@ -1,0 +1,95 @@
+{% extends '::base.html.twig' %}
+
+{% block titulo %}Reporte de Activos{%endblock%}
+
+{%block pluginstyle%}
+<link rel="stylesheet" href="{{asset('bundles/ace/assets/css/chosen.css')}}" />
+{%endblock%}
+
+{% block mapasitio%}
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="{{path('usuario_index')}}">Inicio</a>
+            <span class="divider"><i class="icon-angle-right arrow-icon"></i></span>
+        </li>
+        <li class="active">Reporte de Activos en mal estado</li>
+    </ul><!--.breadcrumb-->
+</div>
+{%endblock%}
+
+{% block pagecontent%}
+<div class="page-content">
+    <div class="row-fluid">
+        <div class="span6">            
+            <!--PAGE CONTENT BEGINS-->
+            <div class="widget-box">
+                <div class="widget-header">
+                        <h4>{%block pagetitulo%}Reporte de Activos{%endblock%}
+                            <small><i class="icon-double-angle-right"></i> {%block pagedetalle%}Reporte de Activos en mal estado{%endblock%}</small>
+                        </h4>        
+                </div>
+                <div class="widget-body">
+                    <div class="widget-main">
+                        <form action="#" method="post" {{ form_enctype(form) }} class='form-horizontal'>
+                            <div class="form-horizontal">
+                                    <div class="control-group">
+                                        <label class="control-label" for="">Línea de Subtransmisión</label>
+                                        <div class="controls">
+                                            {{ form_widget(form.subtransmision, {'attr' :  {'class' : 'chzn-select input-large', 'data-placeholder':'Escoja una opcion..'}}) }}
+                                        </div>
+                                    </div>
+                                    <div class="well well-small"> 
+                                        <div class="center">
+                                            <a class="btn btn-small btn-pink " id="btaceptar" target="_blank">
+                                                <i class="icon-search bigger-150"></i>Aceptar
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>          
+            
+            <!--PAGE CONTENT ENDS-->
+        </div><!--/.span-->
+    </div><!--/.row-fluid-->
+    <div id="contenido">                
+    </div>
+</div><!--/.page-content-->
+{%endblock%}
+
+{%block plugins%}
+<script src="{{asset('bundles/ace/assets/js/chosen.jquery.min.js')}}"></script>
+<script src="{{asset('bundles/ace/assets/js/bootbox.min.js')}}"></script>
+{%endblock%}
+
+{%block script%}
+{{parent()}}
+<script type="text/javascript">
+jQuery(document).ready(function() {
+    var elemento=document.getElementById("mnrp4");
+    elemento.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('open');      
+    $(".chzn-select").chosen(); 
+});
+$("#btaceptar").click(function(){    
+    var lsubtrans = $('#lsubtransmision_type_subtransmision').val();
+    if(lsubtrans!=""){
+        window.open("/afijos/web/app.php/empadmin/reportes/"+lsubtrans+"/reporte4",'_blank');
+        //window.location.href = "{#{ path('reportes_reporte1' , {'desdestr': fechdesde, 'hastastr': fechasta})}#}";
+    }
+    else{
+            bootbox.dialog("Debe ingresar un rango de fechas", [{
+                    "label" : "Aceptar",
+                    "class" : "btn-small btn-success",
+                    "callback": function() {}
+                }]
+            );
+        }
+});
+</script>
+{%endblock%}

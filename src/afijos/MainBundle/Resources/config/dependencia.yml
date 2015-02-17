@@ -1,0 +1,31 @@
+dependencia:
+    pattern:  /
+    defaults: { _controller: MainBundle:Dependencia:index }
+    
+dependencia_new:
+    pattern:  /new
+    defaults: { _controller: MainBundle:Dependencia:new }
+
+dependencia_show:
+    pattern:  /{id}/show
+    defaults: { _controller: MainBundle:Dependencia:show }
+
+dependencia_create:
+    pattern:  /create
+    defaults: { _controller: MainBundle:Dependencia:create }
+
+dependencia_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: MainBundle:Dependencia:edit }
+
+dependencia_update:
+    pattern:  /{id}/update
+    defaults: { _controller: MainBundle:Dependencia:update }
+
+dependencia_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: MainBundle:Dependencia:delete }
+    
+dependencia_eliminar:
+    pattern:  /{id}/eliminar
+    defaults: { _controller: MainBundle:Dependencia:eliminar }

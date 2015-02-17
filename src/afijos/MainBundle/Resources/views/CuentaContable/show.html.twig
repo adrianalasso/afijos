@@ -1,0 +1,63 @@
+{% extends "MainBundle::show.html.twig" %}
+{% block titulo %}Cuentas Contables{%endblock%}
+
+{%block entidad%}
+<i class="icon-exchange exchange-icon"></i>
+<a href="{{ path('cuentacontable') }}">Cuentas Contables</a>
+{%endblock%}
+
+{%block mapatitulo%}Ver Cuenta Contable{%endblock%}
+{%block pagetitulo%}Cuentas Contables{%endblock%}
+{%block pagedetalle%}Ver Cuenta Contable{%endblock%}
+
+{%block datos%}    
+<div class="profile-info-row">
+        <div class="profile-info-name"> Código </div>
+        <div class="profile-info-value">
+                <span >
+                    {{ entity.codigo }}
+                </span>
+        </div>
+</div>
+<div class="profile-info-row">
+        <div class="profile-info-name"> Descripción </div>
+        <div class="profile-info-value">
+            <span>
+            {{ entity.descripcion }} 
+            </span>
+        </div>
+</div>                                 
+{%endblock%}
+{%block linkeliminar%}
+<a href="#"
+{%endblock%}  
+{%block link%}
+<a href="{{path('cuentacontable')}}"
+{%endblock%}
+{%block linkedit%}
+<a href="{{ path('cuentacontable_edit', { 'id': entity.id }) }}" 
+{%endblock%}
+   
+{%block plugins%}
+{{parent()}}
+{%endblock%}
+    
+{%block scripthijo%}
+<script type="text/javascript">
+window.onload = function(){
+    var elemento=document.getElementById("mncuentacontables");
+    elemento.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('open');
+};
+$(function() {
+    $("#bteliminar").on(ace.click_event, function() {
+            bootbox.confirm("Estas seguro de eliminar registro?", function(result) {
+                    if(result){
+                        location.href="{{ path('cuentacontable_eliminar', { 'id': entity.id }) }}";
+                    }
+            });
+    });
+});
+</script>
+{%endblock%}

@@ -1,0 +1,71 @@
+{% extends '::base.html.twig' %}
+
+{% block titulo %}{%endblock%}
+
+{% block mapasitio%}
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="{{path('usuario_index')}}">Inicio</a>
+            <span class="divider"><i class="icon-angle-right arrow-icon"></i></span>
+        </li>
+        <li>
+            <i class="icon-cogs cogs-icon"></i>
+            <a href="#">Sistema</a>
+            <span class="divider"><i class="icon-angle-right arrow-icon"></i></span>
+        </li>
+        
+        <li class="active">{%block mapatitulo%}{%endblock%}</li>
+        
+        
+    </ul><!--.breadcrumb-->
+</div>
+{%endblock%}
+
+{% block pagecontent%}
+<div class="page-content">
+    <div class="page-header position-relative">
+        
+        <h1>{%block pagetitulo%}{%endblock%}<small><i class="icon-double-angle-right"></i> Listado general</small></h1>
+        
+    </div><!--/.page-header-->
+    <div class="row-fluid">
+        <div class="span12">
+            <!--PAGE CONTENT BEGINS-->
+            <a class="btn btn-small btn-yellow" {%block link%}{%endblock%} ><i class="icon-plus"></i>
+                Crear una nueva entrada
+            </a>
+            <div class="space-6"></div>
+            <div class="row-fluid">
+                <div class="span8">
+                    {%if entities%}
+                    {%block tabla%}
+                    {%endblock%}
+                    {%else%}
+                    <div class="alert alert-error"> 
+                        <strong><i class="icon-remove"></i>  Opps!</strong>
+                        No se han encontrado registros.
+                        <br>
+                    </div>
+                    {%endif%}
+                </div>
+            </div>
+            <div class="space-6"></div>
+            <!--PAGE CONTENT ENDS-->
+        </div><!--/.span-->
+    </div><!--/.row-fluid-->
+</div><!--/.page-content-->
+{%endblock%}
+
+{%block plugins%}<script src="{{asset('bundles/ace/assets/js/bootbox.min.js')}}"></script>{%endblock%}
+
+{%block script%}
+{{parent()}}    
+    <script src="{{asset('bundles/ace/assets/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('bundles/ace/assets/js/jquery.dataTables.bootstrap.js')}}"></script>
+    
+    {%block scripthijo%}{%endblock%}
+    
+{%endblock%}
+

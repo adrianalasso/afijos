@@ -1,0 +1,31 @@
+departamento:
+    pattern:  /
+    defaults: { _controller: MainBundle:Departamento:index }
+    
+departamento_new:
+    pattern:  /new
+    defaults: { _controller: MainBundle:Departamento:new }
+
+departamento_show:
+    pattern:  /{id}/show
+    defaults: { _controller: MainBundle:Departamento:show }
+
+departamento_create:
+    pattern:  /create
+    defaults: { _controller: MainBundle:Departamento:create }
+
+departamento_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: MainBundle:Departamento:edit }
+
+departamento_update:
+    pattern:  /{id}/update
+    defaults: { _controller: MainBundle:Departamento:update }
+
+departamento_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: MainBundle:Departamento:delete }
+    
+departamento_eliminar:
+    pattern:  /{id}/eliminar
+    defaults: { _controller: MainBundle:Departamento:eliminar }

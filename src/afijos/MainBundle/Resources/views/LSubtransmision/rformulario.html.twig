@@ -1,0 +1,87 @@
+{% extends '::base.html.twig' %}
+
+{% block titulo %}Líneas de Subtransmisión{%endblock%}
+
+{%block pluginstyle%}{%endblock%}
+
+{% block mapasitio%}
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="{{path('usuario_index')}}">Inicio</a>
+            <span class="divider"><i class="icon-angle-right arrow-icon"></i></span>
+        </li>
+        <li>
+            <i class="icon-exchange exchange-icon"></i>
+            <a href="{{path('bienescustodio')}}">Líneas de Subtransmisión</a>
+            <span class="divider"><i class="icon-angle-right arrow-icon"></i></span>
+        </li>
+        <li class="active">Reporte de Líneas</li>
+    </ul><!--.breadcrumb-->
+</div>
+{%endblock%}
+
+{% block pagecontent%}
+<div class="page-content">
+    <div class="row-fluid">
+        <div class="span6">            
+            <!--PAGE CONTENT BEGINS-->
+            <div class="widget-box">
+                <div class="widget-header">
+                        <h4>{%block pagetitulo%}Líneas de Subtransmisión{%endblock%}
+                            <small><i class="icon-double-angle-right"></i> {%block pagedetalle%}Reporte de Líneas{%endblock%}</small>
+                        </h4>        
+                </div>
+                <div class="widget-body">
+                    <div class="widget-main">
+                        <form action="#" method="post" {{ form_enctype(form) }} class='form-horizontal' >
+                            <div class="form-horizontal">
+                                    <div class="control-group">
+                                        <label class="control-label" for="">Línea de Subtransmisión</label>
+                                        <div class="controls">
+                                            {{form_widget(form.subtransmision) }}
+                                        </div>
+                                    </div>
+                                    <div class="well well-small"> 
+                                        <div class="center">
+                                            <a class="btn btn-small btn-pink " id="btaceptar">
+                                                <i class="icon-search bigger-150"></i>Aceptar
+                                            </a>   
+                                            <a href="{{ path('lsubtransmision') }}"  class="btn btn-small btn-grey">
+                                                <i class="icon-undo bigger-150"></i>Regresar
+                                            </a>     
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>          
+            <div id="contenido">                
+            </div>
+            <!--PAGE CONTENT ENDS-->
+        </div><!--/.span-->
+    </div><!--/.row-fluid-->
+</div><!--/.page-content-->
+{%endblock%}
+
+{%block plugins%}{%endblock%}
+
+{%block script%}
+{{parent()}}
+<script type="text/javascript">
+jQuery(document).ready(function() {
+    var elemento=document.getElementById("mnrplineas");
+    elemento.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('open');                
+});
+$("#btaceptar").click(function(){
+    var subtransmision = $('#lsubtransmision_report_type_subtransmision').val();
+    $.post("{{path('lsubtransmision_reporte')}}", {subtransmision:  subtransmision},function(resultado){
+        $("#contenido").html(resultado);
+    });
+});
+</script>
+{%endblock%}

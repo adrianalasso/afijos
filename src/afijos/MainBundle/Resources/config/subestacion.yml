@@ -1,0 +1,37 @@
+subestacion:
+    pattern:  /
+    defaults: { _controller: MainBundle:Subestacion:index }
+    
+subestacion_new:
+    pattern:  /new
+    defaults: { _controller: MainBundle:Subestacion:new }
+
+subestacion_show:
+    pattern:  /{id}/show
+    defaults: { _controller: MainBundle:Subestacion:show }
+
+subestacion_create:
+    pattern:  /create
+    defaults: { _controller: MainBundle:Subestacion:create }
+
+subestacion_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: MainBundle:Subestacion:edit }
+
+subestacion_update:
+    pattern:  /{id}/update
+    defaults: { _controller: MainBundle:Subestacion:update }
+
+subestacion_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: MainBundle:Subestacion:delete }
+
+subestacion_listar:
+    pattern:  /listar
+    defaults: { _controller: MainBundle:Subestacion:listar }
+
+subestacion_eliminar:
+    pattern:  /{id}/eliminar
+    defaults: { _controller: MainBundle:Subestacion:eliminar }
+
+    

@@ -1,0 +1,115 @@
+{% extends '::base.html.twig' %}
+
+{% block titulo %}Usuarios{%endblock%}
+
+{% block mapasitio%}
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="{{path('usuario_index')}}">Inicio</a>
+            <span class="divider"><i class="icon-angle-right arrow-icon"></i></span>
+        </li>
+        <li>
+            {%block entidad%}
+            <i class="icon-user user-icon"></i>
+            <a href="#">Usuarios</a>
+            {%endblock%}
+            <span class="divider"><i class="icon-angle-right arrow-icon"></i></span>
+        </li>        
+        <li class="active">{%block mapatitulo%}Perfil de Usuario{%endblock%}</li>             
+    </ul><!--.breadcrumb-->
+</div>
+{%endblock%}
+
+{% block pagecontent%}
+<div class="page-content">
+    <div class="row-fluid">
+        <div class="span6">
+            <!--PAGE CONTENT BEGINS-->
+            {%block widget %}
+            <div class="widget-box">
+                <div class="widget-header">
+                        <h4>{%block pagetitulo%}Usuarios{%endblock%}
+                            <small><i class="icon-double-angle-right"></i> 
+                            {%block pagedetalle%}Perfil de Usuario{%endblock%}</small>
+                        </h4>        
+                </div>
+
+                <div class="widget-body">
+                        <div class="widget-main">
+                            <div class="profile-user-info profile-user-info-striped">
+                            {%block datos%}    
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">Cedula</div>
+                                <div class="profile-info-value"><span >
+                                        {{ entity.id }}</span>
+                                </div>
+                            </div>        
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">Apellidos</div>
+                                <div class="profile-info-value"><span >
+                                        {{ entity.apellidos }}</span>
+                                </div>
+                            </div>        
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">Nombres</div>
+                                <div class="profile-info-value"><span >
+                                        {{ entity.nombres }}</span>
+                                </div>
+                            </div>        
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">Roles</div>
+                                <div class="profile-info-value"><span >
+                                        {% for rol in entity.userRoles %}
+                                        {{ rol }}<br>
+                                        {% endfor %}</span>
+                                </div>
+                            </div>        
+                            <div class="profile-info-row"  style="height:50px">
+                            <div class="profile-info-name">Nombre de usuario</div>
+                                <div class="profile-info-value"><span >
+                                        {{ entity.username }}</span>
+                                </div>
+                            </div>                 
+                            {%endblock%}
+                            </div>
+                            <br>
+                            <div class="center">
+                                    <div class="well well-small"> 
+                                        <div class="center">
+                                                {%block linkedit%}
+                                                <a  href="{{ path('usuario_editperfil', { 'id': entity.id }) }}" 
+                                                     {%endblock%}
+                                                    class="btn btn-primary btn-small" id="bteditar">
+                                                    <i class="icon-edit bigger-150"></i>
+                                                    Editar
+                                                </a>
+                                                <a  href="{{ path('usuario_editpass', { 'id': entity.id }) }}" 
+                                                    class="btn btn-yellow btn-small" id="btpass">
+                                                    <i class="icon-key bigger-150"></i>
+                                                    Cambiar Contraseña
+                                                </a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>           
+            {%endblock%}
+            <!--PAGE CONTENT ENDS-->
+        </div><!--/.span-->
+    </div><!--/.row-fluid-->
+</div><!--/.page-content-->
+{%endblock%}
+
+{%block plugins%}
+<script src="{{asset('bundles/ace/assets/js/bootbox.min.js')}}"></script>
+{%endblock%}
+
+{%block script%}
+{{parent()}}
+{%block scripthijo%}
+{%endblock%}
+{%endblock%}

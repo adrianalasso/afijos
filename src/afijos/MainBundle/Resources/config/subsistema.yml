@@ -1,0 +1,39 @@
+subsistema:
+    pattern:  /
+    defaults: { _controller: MainBundle:Subsistema:index }
+    
+subsistema_new:
+    pattern:  /new
+    defaults: { _controller: MainBundle:Subsistema:new }
+
+subsistema_show:
+    pattern:  /{id}/show
+    defaults: { _controller: MainBundle:Subsistema:show }
+
+subsistema_create:
+    pattern:  /create
+    defaults: { _controller: MainBundle:Subsistema:create }
+
+subsistema_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: MainBundle:Subsistema:edit }
+
+subsistema_update:
+    pattern:  /{id}/update
+    defaults: { _controller: MainBundle:Subsistema:update }
+
+subsistema_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: MainBundle:Subsistema:delete }
+    
+subsistema_eliminar:
+    pattern:  /{id}/eliminar
+    defaults: { _controller: MainBundle:Subsistema:eliminar }
+    
+buscar_subsistemaes:
+    pattern:  /buscar-subsistema
+    defaults: { _controller: MainBundle:Subsistema:buscarSubsistemas}
+    
+subsistema_listar:
+    pattern:  /listar-subsistemas
+    defaults: { _controller: MainBundle:Subsistema:listarSubsistemas }

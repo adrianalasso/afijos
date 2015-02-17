@@ -1,0 +1,96 @@
+{% extends "MainBundle::edit.html.twig" %}
+{% block titulo %}Unidades de Propiedad{%endblock%}
+
+{%block entidad%}
+<i class="icon-exchange exchange-icon"></i>
+<a href="{{ path('unidadpropiedad') }}">Unidades de Propiedad</a>
+{%endblock%}
+
+{%block mapatitulo%}Editar Unidad de Propiedad{%endblock%}
+{%block pagetitulo%}Unidades de Propiedad{%endblock%}
+{%block pagedetalle%}Editar Unidad de Propiedad{%endblock%}
+
+ {%block formulario%}
+<form action="{{ path('unidadpropiedad_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+<div class="control-group">
+        <label class="control-label" for="">Código</label>
+        <div class="controls">
+                {{ form_widget(edit_form.id, {'attr' :  {'readonly' : 'readonly'}}) }}
+        </div>
+</div>       
+<div class="control-group">
+    <label class="control-label" for="">Cuenta de Activo</label>
+    <div class="controls">
+            {{ form_widget(edit_form.cuentActivo) }}
+    </div>
+</div>     
+<div class="control-group">
+    <label class="control-label" for="">Cuenta de Depreciación</label>
+    <div class="controls">
+            {{ form_widget(edit_form.cuentaDeprec) }}
+    </div>
+</div>  
+<div class="control-group">
+    <label class="control-label" for="">Descripción</label>
+    <div class="controls">
+            {{ form_widget(edit_form.descripcion) }}
+    </div>
+</div>  
+<div class="control-group">
+    <label class="control-label" for="">Índice Depreciable</label>
+    <div class="controls">
+            {{ form_widget(edit_form.indiceDeprec) }}
+    </div>
+</div>  
+<div class="control-group">
+    <label class="control-label" for="">Índice Residual</label>
+    <div class="controls">
+            {{ form_widget(edit_form.indiceResidual) }}
+    </div>
+</div>  
+<div class="control-group">
+    <label class="control-label" for="">Vida útil (años)</label>
+    <div class="controls">
+            {{ form_widget(edit_form.vidaUtilA) }}
+    </div>
+</div>  
+<div class="control-group">
+    <label class="control-label" for="">Vida útil (meses)</label>
+    <div class="controls">
+            {{ form_widget(edit_form.vidaUtilM) }}
+    </div>
+</div>  
+{{ form_rest(edit_form) }}
+{%endblock%}
+
+{%block link%}
+<a href="{{ path('unidadpropiedad') }}"  
+{%endblock%}
+
+{%block linkeliminar%}
+<a action="#"
+{%endblock%}
+   
+{%block plugins%}
+{{parent()}}
+{%endblock%}
+    
+{%block scripthijo%}
+<script type="text/javascript">
+window.onload = function(){
+    var elemento=document.getElementById("mnunidadpropiedades");
+    elemento.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('open');
+};
+$(function() {
+    $("#bteliminar").on(ace.click_event, function() {
+            bootbox.confirm("Estas seguro de eliminar registro?", function(result) {
+                    if(result){
+                        location.href="{{ path('unidadpropiedad_eliminar', { 'id': entity.id }) }}";
+                    }
+            });
+    });
+});
+</script>
+{%endblock%}

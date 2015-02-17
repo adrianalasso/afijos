@@ -1,0 +1,63 @@
+bienescustodio:
+    pattern:  /
+    defaults: { _controller: MainBundle:BienesCustodio:index }
+    
+bienescustodio_new:
+    pattern:  /new
+    defaults: { _controller: MainBundle:BienesCustodio:new }
+    
+bienescustodio_import:
+    pattern:  /import
+    defaults: { _controller: MainBundle:BienesCustodio:import }
+    
+bienescustodio_show:
+    pattern:  /{id}/show
+    defaults: { _controller: MainBundle:BienesCustodio:show }
+
+bienescustodio_create:
+    pattern:  /create
+    defaults: { _controller: MainBundle:BienesCustodio:create }
+
+bienescustodio_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: MainBundle:BienesCustodio:edit }
+
+bienescustodio_update:
+    pattern:  /{id}/update
+    defaults: { _controller: MainBundle:BienesCustodio:update }
+
+bienescustodio_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: MainBundle:BienesCustodio:delete }
+    
+bienescustodio_eliminar:
+    pattern:  /{id}/eliminar
+    defaults: { _controller: MainBundle:BienesCustodio:eliminar }
+    
+buscar_bienescustodio:
+    pattern:  /buscar-bienescustodio
+    defaults: { _controller: MainBundle:BienesCustodio:buscarBienesCustodio}
+    
+bienescustodio_listar:
+    pattern:  /listar-bienescustodio
+    defaults: { _controller: MainBundle:BienesCustodio:listarBienesCustodio }
+
+bienescustodio_rformulario:
+    pattern:  /rformulario
+    defaults: { _controller: MainBundle:BienesCustodio:rformulario }
+
+bienescustodio_reporte:
+    pattern:  /reporte
+    defaults: { _controller: MainBundle:BienesCustodio:reporte }
+
+bienescustodio_reportes:
+    pattern:  /reportes
+    defaults: { _controller: MainBundle:BienesCustodio:reportes }
+    
+bienescustodio_depreciar:
+    pattern:  /{id}/depreciar
+    defaults: { _controller: MainBundle:BienesCustodio:depreciar }
+    
+bienescustodio_edepreciar:
+    pattern:  /{id}/edepreciar
+    defaults: { _controller: MainBundle:BienesCustodio:edepreciar }

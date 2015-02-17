@@ -1,0 +1,77 @@
+{% extends "MainBundle::new.html.twig" %}
+{% block titulo %}Unidades de Propiedad{%endblock%}
+
+{%block entidad%}
+<a href="{{ path('unidadpropiedad') }}">Unidades de Propiedad</a>
+{%endblock%}
+
+{%block mapatitulo%}Nuevo Unidad de Propiedad{%endblock%}
+{%block pagetitulo%}Unidades de Propiedad{%endblock%}
+{%block pagedetalle%}Nuevo Unidad de Propiedad{%endblock%}
+
+{%block formulario%}
+<form action="{{ path('unidadpropiedad_create') }}" method="post" {{ form_enctype(form) }}>
+<div class="control-group">
+        <label class="control-label" for="">Código</label>
+        <div class="controls">
+                {{ form_widget(form.id) }}
+        </div>
+</div>       
+<div class="control-group">
+    <label class="control-label" for="">Cuenta de Activo</label>
+    <div class="controls">
+            {{ form_widget(form.cuentActivo) }}
+    </div>
+</div>     
+<div class="control-group">
+    <label class="control-label" for="">Cuenta de Depreciación</label>
+    <div class="controls">
+            {{ form_widget(form.cuentaDeprec) }}
+    </div>
+</div>  
+<div class="control-group">
+    <label class="control-label" for="">Descripción</label>
+    <div class="controls">
+            {{ form_widget(form.descripcion) }}
+    </div>
+</div>  
+<div class="control-group">
+    <label class="control-label" for="">Índice Depreciable</label>
+    <div class="controls">
+            {{ form_widget(form.indiceDeprec) }}
+    </div>
+</div>  
+<div class="control-group">
+    <label class="control-label" for="">Índice Residual</label>
+    <div class="controls">
+            {{ form_widget(form.indiceResidual) }}
+    </div>
+</div>  
+<div class="control-group">
+    <label class="control-label" for="">Vida útil (años)</label>
+    <div class="controls">
+            {{ form_widget(form.vidaUtilA) }}
+    </div>
+</div>  
+<div class="control-group">
+    <label class="control-label" for="">Vida útil (meses)</label>
+    <div class="controls">
+            {{ form_widget(form.vidaUtilM) }}
+    </div>
+</div>  
+{{ form_rest(form) }}
+{%endblock%}
+{%block link%}
+<a href="{{ path('unidadpropiedad') }}"  
+{%endblock%}
+
+{%block scripthijo%}
+<script type="text/javascript">
+    window.onload = function(){
+        var elemento=document.getElementById("mnunidadpropiedades");
+        elemento.classList.add('active');
+        elemento.parentNode.parentNode.classList.add('active');
+        elemento.parentNode.parentNode.classList.add('open');
+    };
+</script>
+{%endblock%}

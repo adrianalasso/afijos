@@ -1,0 +1,39 @@
+parroquia:
+    pattern:  /
+    defaults: { _controller: MainBundle:Parroquia:index }
+    
+parroquia_new:
+    pattern:  /new
+    defaults: { _controller: MainBundle:Parroquia:new }
+
+parroquia_show:
+    pattern:  /{id}/show
+    defaults: { _controller: MainBundle:Parroquia:show }
+
+parroquia_create:
+    pattern:  /create
+    defaults: { _controller: MainBundle:Parroquia:create }
+
+parroquia_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: MainBundle:Parroquia:edit }
+
+parroquia_update:
+    pattern:  /{id}/update
+    defaults: { _controller: MainBundle:Parroquia:update }
+
+parroquia_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: MainBundle:Parroquia:delete }
+    
+parroquia_eliminar:
+    pattern:  /{id}/eliminar
+    defaults: { _controller: MainBundle:Parroquia:eliminar }
+    
+buscar_parroquiaes:
+    pattern:  /buscar-parroquia
+    defaults: { _controller: MainBundle:Parroquia:buscarParroquias}
+    
+parroquia_listar:
+    pattern:  /listar-parroquias
+    defaults: { _controller: MainBundle:Parroquia:listarParroquias }

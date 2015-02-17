@@ -1,0 +1,65 @@
+{% extends "MainBundle::edit.html.twig" %}
+{% block titulo %}Departamentos{%endblock%}
+{%block pluginstyle%}
+<link rel="stylesheet" href="{{asset('bundles/ace/assets/css/chosen.css')}}" />
+{%endblock%}
+{%block entidad%}
+<i class="icon-exchange exchange-icon"></i>
+<a href="{{ path('departamento') }}">Departamentos</a>
+{%endblock%}
+
+{%block mapatitulo%}Editar Departamento{%endblock%}
+{%block pagetitulo%}Departamentos{%endblock%}
+{%block pagedetalle%}Editar Departamento{%endblock%}
+
+ {%block formulario%}
+<form action="{{ path('departamento_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+<div class="control-group">
+        <label class="control-label" for="">Dirección</label>
+        <div class="controls">
+                {{ form_widget(edit_form.subsistema, {'attr' :  {'class' : 'chzn-select input-large', 'data-placeholder':'Escoja una opcion..'}}) }}
+        </div>
+</div>        
+    <div class="control-group">
+        <label class="control-label" for="">Descripción</label>
+        <div class="controls">
+                {{ form_widget(edit_form.descripcion) }}
+        </div>
+</div>   
+{{ form_rest(edit_form) }}
+{%endblock%}
+
+{%block link%}
+<a href="{{ path('departamento') }}"  
+{%endblock%}
+
+{%block linkeliminar%}
+<a action="#"
+{%endblock%}
+   
+{%block plugins%}
+{{parent()}}
+   <script src="{{asset('bundles/ace/assets/js/chosen.jquery.min.js')}}"></script>
+{%endblock%}
+    
+    
+{%block scripthijo%}
+<script type="text/javascript">
+window.onload = function(){
+    var elemento=document.getElementById("mndepartamentos");
+    elemento.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('open');
+    $(".chzn-select").chosen(); 
+};
+$(function() {
+    $("#bteliminar").on(ace.click_event, function() {
+            bootbox.confirm("Estas seguro de eliminar registro?", function(result) {
+                    if(result){
+                        location.href="{{ path('departamento_eliminar', { 'id': entity.id }) }}";
+                    }
+            });
+    });
+});
+</script>
+{%endblock%}

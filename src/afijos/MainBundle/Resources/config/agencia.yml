@@ -1,0 +1,39 @@
+agencia:
+    pattern:  /
+    defaults: { _controller: MainBundle:Agencia:index }
+    
+agencia_new:
+    pattern:  /new
+    defaults: { _controller: MainBundle:Agencia:new }
+
+agencia_show:
+    pattern:  /{id}/show
+    defaults: { _controller: MainBundle:Agencia:show }
+
+agencia_create:
+    pattern:  /create
+    defaults: { _controller: MainBundle:Agencia:create }
+
+agencia_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: MainBundle:Agencia:edit }
+
+agencia_update:
+    pattern:  /{id}/update
+    defaults: { _controller: MainBundle:Agencia:update }
+
+agencia_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: MainBundle:Agencia:delete }
+    
+agencia_eliminar:
+    pattern:  /{id}/eliminar
+    defaults: { _controller: MainBundle:Agencia:eliminar }
+    
+buscar_agencia:
+    pattern:  /buscar-agencia
+    defaults: { _controller: MainBundle:Agencia:buscarAgencia}
+    
+agencia_listar:
+    pattern:  /listar-agencia
+    defaults: { _controller: MainBundle:Agencia:listarAgencia }

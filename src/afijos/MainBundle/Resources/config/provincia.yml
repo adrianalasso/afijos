@@ -1,0 +1,33 @@
+provincia:
+    pattern:  /
+    defaults: { _controller: MainBundle:Provincia:index }
+    
+provincia_new:
+    pattern:  /new
+    defaults: { _controller: MainBundle:Provincia:new }
+
+provincia_show:
+    pattern:  /{id}/show
+    defaults: { _controller: MainBundle:Provincia:show }
+
+provincia_create:
+    pattern:  /create
+    defaults: { _controller: MainBundle:Provincia:create }
+
+provincia_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: MainBundle:Provincia:edit }
+
+provincia_update:
+    pattern:  /{id}/update
+    defaults: { _controller: MainBundle:Provincia:update }
+
+provincia_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: MainBundle:Provincia:delete }
+
+provincia_eliminar:
+    pattern:  /{id}/eliminar
+    defaults: { _controller: MainBundle:Provincia:eliminar }
+
+    

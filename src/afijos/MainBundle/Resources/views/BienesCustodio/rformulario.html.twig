@@ -1,0 +1,92 @@
+{% extends '::base.html.twig' %}
+
+{% block titulo %}Bienes en Custodio{%endblock%}
+{%block pluginstyle%}
+<link rel="stylesheet" href="{{asset('bundles/ace/assets/css/chosen.css')}}" />
+{%endblock%}
+
+{% block mapasitio%}
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="{{path('usuario_index')}}">Inicio</a>
+            <span class="divider"><i class="icon-angle-right arrow-icon"></i></span>
+        </li>
+        <li>
+            <i class="icon-group group-icon"></i>
+            <a href="{{path('bienescustodio')}}">Bienes en Custodio</a>
+            <span class="divider"><i class="icon-angle-right arrow-icon"></i></span>
+        </li>
+        <li class="active">Reporte de Bienes de Control</li>
+    </ul><!--.breadcrumb-->
+</div>
+{%endblock%}
+
+{% block pagecontent%}
+<div class="page-content">
+    <div class="row-fluid">
+        <div class="span6">            
+            <!--PAGE CONTENT BEGINS-->
+            <div class="widget-box">
+                <div class="widget-header">
+                        <h4>{%block pagetitulo%}Bienes en Custodio{%endblock%}
+                            <small><i class="icon-double-angle-right"></i> {%block pagedetalle%}Reporte de Bienes{%endblock%}</small>
+                        </h4>        
+                </div>
+                <div class="widget-body">
+                    <div class="widget-main">
+                        <form action="{{ path('bienescustodio_create')}}" method="post" {{ form_enctype(form) }} class='form-horizontal'>
+                        <div class="form-horizontal">
+                                <div class="control-group">
+                                    <label class="control-label" for="">Cedula del Empleado</label>
+                                    <div class="controls">
+                                            {{form_widget(form.trabajador, {'attr' :  {'class' : 'chzn-select input-large', 'data-placeholder':'Escoja una opcion..'}}) }}
+                                    </div>
+                                </div>
+                                <div class="well well-small"> 
+                                    <div class="center">
+                                        <a class="btn btn-small btn-pink " id="btaceptar">
+                                            <i class="icon-search bigger-150"></i>Aceptar
+                                        </a>   
+                                        <a href="{{ path('bienescustodio') }}"  class="btn btn-small btn-grey">
+                                            <i class="icon-undo bigger-150"></i>Regresar
+                                        </a>     
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>          
+            <div id="contenido">
+                
+            </div>
+            <!--PAGE CONTENT ENDS-->
+        </div><!--/.span-->
+    </div><!--/.row-fluid-->
+</div><!--/.page-content-->
+{%endblock%}
+
+{%block plugins%}
+<script src="{{asset('bundles/ace/assets/js/chosen.jquery.min.js')}}"></script>
+{%endblock%}
+
+{%block script%}
+{{parent()}}
+<script type="text/javascript">
+jQuery(document).ready(function() {
+    var elemento=document.getElementById("mnrpbienes");
+    elemento.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('open');             
+    $(".chzn-select").chosen(); 
+});
+$("#btaceptar").click(function(){
+    var cedula = $('#afijos_mainbundle_bienescustodioreportype_trabajador').val();
+    $.post("{{path('bienescustodio_reporte')}}", {cedula:  cedula},function(resultado){
+        $("#contenido").html(resultado);
+    });
+});
+</script>
+{%endblock%}

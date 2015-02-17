@@ -1,0 +1,171 @@
+{% extends '::base.html.twig' %}
+
+{% block titulo %}Baja de Activos{%endblock%}
+
+{% block mapasitio%}
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="{{path('usuario_index')}}">Inicio</a>
+            <span class="divider"><i class="icon-angle-right arrow-icon"></i></span>
+        </li>
+        <li>
+            {%block entidad%}
+            <i class="icon-bolt bolt-icon"></i>
+            <a href="#">Baja de Activos</a>
+            {%endblock%}
+            <span class="divider"><i class="icon-angle-right arrow-icon"></i></span>
+        </li>        
+        <li class="active">{%block mapatitulo%} Baja de Activos{%endblock%}</li>             
+    </ul><!--.breadcrumb-->
+</div>
+{%endblock%}
+
+{% block pagecontent%}
+<div class="page-content">
+    <div class="row-fluid">
+        <div class="span6">
+            <!--PAGE CONTENT BEGINS-->
+            {%block widget %}
+            <div class="widget-box">
+                <div class="widget-header">
+                        <h4>{%block pagetitulo%}Baja de Activos{%endblock%}
+                            <small><i class="icon-double-angle-right"></i> 
+                            {%block pagedetalle%} Baja de Activos{%endblock%}</small>
+                        </h4>        
+                </div>
+
+                <div class="widget-body">
+                        <div class="widget-main">
+                            <div class="profile-user-info profile-user-info-striped">
+                            <div class="profile-info-row">
+                                    <div class="profile-info-name"> Código </div>
+                                    <div class="profile-info-value">
+                                            <span >
+                                                {{ entity.bienesCustodio.codigo }}
+                                            </span>
+                                    </div>
+                                </div>
+
+                                <div class="profile-info-row">
+                                    <div class="profile-info-name"> Descripción </div>
+                                    <div class="profile-info-value">
+                                        <span>
+                                        {{ entity.bienesCustodio.descripcion }}     
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="profile-info-row">
+                                    <div class="profile-info-name"> Responsable </div>
+                                    <div class="profile-info-value">
+                                        <span>
+                                        {{ entity.bienesCustodio.trabajador }}     
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="profile-info-row">
+                                    <div class="profile-info-name"> Serie </div>
+                                    <div class="profile-info-value">
+                                        <span>
+                                        {{ entity.bienesCustodio.serie }}     
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="profile-info-row">
+                                    <div class="profile-info-name"> Marca </div>
+                                    <div class="profile-info-value">
+                                        <span>
+                                        {{ entity.bienesCustodio.marca }}     
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="profile-info-row">
+                                    <div class="profile-info-name"> Estado del bien </div>
+                                    <div class="profile-info-value">
+                                        <span>
+                                        {{ entity.bienesCustodio.estado }}     
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="profile-info-row">
+                                    <div class="profile-info-name"> Estado de la Solicitud </div>
+                                    <div class="profile-info-value">
+                                        <span>
+                                        {{ entity.estado }}     
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="profile-info-row">
+                                    <div class="profile-info-name"> Fecha solicitado </div>
+                                    <div class="profile-info-value">
+                                        <span>
+                                        {% if entity.fechaSolicitada %}{{ entity.fechaSolicitada|date('Y-m-d H:i:s') }}{% endif %}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="profile-info-row">
+                                    <div class="profile-info-name"> Fecha de aprobación </div>
+                                    <div class="profile-info-value">
+                                        <span>
+                                        {% if entity.fechaAprobado %}{{ entity.fechaAprobado|date('Y-m-d H:i:s') }}{% endif %}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="center">
+                                <div class="well well-small"> 
+                                    <div class="center">
+                                        {% if is_granted('ROLE_DIRECTIVO') %}
+                                        <a  href="{{ path('abajas_imprimir', { 'id': entity.id }) }}" target="_blank" 
+                                            class="btn btn-pink btn-small">
+                                            <i class="icon-print bigger-150"></i>
+                                            Imprimir
+                                        </a>
+                                        {%elseif is_granted('ROLE_EMPADMIN')%}
+                                        <a  href="{{ path('bajas_imprimir', { 'id': entity.id }) }}" target="_blank" 
+                                            class="btn btn-pink btn-small">
+                                            <i class="icon-print bigger-150"></i>
+                                            Imprimir
+                                        </a>
+                                        {%endif%}
+                                        <a  href="../" 
+                                            class="btn btn-default btn-small">
+                                            <i class="icon-undo bigger-150"></i>
+                                            Regresar
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>           
+            {%endblock%}
+            <!--PAGE CONTENT ENDS-->
+        </div><!--/.span-->
+    </div><!--/.row-fluid-->
+</div><!--/.page-content-->
+{%endblock%}
+
+{%block plugins%}
+<script src="{{asset('bundles/ace/assets/js/bootbox.min.js')}}"></script>
+{%endblock%}
+
+{%block script%}
+{{parent()}}
+{%block scripthijo%}
+<script type="text/javascript">
+window.onload = function(){
+    {% if is_granted('ROLE_DIRECTIVO') %}
+    var elemento=document.getElementById("mnabajas");
+    {%else%}
+    var elemento=document.getElementById("mnbajas");
+    {% endif%}
+    elemento.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('active');
+    elemento.parentNode.parentNode.classList.add('open');
+};
+</script>
+{%endblock%}
+{%endblock%}

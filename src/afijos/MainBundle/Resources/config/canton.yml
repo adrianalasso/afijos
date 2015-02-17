@@ -1,0 +1,39 @@
+canton:
+    pattern:  /
+    defaults: { _controller: MainBundle:Canton:index }
+    
+canton_new:
+    pattern:  /new
+    defaults: { _controller: MainBundle:Canton:new }
+
+canton_show:
+    pattern:  /{id}/show
+    defaults: { _controller: MainBundle:Canton:show }
+
+canton_create:
+    pattern:  /create
+    defaults: { _controller: MainBundle:Canton:create }
+
+canton_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: MainBundle:Canton:edit }
+
+canton_update:
+    pattern:  /{id}/update
+    defaults: { _controller: MainBundle:Canton:update }
+
+canton_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: MainBundle:Canton:delete }
+    
+canton_eliminar:
+    pattern:  /{id}/eliminar
+    defaults: { _controller: MainBundle:Canton:eliminar }
+    
+buscar_cantones:
+    pattern:  /buscar-canton
+    defaults: { _controller: MainBundle:Canton:buscarCantones}
+    
+canton_listar:
+    pattern:  /listar-cantones
+    defaults: { _controller: MainBundle:Canton:listarCantones }
