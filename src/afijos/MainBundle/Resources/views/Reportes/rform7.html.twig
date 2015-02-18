@@ -79,8 +79,9 @@ jQuery(document).ready(function() {
 $("#btaceptar").click(function(){    
     var dpto = $('#trabajador_type_departamento').val();
     if(dpto!=""){
-        window.open("/afijos/web/app.php/empadmin/reportes/"+dpto+"/reporte7",'_blank');
-        //window.location.href = "{#{ path('reportes_reporte1' , {'desdestr': fechdesde, 'hastastr': fechasta})}#}";
+        var url="{{ path('reportes_reporte7' , {'dpto': 'dpto'})}}";
+        url = url.replace('dpto', dpto);
+        window.open(url,'_blank');
     }
     else{
             bootbox.dialog("Debe ingresar un rango de fechas", [{

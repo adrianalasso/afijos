@@ -142,8 +142,10 @@ $("#btaceptar").click(function(){
     var desde = $('#fechdesde').val();
     var hasta = $('#fechasta').val();
     if(desde!=""&&hasta!=""){
-        window.open("/afijos/web/app.php/empadmin/reportes/"+desde+"/"+hasta+"/reporte2",'_blank');
-        //window.location.href = "{#{ path('reportes_reporte1' , {'desdestr': fechdesde, 'hastastr': fechasta})}#}";
+        var url="{{ path('reportes_reporte2' , {'desdestr': 'desde', 'hastastr': 'hasta'})}}";
+        url = url.replace('desde', desde);
+        url = url.replace('hasta', hasta);
+        window.open(url,'_blank');
     }
     else{
             bootbox.dialog("Debe ingresar un rango de fechas", [{

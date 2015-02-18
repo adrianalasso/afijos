@@ -73,6 +73,9 @@ class ReportesController extends Controller
         $form = $this->createForm(new \afijos\MainBundle\Form\Reporte8Type(), $entity);    
         return $this->render('MainBundle:Reportes:rform8.html.twig', array('form'   => $form->createView(),));             
     }
+    public function rform11Action(){
+        return $this->render('MainBundle:Reportes:rform11.html.twig', array());             
+    }
     
     public function reporte1Action($desdestr,$hastastr){
         
@@ -98,12 +101,18 @@ class ReportesController extends Controller
         $query=$em->createQuery($dql);
         $query->setParameter('desde', $desde);      
         $query->setParameter('hasta', $hasta);
-        $entities = $query->getResult();      
+        $entities = $query->getResult();
+        $gastos=0;
+        for($i=0;$i<count($entities);$i++){            
+            $bien=$entities[$i]->getBienesCustodio();
+            $gastos=$gastos+$bien->getValorAdquisicion();
+        }
+        
         $facade = $this->get('ps_pdf.facade');
         $response = new Response();
         $desde->add(new \DateInterval('P1D'));
         $this->render('MainBundle:Reportes:reporte1.html.twig', array(
-            'entities' => $entities,'fechdesde'=>$desde, 'fechasta'=>$hasta
+            'entities' => $entities,'fechdesde'=>$desde, 'fechasta'=>$hasta, 'gastos'=>$gastos,
         ),$response);
         $xml = $response->getContent();        
         $content = $facade->render($xml);
@@ -223,7 +232,7 @@ class ReportesController extends Controller
     public function reporte8Action($actv){        
         $em = $this->getDoctrine()->getManager();        
         $dql="select b, t from MainBundle:BienesCustodio b join b.trabajador t "
-                . "where b.eliminado='NO' and b.id>:actv ";
+                . "where b.eliminado='NO' and b.id=:actv ";
         $query=$em->createQuery($dql);
         $query->setParameter('actv', $actv);
         $entities = $query->getResult();      
@@ -231,6 +240,85 @@ class ReportesController extends Controller
         $response = new Response();
         $this->render('MainBundle:Reportes:reporte8.html.twig', array(
             'entities' => $entities,
+        ),$response);
+        $xml = $response->getContent();        
+        $content = $facade->render($xml);
+        return new Response($content, 200, array('content-type' => 'application/pdf'));
+    }
+    public function reporte9Action(){        
+        $em = $this->getDoctrine()->getManager();        
+        $dql="select b from MainBundle:BienesCustodio b "
+                . "where b.eliminado='NO' and b.unidadPropiedad='M45' ";
+        $query=$em->createQuery($dql);
+        $entities = $query->getResult();      
+        $facade = $this->get('ps_pdf.facade');
+        $response = new Response();
+        $this->render('MainBundle:Reportes:reporte9.html.twig', array(
+            'entities' => $entities,
+        ),$response);
+        $xml = $response->getContent();        
+        $content = $facade->render($xml);
+        return new Response($content, 200, array('content-type' => 'application/pdf'));
+    }
+    public function reporte10Action(){
+        
+        $month = date('m');        
+        if($month=='01'){
+            $mesPasado=12;
+        }
+        else{
+            $mesPasado=$month-1;
+        }
+        $year = date('Y');
+        $day = date("d", mktime(0,0,0, $month+1, 0, $year));      
+        
+        $fecha=new \DateTime($year."-".$month."-".$day);
+        $dayP = date("d", mktime(0,0,0, $mesPasado+1, 0, $year));
+        $fechaPasada=new \DateTime($year."-".$mesPasado."-".$dayP);        
+        
+        $em = $this->getDoctrine()->getManager();        
+        $dql="select d, b from MainBundle:DetalleDepreciacion d join d.bienesCustodio b "
+                . "where b.eliminado='NO' and d.fechaDepreciacion>:fechaPasada and d.fechaDepreciacion<:fecha ";
+        $query=$em->createQuery($dql);
+        $query->setParameter('fechaPasada', $fechaPasada);
+        $query->setParameter('fecha', $fecha);
+        $entities = $query->getResult();      
+        $facade = $this->get('ps_pdf.facade');
+        $response = new Response();
+        $this->render('MainBundle:Reportes:reporte10.html.twig', array(
+            'entities' => $entities, 'fecha'=>$fecha,
+        ),$response);
+        $xml = $response->getContent();        
+        $content = $facade->render($xml);
+        return new Response($content, 200, array('content-type' => 'application/pdf'));
+    }
+    public function reporte11Action($fechastr){
+        $fecha=new \DateTime($fechastr);
+        $mes=explode("-", $fecha->format('Y-m-d'));
+        $month = date($mes[1]);
+        if($month=='01'){
+            $mesPasado=12;
+        }
+        else{
+            $mesPasado=$month-1;
+        }
+        $year = date('Y');
+        $day = date("d", mktime(0,0,0, $month+1, 0, $year));       
+        $fechaAc=new \DateTime($year."-".$month."-".$day);
+        $dayP = date("d", mktime(0,0,0, $mesPasado+1, 0, $year));
+        $fechaPasada=new \DateTime($year."-".$mesPasado."-".$dayP);
+        
+        $em = $this->getDoctrine()->getManager();        
+        $dql="select d, b from MainBundle:DetalleDepreciacion d join d.bienesCustodio b "
+                . "where b.eliminado='NO' and d.fechaDepreciacion>:fechaPasada and d.fechaDepreciacion<:fecha ";
+        $query=$em->createQuery($dql);
+        $query->setParameter('fechaPasada', $fechaPasada);
+        $query->setParameter('fecha', $fechaAc);
+        $entities = $query->getResult();      
+        $facade = $this->get('ps_pdf.facade');
+        $response = new Response();
+        $this->render('MainBundle:Reportes:reporte11.html.twig', array(
+            'entities' => $entities, 'fecha'=>$fechaAc,
         ),$response);
         $xml = $response->getContent();        
         $content = $facade->render($xml);

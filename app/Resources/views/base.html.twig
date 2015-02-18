@@ -150,16 +150,14 @@
                             <li id="mnrp8">
                                 <a href="{{path('reportes_rform8')}}"><i class="icon-double-angle-right"></i> Ubicación física del Activo</a>
                             </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-toggle"><i class="icon-file-text"></i>
-                            <span class="menu-text"> Depreciaciones</span>
-                            <b class="arrow icon-angle-down"></b>
-                        </a>
-                        <ul class="submenu" id="sbsubest">
-                            <li id="mnrpd1">
-                                <a href="{#{path('reportes_rform1')}#}"><i class="icon-double-angle-right"></i> Líneas</a>
+                            <li id="mnrp9">
+                                <a href="{{path('reportes_reporte9')}}" target="_blank"><i class="icon-double-angle-right"></i> Bienes sujetos de control</a>
+                            </li>
+                            <li id="mnrp10">
+                                <a href="{{path('reportes_reporte10')}}" target="_blank"><i class="icon-double-angle-right"></i> Bienes depreciados</a>
+                            </li>
+                            <li id="mnrp11">
+                                <a href="{{path('reportes_rform11')}}"><i class="icon-double-angle-right"></i> Valor en libros de bienes depreciados</a>
                             </li>
                         </ul>
                     </li>
@@ -263,6 +261,16 @@
         {#________BLOQUE PARA INSERTAR LAS FUNCIONES DE JAVASCRIPT DE CADA PAGINA_______#}		
         {%block script%}	
         <script type="text/javascript">
+            $("#btactualizar").click(function(){
+                $("#btactualizar").hide();
+                $("#btregresar").hide();
+                $("#bteliminar").hide();
+            });
+            $("#btcrear").click(function(){
+                $("#btcrear").hide();
+                $("#btregresar").hide();
+            });
+        
             /*
             $(document).ready(function(){
                 verSubtrans();

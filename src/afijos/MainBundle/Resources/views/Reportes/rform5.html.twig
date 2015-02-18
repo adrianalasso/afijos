@@ -79,8 +79,9 @@ jQuery(document).ready(function() {
 $("#btaceptar").click(function(){    
     var lsubest = $('#lsubestacion_type_subestacion').val();
     if(lsubest!=""){
-        window.open("/afijos/web/app.php/empadmin/reportes/"+lsubest+"/reporte5",'_blank');
-        //window.location.href = "{#{ path('reportes_reporte1' , {'desdestr': fechdesde, 'hastastr': fechasta})}#}";
+        var url="{{ path('reportes_reporte5' , {'lsubest': 'lsubest'})}}";
+        url = url.replace('lsubest', lsubest);
+        window.open(url,'_blank');
     }
     else{
             bootbox.dialog("Debe ingresar un rango de fechas", [{

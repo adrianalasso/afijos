@@ -34,6 +34,10 @@ reportes_rform8:
     pattern:  /rform8
     defaults: { _controller: MainBundle:Reportes:rform8 }
     
+reportes_rform11:
+    pattern:  /rform11
+    defaults: { _controller: MainBundle:Reportes:rform11 }
+    
 reportes_reporte1:
     pattern:  /{desdestr}/{hastastr}/reporte1
     defaults: { _controller: MainBundle:Reportes:reporte1 }
@@ -65,3 +69,15 @@ reportes_reporte7:
 reportes_reporte8:
     pattern:  /{actv}/reporte8
     defaults: { _controller: MainBundle:Reportes:reporte8 }
+    
+reportes_reporte9:
+    pattern:  /reporte9
+    defaults: { _controller: MainBundle:Reportes:reporte9 }
+    
+reportes_reporte10:
+    pattern:  /reporte10
+    defaults: { _controller: MainBundle:Reportes:reporte10 }
+    
+reportes_reporte11:
+    pattern:  /{fechastr}/reporte11
+    defaults: { _controller: MainBundle:Reportes:reporte11 }

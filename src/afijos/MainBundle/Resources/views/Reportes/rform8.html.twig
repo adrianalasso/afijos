@@ -79,8 +79,9 @@ jQuery(document).ready(function() {
 $("#btaceptar").click(function(){    
     var actv = $('#bajas_type_bienesCustodio').val();
     if(actv!=""){
-        window.open("/afijos/web/app.php/empadmin/reportes/"+actv+"/reporte8",'_blank');
-        //window.location.href = "{#{ path('reportes_reporte1' , {'desdestr': fechdesde, 'hastastr': fechasta})}#}";
+        var url="{{ path('reportes_reporte8' , {'actv': 'actv'})}}";
+        url = url.replace('actv', actv);
+        window.open(url,'_blank');
     }
     else{
             bootbox.dialog("Debe ingresar un rango de fechas", [{

@@ -42,6 +42,7 @@
                                 <td width="10%">Serie</td>
                                 <td width="6%">Estado</td>
                                 <td width="9%">Fecha de baja</td>
+                                <td width="9%">Valor de Adquisición</td>
                             </tr>
                             {% for entity in entities %}
                                 <tr>
@@ -55,10 +56,13 @@
                                     <td>{{ entity.bienesCustodio.serie }}</td>
                                     <td>{{ entity.bienesCustodio.estado }}</td>
                                     <td>{{ entity.fechaAprobado|date('d/m/Y') }}</td>
+                                    <td>-{{ entity.bienesCustodio.valorAdquisicion }}</td>
                                 </tr>
                             {% endfor %}
                     </table>
-                    {%endif%}
+                    {%endif%}                    
+                    <div height="20px"></div>            
+                    <div>Total de Gastos: {{gastos}}</div>                    
                     <!--PAGE CONTENT ENDS-->
                 </div><!--/.span-->
             </div><!--/.row-fluid-->

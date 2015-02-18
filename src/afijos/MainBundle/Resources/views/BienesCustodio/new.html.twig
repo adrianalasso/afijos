@@ -281,11 +281,11 @@
                     <div class="span6">
                         <div class="well well-small"> 
                             <div class="center">
-                                <button class="btn btn-small btn-success" type="submit">
+                                <button class="btn btn-small btn-success" type="submit" id="btcrear">
                                     <i class="icon-save bigger-150"></i>
                                     Crear
                                 </button>                                                    
-                                <a href="{{path('bienescustodio')}}"  class="btn btn-small btn-grey">
+                                <a href="{{path('bienescustodio')}}"  class="btn btn-small btn-grey" id="btregresar">
                                     <i class="icon-undo bigger-150"></i>
                                     Regresar
                                 </a>     
@@ -348,7 +348,7 @@
             if(!($("#afijos_mainbundle_bienescustodiotype_fechaMarcha").val(""))){
                 aesmayorm();
             }
-        });
+        });        
     });
     $(function() {
         $(".chzn-select").chosen(); 
