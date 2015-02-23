@@ -22,7 +22,7 @@ security:
                 target: usuario_login
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/admin, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admaf, roles: ROLE_ADMINAF }
         - { path: ^/astaf, roles: ROLE_ASISTAF }
         - { path: ^/jf, roles: ROLE_JEFE }
