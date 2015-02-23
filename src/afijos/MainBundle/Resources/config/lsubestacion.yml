@@ -45,3 +45,23 @@ lsubestacion_rformulario:
 lsubestacion_reporte:
     pattern:  /reporte
     defaults: { _controller: MainBundle:LSubestacion:reporte }
+
+lsubestacion_depreciar:
+    pattern:  /{id}/depreciar
+    defaults: { _controller: MainBundle:LSubestacion:depreciar }
+    
+lsubestacion_edepreciar:
+    pattern:  /{id}/edepreciar
+    defaults: { _controller: MainBundle:LSubestacion:edepreciar }
+    
+lsubestacion_ubicar:
+    pattern:  /{id}/ubicar
+    defaults: { _controller: MainBundle:LSubestacion:ubicar }
+    
+lsubestacion_ubicarform:
+    pattern:  /ubicarform
+    defaults: { _controller: MainBundle:LSubestacion:ubicarform }
+    
+lsubestacion_historialdeprec:
+    pattern:  /{id}/historialdeprec
+    defaults: { _controller: MainBundle:LSubestacion:historialdeprec }

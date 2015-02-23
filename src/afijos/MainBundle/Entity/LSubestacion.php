@@ -385,4 +385,8 @@ class LSubestacion extends Activos
     public function getSubestacion(){
             return $this->subestacion;
     }
+    
+    public function __toString() {
+        return $this->getSubestacion()." - ".$this->getCodigo()." - ".$this->descripcion;
+    }
 }

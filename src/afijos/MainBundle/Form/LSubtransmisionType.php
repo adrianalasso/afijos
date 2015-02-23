@@ -17,7 +17,39 @@ class LSubtransmisionType extends AbstractType
             ->add('observaciones')
             ->add('fechAdquisicion', 'date', array('widget' => 'single_text','format' => 'yyyy-MM-dd'))
             ->add('fechaMarcha', 'date', array('widget' => 'single_text','format' => 'yyyy-MM-dd'))
-            ->add('tipoDocumento')
+            ->add('tipoDocumento', 'choice', array(
+                                'choices' => array('123' => '123', 
+                                                                       'AC' => 'AC', 
+                                                                        'AC6' => 'AC6', 
+                                                                        'ACA' => 'ACA', 
+                                                                        'ACT' => 'ACT', 
+                                                                        'AD' => 'AD', 
+                                                                        'AG' => 'AG', 
+                                                                        'AVT' => 'AVT', 
+                                                                        'CP' => 'CP', 
+                                                                        'E' => 'E', 
+                                                                        'E/' => 'E/', 
+                                                                        'E/G' => 'E/G', 
+                                                                        'E7G' => 'E7G', 
+                                                                        'EBR' => 'EBR', 
+                                                                        'ECT' => 'ECT', 
+                                                                        'EF' => 'EF', 
+                                                                        'EG' => 'EG', 
+                                                                        'EGE' => 'EGE', 
+                                                                        'EGR' => 'EGR', 
+                                                                        'EHR' => 'EHR', 
+                                                                        'FAC' => 'FAC', 
+                                                                        'I.T' => 'I.T', 
+                                                                        'I/A' => 'I/A', 
+                                                                        'I/T' => 'I/T', 
+                                                                        'INV' => 'INV', 
+                                                                        'MEM' => 'MEM', 
+                                                                        'N/E' => 'N/E', 
+                                                                        'N/T' => 'N/T', 
+                                                                        'REI' => 'REI', 
+                                                                        'REP' => 'REP'),
+                                'empty_value' => 'Escoja una opcion..',
+                ))
             ->add('numeroDocumento')
             ->add('procedencia')
             ->add('financiamiento')

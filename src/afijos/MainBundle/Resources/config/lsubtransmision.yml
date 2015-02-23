@@ -45,3 +45,23 @@ lsubtransmision_rformulario:
 lsubtransmision_reporte:
     pattern:  /reporte
     defaults: { _controller: MainBundle:LSubtransmision:reporte }
+
+lsubtransmision_depreciar:
+    pattern:  /{id}/depreciar
+    defaults: { _controller: MainBundle:LSubtransmision:depreciar }
+    
+lsubtransmision_edepreciar:
+    pattern:  /{id}/edepreciar
+    defaults: { _controller: MainBundle:LSubtransmision:edepreciar }
+    
+lsubtransmision_ubicar:
+    pattern:  /{id}/ubicar
+    defaults: { _controller: MainBundle:LSubtransmision:ubicar }
+    
+lsubtransmision_ubicarform:
+    pattern:  /ubicarform
+    defaults: { _controller: MainBundle:LSubtransmision:ubicarform }
+    
+lsubtransmision_historialdeprec:
+    pattern:  /{id}/historialdeprec
+    defaults: { _controller: MainBundle:LSubtransmision:historialdeprec }

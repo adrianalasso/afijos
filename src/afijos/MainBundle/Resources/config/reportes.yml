@@ -81,3 +81,7 @@ reportes_reporte10:
 reportes_reporte11:
     pattern:  /{fechastr}/reporte11
     defaults: { _controller: MainBundle:Reportes:reporte11 }
+    
+reportes_rpthistorial:
+    pattern:  /{actv}/rpthistorial
+    defaults: { _controller: MainBundle:Reportes:rpthistorial }

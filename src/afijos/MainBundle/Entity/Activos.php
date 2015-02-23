@@ -851,8 +851,12 @@ class Activos
     public function getTrabajador(){
             return $this->trabajador;
     }   
-    
+    /*
     public function __toString() {
         return $this->codigo;
     }
+     * 
+     */
+    
+    
 }

@@ -11,7 +11,7 @@
                                 <tr>
                                     <td width="80%">
                                         <h1>C E N E L   E P </h1>
-                                        <h2>Reporte de Ubicación del activo {%if entities%}{{ entities[0].bienesCustodio.codigo ~' - ' ~entities[0].bienesCustodio.descripcion }}{%endif%}</h2>
+                                        <h2>Reporte del Historial de depreciaciones del activo {%if entities%}{{ entities[0].lsubtransmision.codigo ~' - ' ~entities[0].lsubtransmision.subtransmision }}{%endif%}</h2>
                                     </td>
                                     <td>
                                         <div>{{ "now"|date("d/m/Y", "America/Guayaquil") }}</div>
@@ -30,58 +30,67 @@
                     <div class="space-10"></div>
                     <!--PAGE CONTENT BEGINS-->   
                     {%if entities%}
-                    <table  id="sample-table-2" class="table table-striped table-bordered table-hover">
-                    {% for entity in entities %}
+                    <table  class="table table-striped table-bordered table-hover">
                             <tr>
                                 <td width="30%">Código</td>
-                                <td>{{ entity.bienesCustodio.codigo }}</td>
+                                <td>{{ entities[0].lsubtransmision.codigo }}</td>
                             </tr>
                             <tr>
-                                <td>Descripción</td>
-                                <td>{{ entity.bienesCustodio.descripcion }}</td>
+                                <td>Línea de Subtransmisión</td>
+                                <td>{{ entities[0].lsubtransmision.subtransmision }}</td>
                             </tr>
                             <tr>
                                 <td>Departamento</td>
-                                <td>{{ entity.bienesCustodio.trabajador.departamento}}</td>
+                                <td>{{ entities[0].lsubtransmision.trabajador.departamento}}</td>
                             </tr>
                             <tr>
                                 <td>Responsable</td>
-                                <td>{{ entity.bienesCustodio.trabajador}}</td>
+                                <td>{{ entities[0].lsubtransmision.trabajador}}</td>
                             </tr>
                             <tr>
                                 <td>Nº de Documento</td>
-                                <td>{{ entity.bienesCustodio.numeroDocumento}}</td>
+                                <td>{{ entities[0].lsubtransmision.numeroDocumento}}</td>
                             </tr>
                             <tr>
                                 <td>Fecha de Documento</td>
-                                <td>{{ entity.bienesCustodio.fechAdquisicion|date('d/m/Y')}}</td>
+                                <td>{{ entities[0].lsubtransmision.fechAdquisicion|date('d/m/Y')}}</td>
                             </tr>
                             <tr>
-                                <td>Marca</td>
-                                <td>{{ entity.bienesCustodio.marca }}</td>
+                                <td>Material</td>
+                                <td>{{ entities[0].lsubtransmision.material }}</td>
                             </tr>
                             <tr>
-                                <td>Serie</td>
-                                <td>{{ entity.bienesCustodio.serie }}</td>
+                                <td>Tipo</td>
+                                <td>{{ entities[0].lsubtransmision.tipo }}</td>
                             </tr>
                             <tr>
                                 <td>Estado</td>
-                                <td>{{ entity.bienesCustodio.estado }}</td>
+                                <td>{{ entities[0].lsubtransmision.estado }}</td>
                             </tr>                                
                             <tr>
                                 <td>Fecha de Alta</td>
-                                <td>{{ entity.bienesCustodio.fechaRegistro|date('d/m/Y') }}</td>
+                                <td>{{ entities[0].lsubtransmision.fechaRegistro|date('d/m/Y') }}</td>
                             </tr>                             
                             <tr>
                                 <td>Precio de Adquisición</td>
-                                <td>{{ entity.bienesCustodio.valorAdquisicion }}</td>
-                            </tr>                                             
+                                <td>{{ entities[0].lsubtransmision.valorAdquisicion }}</td>
+                            </tr>       
+                    </table>
+                    <div><h2>Historial de Depreciaciones</h2></div>
+                    <table  id="sample-table-2" class="table table-striped table-bordered table-hover">
                             <tr>
-                                <td>Depreciación Acumulada</td>
-                                <td>-{{ entity.deprecAcumulada }}</td>
+                                <td width="50%">Fecha de depreciacion</td>
+                                <td width="50%">Depreciación Acumulada</td>
                             </tr>
+                            {% for entity in entities %}
+                                <tr> 
+                                    <td>{{ entity.fechaDepreciacion|date('d/m/Y')}}</td>
+                                    <td>-{{ entity.deprecAcumulada}}</td>
+                                </tr>
                             {% endfor %}
                     </table>
+                    {%else%}
+                    No hay depreciaciones que presentar
                     {%endif%}
                     <!--PAGE CONTENT ENDS-->
                 </div><!--/.span-->

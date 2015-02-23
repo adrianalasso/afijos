@@ -117,13 +117,13 @@
                             <div class="center">
                                 <div class="well well-small"> 
                                     <div class="center">
-                                        {% if is_granted('ROLE_DIRECTIVO') %}
+                                        {% if is_granted('ROLE_ASISTAF') %}
                                         <a  href="{{ path('abajas_imprimir', { 'id': entity.id }) }}" target="_blank" 
                                             class="btn btn-pink btn-small">
                                             <i class="icon-print bigger-150"></i>
                                             Imprimir
                                         </a>
-                                        {%elseif is_granted('ROLE_EMPADMIN')%}
+                                        {%elseif is_granted('ROLE_JEFE')%}
                                         <a  href="{{ path('bajas_imprimir', { 'id': entity.id }) }}" target="_blank" 
                                             class="btn btn-pink btn-small">
                                             <i class="icon-print bigger-150"></i>
@@ -157,7 +157,7 @@
 {%block scripthijo%}
 <script type="text/javascript">
 window.onload = function(){
-    {% if is_granted('ROLE_DIRECTIVO') %}
+    {% if is_granted('ROLE_ASISTAF') %}
     var elemento=document.getElementById("mnabajas");
     {%else%}
     var elemento=document.getElementById("mnbajas");

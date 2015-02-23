@@ -37,7 +37,7 @@
                                     <div class="control-group">
                                         <label class="control-label" for="">Activo</label>
                                         <div class="controls">
-                                            {{ form_widget(form.bienesCustodio, {'attr' :  {'class' : 'chzn-select input-large', 'data-placeholder':'Escoja una opcion..'}}) }}
+                                            {{ form_widget(form.lsubtransmision, {'attr' :  {'class' : 'chzn-select input-large', 'data-placeholder':'Escoja una opcion..'}}) }}
                                         </div>
                                     </div>
                                     <div class="well well-small"> 
@@ -73,36 +73,36 @@
 {{parent()}}
 <script type="text/javascript">
 jQuery(document).ready(function() {
-    var elemento=document.getElementById("mnrp8");
+    var elemento=document.getElementById("mnlsubtransubicarform");
     elemento.classList.add('active');
     elemento.parentNode.parentNode.classList.add('active');
     elemento.parentNode.parentNode.classList.add('open');      
     $(".chzn-select").chosen(); 
 });
 function mensaje(){
-    bootbox.dialog("Debe seleccionar un activo", [{
+    bootbox.dialog("Debe escoger un activo", [{
                     "label" : "Aceptar",
                     "class" : "btn-small btn-success",
                     "callback": function() {}
                 }]
             );
 }
-$("#bthistorial").click(function(){    
-    var actv = $('#bajas_type_bienesCustodio').val();
+$("#btaceptar").click(function(){    
+    var actv = $('#ubicarlst_type_lsubtransmision').val();
     if(actv!=""){
-        var url="{{ path('reportes_rpthistorial' , {'actv': 'actv'})}}";
-        url = url.replace('actv', actv);
+        var url="{{ path('lsubtransmision_ubicar' , {'id': 'id'})}}";
+        url = url.replace('id', actv);
         window.open(url,'_blank');
     }
     else{
             mensaje();
         }
 });
-$("#btaceptar").click(function(){    
-    var actv = $('#bajas_type_bienesCustodio').val();
+$("#bthistorial").click(function(){    
+    var actv = $('#ubicarlst_type_lsubtransmision').val();
     if(actv!=""){
-        var url="{{ path('reportes_reporte8' , {'actv': 'actv'})}}";
-        url = url.replace('actv', actv);
+        var url="{{ path('lsubtransmision_historialdeprec' , {'id': 'id'})}}";
+        url = url.replace('id', actv);
         window.open(url,'_blank');
     }
     else{

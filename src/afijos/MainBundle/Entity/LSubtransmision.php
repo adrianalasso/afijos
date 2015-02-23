@@ -92,7 +92,7 @@ class LSubtransmision extends Activos
     /**
      * @var string
      *
-     * @ORM\Column(name="lsub_observ_estructura", type="text")
+     * @ORM\Column(name="lsub_observ_estructura", type="text", nullable=true)
      */
     private $observEstructura;
 
@@ -135,7 +135,7 @@ class LSubtransmision extends Activos
     /**
      * @var string
      *
-     * @ORM\Column(name="lsub_observ_ptierra",type="text")
+     * @ORM\Column(name="lsub_observ_ptierra",type="text", nullable=true)
      */
     private $observPTierra;
 
@@ -170,7 +170,7 @@ class LSubtransmision extends Activos
     /**
      * @var string
      *
-     * @ORM\Column(name="lsub_observ_tensor", type="text")
+     * @ORM\Column(name="lsub_observ_tensor", type="text" , nullable=true)
      */
     private $observTensor;
 
@@ -212,7 +212,7 @@ class LSubtransmision extends Activos
     /**
      * @var string
      *
-     * @ORM\Column(name="lsub_observ_cfase", type="text")
+     * @ORM\Column(name="lsub_observ_cfase", type="text", nullable=true)
      */
     private $observCFase;
 
@@ -254,7 +254,7 @@ class LSubtransmision extends Activos
     /**
      * @var string
      *
-     * @ORM\Column(name="lsub_observ_cguardia", type="text")
+     * @ORM\Column(name="lsub_observ_cguardia", type="text", nullable=true)
      */
     private $observCGuardia;
 
@@ -1076,4 +1076,8 @@ class LSubtransmision extends Activos
     public function getSubtransmision(){
             return $this->subtransmision;
     }    
+    
+    public function __toString() {
+        return $this->getSubtransmision()." - ".$this->getCodigo();
+    }
 }

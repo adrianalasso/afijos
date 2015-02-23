@@ -116,6 +116,12 @@
                                                     <div class="controls">
                                                             {{form_widget(edit_form.canton, {'attr' :  {'class' : 'chzn-select input-large', 'data-placeholder':'Escoja una opcion..'}}) }}
                                                     </div>
+                                                </div>                                                
+                                                <div class="control-group">
+                                                    <label class="control-label" for="">Tipo de Documento</label>
+                                                    <div class="controls">
+                                                            {{form_widget(edit_form.tipoDocumento, {'attr' :  {'class' : 'chzn-select input-large', 'data-placeholder':'Escoja una opcion..'}}) }}
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="span6">
@@ -158,7 +164,13 @@
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Estado</label>
                                                     <div class="controls">
-                                                            {{form_widget(edit_form.estado) }}
+                                                            {{form_widget(edit_form.estado, {'attr' :  {'list' : 'lstestado'}}) }}
+                                                            <datalist id="lstestado">
+                                                                <option label="" value="BUENO">
+                                                                <option label="" value="REGULAR">
+                                                                <option label="" value="MALO">    
+                                                                    <option label="" value="N/D">    
+                                                            </datalist>
                                                     </div>
                                                 </div>                      
                                                 <div class="control-group">
@@ -196,7 +208,14 @@
                                         <div class="control-group">
                                             <label class="control-label" for="">Altura</label>
                                             <div class="controls">
-                                                    {{form_widget(edit_form.altura) }}
+                                                    {{form_widget(edit_form.altura, {'attr' :  {'list' : 'lstaltura'}}) }}
+                                                    <datalist id="lstaltura">
+                                                        <option label="" value="12">
+                                                        <option label="" value="16.5">
+                                                        <option label="" value="18">    
+                                                        <option label="" value="20">    
+                                                        <option label="" value="30">
+                                                    </datalist>
                                             </div>
                                         </div>
                                         <div class="control-group">
@@ -222,13 +241,37 @@
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Material</label>
                                                     <div class="controls">
-                                                            {{form_widget(edit_form.material) }}
+                                                            {{form_widget(edit_form.material, {'attr' :  {'list' : 'lstmaterial'}}) }}
+                                                            <datalist id="lstmaterial">
+                                                                <option label="" value="ACERO">
+                                                                <option label="" value="HORMIGÓN">
+                                                                    <option label="" value="ALUMINIO">
+                                                            </datalist>
                                                     </div>
                                                 </div>
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Tipo</label>
                                                     <div class="controls">
-                                                            {{form_widget(edit_form.tipo) }}
+                                                            {{form_widget(edit_form.tipo, {'attr' :  {'list' : 'lsttipo'}}) }}
+                                                            <datalist id="lsttipo">
+                                                                <option label="" value="CIRCULAR_500 kg">
+                                                                <option label="" value="RECTANGULAR_1200 kg">
+                                                                <option label="" value="RECTANGULAR_1800 kg">    
+                                                                <option label="" value="RECTANGULAR_2400 kg">    
+                                                                <option label="" value="RECTANGULAR_800 kg">    
+                                                                <option label="" value="TORRE_30º">    
+                                                                    <option label="" value="DOBLE RETENCION">    
+                                                                        <option label="" value="PASANTE">    
+                                                                    <option label="" value="COBRE">
+                                                                    <option label="" value="ACSR">    
+                                                                        <option label="" value="(TP)(TPD)">    
+                                                                            <option label="" value="(TT)(TTD)">
+                                                                                <option label="" value="TT">
+                                                                                    <option label="" value="TTD">
+                                                                                <option label="" value="TORRE_30º">    
+                                                                            
+                                                                    <option label="" value="N/D">    
+                                                            </datalist>
                                                     </div>
                                                 </div>
                                             </div>
@@ -241,19 +284,28 @@
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Nombre</label>
                                                     <div class="controls">
-                                                            {{form_widget(edit_form.nombrEstructura) }}
+                                                            {{form_widget(edit_form.nombrEstructura, {'attr' :  {'list' : 'lstnombre'}}) }}
+                                                            <datalist id="lstnombre">
+                                                                <option label="" value="AU-1-10º-G">
+                                                                <option label="" value="AU-1-30º">
+                                                                <option label="" value="ERH-G">    
+                                                                <option label="" value="RU-1-G">    
+                                                                <option label="" value="S-1-G">    
+                                                                <option label="" value="SU-1-G">
+                                                                    <option label="" value="N/D">    
+                                                            </datalist>
                                                     </div>
                                                 </div>
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Tipo</label>
                                                     <div class="controls">
-                                                            {{form_widget(edit_form.tipoEstructura) }}
+                                                            {{form_widget(edit_form.tipoEstructura, {'attr' :  {'list' : 'lsttipo'}}) }}
                                                     </div>
                                                 </div>
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Estado</label>
                                                     <div class="controls">
-                                                            {{form_widget(edit_form.estadoEstructura) }}
+                                                            {{form_widget(edit_form.estadoEstructura, {'attr' :  {'list' : 'lstestado'}}) }}
                                                     </div>
                                                 </div>
                                                 <div class="control-group">
@@ -272,25 +324,35 @@
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Descripción</label>
                                                     <div class="controls">
-                                                            {{form_widget(edit_form.descripcionPTierra) }}
+                                                            {{form_widget(edit_form.descripcionPTierra, {'attr' :  {'list' : 'lstdescripcion'}}) }}
+                                                            <datalist id="lstdescripcion">
+                                                                <option label="" value="7H">
+                                                                    <option label="" value="N/D">    
+                                                            </datalist>
                                                     </div>
                                                 </div>
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Tipo</label>
                                                     <div class="controls">
-                                                            {{form_widget(edit_form.tipoPTierra) }}
+                                                            {{form_widget(edit_form.tipoPTierra, {'attr' :  {'list' : 'lsttipo'}}) }}
                                                     </div>
                                                 </div>
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Calibre</label>
                                                     <div class="controls">
-                                                            {{form_widget(edit_form.calibrePTierra) }}
+                                                            {{form_widget(edit_form.calibrePTierra, {'attr' :  {'list' : 'lstcalibre'}}) }}
+                                                            <datalist id="lstcalibre">
+                                                                <option label="" value="1/0">
+                                                                <option label="" value="266.8 MCM">
+                                                                <option label="" value="2 AWG">    
+                                                                    <option label="" value="N/D">    
+                                                            </datalist>
                                                     </div>
                                                 </div>
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Estado</label>
                                                     <div class="controls">
-                                                            {{form_widget(edit_form.estadoPTierra) }}
+                                                            {{form_widget(edit_form.estadoPTierra, {'attr' :  {'list' : 'lstestado'}}) }}
                                                     </div>
                                                 </div>
                                                 <div class="control-group">
@@ -309,25 +371,33 @@
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Cantidad</label>
                                                     <div class="controls">
-                                                            {{form_widget(edit_form.cantidadTensor) }}
+                                                            {{form_widget(edit_form.cantidadTensor, {'attr' :  {'list' : 'lstcantidad'}}) }}
+                                                            <datalist id="lstcantidad">
+                                                                <option label="" value="1">
+                                                                    <option label="" value="2">
+                                                                        <option label="" value="4">
+                                                                            <option label="" value="6">
+                                                                                <option label="" value="8"> 
+                                                                    <option label="" value="N/D">    
+                                                            </datalist>
                                                     </div>
                                                 </div>
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Tipo</label>
                                                     <div class="controls">
-                                                            {{form_widget(edit_form.tipoTensor) }}
+                                                            {{form_widget(edit_form.tipoTensor, {'attr' :  {'list' : 'lsttipo'}}) }}
                                                     </div>
                                                 </div>
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Calibre</label>
                                                     <div class="controls">
-                                                            {{form_widget(edit_form.calibreTensor) }}
+                                                            {{form_widget(edit_form.calibreTensor, {'attr' :  {'list' : 'lstcalibre'}}) }}
                                                     </div>
                                                 </div>
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Estado</label>
                                                     <div class="controls">
-                                                            {{form_widget(edit_form.estadoTensor) }}
+                                                            {{form_widget(edit_form.estadoTensor, {'attr' :  {'list' : 'lstestado'}}) }}
                                                     </div>
                                                 </div>
                                                 <div class="control-group">
@@ -352,25 +422,25 @@
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Tipo</label>
                                                     <div class="controls">
-                                                            {{form_widget(edit_form.tipoCFase) }}
+                                                            {{form_widget(edit_form.tipoCFase, {'attr' :  {'list' : 'lsttipo'}}) }}
                                                     </div>
                                                 </div>
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Material</label>
                                                     <div class="controls">
-                                                            {{form_widget(edit_form.materialCFase) }}
+                                                            {{form_widget(edit_form.materialCFase, {'attr' :  {'list' : 'lstmaterial'}}) }}
                                                     </div>
                                                 </div>
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Calibre</label>
                                                     <div class="controls">
-                                                            {{form_widget(edit_form.calibreCFase) }}
+                                                            {{form_widget(edit_form.calibreCFase, {'attr' :  {'list' : 'lstcalibre'}}) }}
                                                     </div>
                                                 </div>
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Estado</label>
                                                     <div class="controls">
-                                                            {{form_widget(edit_form.estadoCFase) }}
+                                                            {{form_widget(edit_form.estadoCFase, {'attr' :  {'list' : 'lstestado'}}) }}
                                                     </div>
                                                 </div>
                                                 <div class="control-group">
@@ -395,25 +465,25 @@
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Tipo</label>
                                                     <div class="controls">
-                                                            {{form_widget(edit_form.tipoCGuardia) }}
+                                                            {{form_widget(edit_form.tipoCGuardia, {'attr' :  {'list' : 'lsttipo'}}) }}
                                                     </div>
                                                 </div>
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Material</label>
                                                     <div class="controls">
-                                                            {{form_widget(edit_form.materialCGuardia) }}
+                                                            {{form_widget(edit_form.materialCGuardia, {'attr' :  {'list' : 'lstmaterial'}}) }}
                                                     </div>
                                                 </div>
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Calibre</label>
                                                     <div class="controls">
-                                                            {{form_widget(edit_form.calibreCGuardia) }}
+                                                            {{form_widget(edit_form.calibreCGuardia, {'attr' :  {'list' : 'lstcalibre'}}) }}
                                                     </div>
                                                 </div>
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Estado</label>
                                                     <div class="controls">
-                                                            {{form_widget(edit_form.estadoCGuardia) }}
+                                                            {{form_widget(edit_form.estadoCGuardia, {'attr' :  {'list' : 'lstestado'}}) }}
                                                     </div>
                                                 </div>
                                                 <div class="control-group">
@@ -442,12 +512,6 @@
                                                     </div>
                                                 </div>
                                                 <div class="control-group">
-                                                    <label class="control-label" for="">Tipo de Documento</label>
-                                                    <div class="controls">
-                                                            {{form_widget(edit_form.tipoDocumento) }}
-                                                    </div>
-                                                </div>
-                                                <div class="control-group">
                                                     <label class="control-label" for="">Nº de Documento</label>
                                                     <div class="controls">
                                                             {{form_widget(edit_form.numeroDocumento) }}
@@ -468,7 +532,11 @@
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Bien Asegurable</label>
                                                     <div class="controls">
-                                                            {{form_widget(edit_form.bienAsegurable) }}
+                                                            {{form_widget(edit_form.bienAsegurable, {'attr' :  {'list' : 'lstasegurable'}}) }}
+                                                                <datalist id="lstasegurable">
+                                                                <option label="" value="SI">
+                                                                <option label="" value="NO">
+                                                            </datalist>
                                                     </div>
                                                 </div>                                                
                                             </div>
@@ -476,13 +544,18 @@
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Calidad</label>
                                                     <div class="controls">
-                                                            {{form_widget(edit_form.calidad) }}
+                                                            {{form_widget(edit_form.calidad, {'attr' :  {'list' : 'lstestado'}}) }}
                                                     </div>
                                                 </div>
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Factor de Estado</label>
                                                     <div class="controls">
-                                                            {{form_widget(edit_form.factorEstado) }}
+                                                            {{form_widget(edit_form.factorEstado, {'attr' :  {'list' : 'lstfactor'}}) }}
+                                                        <datalist id="lstfactor">
+                                                                <option label="" value="1">
+                                                                <option label="" value="1.5">
+                                                                <option label="" value="2">
+                                                            </datalist>
                                                     </div>
                                                 </div>
                                                 <div class="control-group">

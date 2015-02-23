@@ -1,9 +1,9 @@
 security:
     role_hierarchy:
-        ROLE_ADMIN: [ROLE_USER, ROLE_DIRECTIVO, ROLE_EMPADMIN, ROLE_EMPOPER]
-        ROLE_DIRECTIVO: [ROLE_USER, ROLE_EMPADMIN, ROLE_EMPOPER]
-        ROLE_EMPADMIN: [ROLE_USER, ROLE_EMPOPER]
-        ROLE_EMPOPER: ROLE_USER
+        ROLE_ADMIN: [ROLE_USER, ROLE_ADMINAF, ROLE_ASISTAF, ROLE_JEFE]
+        ROLE_ADMINAF: [ROLE_USER, ROLE_ASISTAF, ROLE_JEFE]
+        ROLE_ASISTAF: ROLE_USER
+        ROLE_JEFE: ROLE_USER
     providers:
         usuarios:
             entity: {class : afijos\MainBundle\Entity\Usuario, property: username}
@@ -23,8 +23,9 @@ security:
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/directivo, roles: ROLE_DIRECTIVO }
-        - { path: ^/empadmin, roles: ROLE_EMPADMIN }
+        - { path: ^/admaf, roles: ROLE_ADMINAF }
+        - { path: ^/astaf, roles: ROLE_ASISTAF }
+        - { path: ^/jf, roles: ROLE_JEFE }
         - { path: ^/index, roles: ROLE_USER }
 
     encoders:

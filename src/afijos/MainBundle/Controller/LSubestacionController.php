@@ -10,6 +10,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use afijos\MainBundle\Entity\LSubestacion;
 use afijos\MainBundle\Form\LSubestacionType;
 use afijos\MainBundle\Form\LSubestacionReportType;
+use Symfony\Component\HttpFoundation\Response;
+//libreria para reportes
+use Ps\PdfBundle\Annotation\Pdf;
 
 /**
  * LSubestacion controller.
@@ -96,8 +99,9 @@ class LSubestacionController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
+            return $this->redirect($this->generateUrl('lsubestacion_depreciar', array('id' => $entity->getId())));
 
-            return $this->redirect($this->generateUrl('lsubestacion_show', array('id' => $entity->getId())));
+            //return $this->redirect($this->generateUrl('lsubestacion_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -156,8 +160,8 @@ class LSubestacionController extends Controller
         if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
-
-            return $this->redirect($this->generateUrl('lsubestacion_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('lsubestacion_edepreciar', array('id' => $id)));
+            //return $this->redirect($this->generateUrl('lsubestacion_edit', array('id' => $id)));
         }
 
         return array(
@@ -246,4 +250,159 @@ class LSubestacionController extends Controller
             'entities' => $entities
         ));             
     }
+    
+    public function depreciarAction($id){        
+        $em1 = $this->getDoctrine()->getManager();
+        $entity = $em1->getRepository('MainBundle:LSubestacion')->find($id);
+        $nMeses=$entity->getUnidadPropiedad()->getVidaUtilM();
+        $indiDep=$entity->getUnidadPropiedad()->getIndiceDeprec();
+        $valDep=$entity->getValorDepreciable();
+        for($i=0;$i<$nMeses;$i++){            
+            $dep=new \afijos\MainBundle\Entity\DetalleDepreciacionLSb();
+            $depAcum=$entity->getValorDepreciacionAcumulada();
+            $fechaUltDepStr=$entity->getUltimaFechaDepreciacion();            
+            $depMensual=(($valDep*$indiDep)/100)/12;
+            if($valDep>$depAcum){
+                if(($depMensual+$depAcum)>$valDep){
+                    $depMensual=$valDep-$depAcum;
+                }
+                else{$depMensual=$depMensual;}
+            }
+            else{$depMensual=0;}
+            $dep->setLSubestacion($entity);                
+            $fechaUltDep = new \DateTime($fechaUltDepStr->format('Y-m-d'));
+            $fecha=$fechaUltDep->add(new \DateInterval('P1M'));
+            $dep->setFechaDepreciacion($fecha);
+            $entity->setUltimaFechaDepreciacion($fecha);
+            $mes=explode("-", $fecha->format('Y-m-d'));
+            $dep->setMesDepreciacion($mes[1]);
+            $dep->setDeprecMensual($depMensual);
+            $depAcumN=$depAcum+$depMensual;
+            $dep->setDeprecAcumulada($depAcumN);
+            $entity->setValorDepreciacionAcumulada($depAcumN);
+            $em1->flush();
+            $em2 = $this->getDoctrine()->getManager();
+            $em2->persist($dep);
+            $em2->flush();
+        }
+        return $this->redirect($this->generateUrl('lsubestacion_show', array('id' => $entity->getId())));
+    }
+    
+    public function edepreciarAction($id){
+        $emdp = $this->getDoctrine()->getManager();
+        $emb = $this->getDoctrine()->getManager();
+        $bien=$emb->getRepository('MainBundle:LSubestacion')->find($id);
+        $depreciaciones=$emdp->getRepository('MainBundle:DetalleDepreciacionLSb')->findBy(array(
+            'lsubestacion'=>$id,
+        ));
+        $bien->setValorDepreciacionAcumulada(0);
+        $fechaMarcha=$bien->getFechaMarcha();
+        $bien->setUltimaFechaDepreciacion($fechaMarcha);
+        $emb->flush();
+        $nfilas=count($depreciaciones);
+        for($i=0;$i<$nfilas;$i++){
+            $depreciacion=$emdp->getRepository('MainBundle:DetalleDepreciacionLSb')->find($depreciaciones[$i]->getId());
+            $emdp->remove($depreciacion);
+            $emdp->flush();
+        }
+        return $this->redirect($this->generateUrl('lsubestacion_depreciar', array('id' => $id)));
+        //return $this->redirect($this->generateUrl('lsubestacion_show', array('id' => $id)));
+    }
+    public function ubicarformAction(){
+        $entity = new \afijos\MainBundle\Entity\DetalleDepreciacionLSb();
+        $form = $this->createForm(new \afijos\MainBundle\Form\UbicarType(), $entity);        
+        return $this->render('MainBundle:LSubestacion:ubicarform.html.twig', array(
+            'form'   => $form->createView(),
+                ));             
+    }
+    
+    public function ubicarAction($id){
+        $emdp = $this->getDoctrine()->getManager();
+        $emb = $this->getDoctrine()->getManager();
+        $bien=$emb->getRepository('MainBundle:LSubestacion')->find($id);        
+        ///////////////
+        $fechaUltima=$bien->getUltimaFechaDepreciacion();
+        $fechaNow=new \DateTime("NOW");
+        if($fechaUltima>$fechaNow){
+            $fechaUltima=$fechaNow;
+        }
+        $dfecha=explode("-", $fechaUltima->format('Y-m-d'));
+        $month = date($dfecha[1]);
+        $year=date($dfecha[0]);
+        $yearP=$year;
+        if($month=='01'){
+            $mesPasado=12;
+            $yearP=$year-1;
+        }
+        else{
+            $mesPasado=$month-1;
+        }
+        $day = date("d", mktime(0,0,0, $month+1, 0, $year));               
+        $fechaAc=new \DateTime($year."-".$month."-".$day);
+        $dayP = date("d", mktime(0,0,0, $mesPasado+1, 0, $yearP));
+        $fechaPasada=new \DateTime($yearP."-".$mesPasado."-".$dayP);        
+        //////////
+        $dql="select d, b from MainBundle:DetalleDepreciacionLSb d join d.lsubestacion b "
+                . "where b.id=:id and b.eliminado='NO' and d.fechaDepreciacion>:fechaPasada and d.fechaDepreciacion<:fecha ";
+        $query=$emdp->createQuery($dql);
+        $query->setParameter('id', $id);
+        $query->setParameter('fechaPasada', $fechaPasada);
+        $query->setParameter('fecha', $fechaAc);
+        $depreciacion = $query->getResult();
+        
+        ////proceso para presentar en pdf
+        $facade = $this->get('ps_pdf.facade');
+        $response = new Response();
+        $this->render('MainBundle:LSubestacion:ubicar.html.twig', array(
+            'depreciacion' => $depreciacion,
+        ),$response);
+        $xml = $response->getContent();        
+        $content = $facade->render($xml);
+        return new Response($content, 200, array('content-type' => 'application/pdf'));
+    }
+    public function historialdeprecAction($id){
+        $emdp = $this->getDoctrine()->getManager();
+        $emb = $this->getDoctrine()->getManager();
+        $bien=$emb->getRepository('MainBundle:LSubestacion')->find($id);        
+        ///////////////
+        $fechaUltima=$bien->getUltimaFechaDepreciacion();
+        $fechaNow=new \DateTime("NOW");
+        if($fechaUltima>$fechaNow){
+            $fechaUltima=$fechaNow;
+        }
+        $dfecha=explode("-", $fechaUltima->format('Y-m-d'));
+        $month = date($dfecha[1]);
+        $year=date($dfecha[0]);
+        $yearP=$year;
+        if($month=='01'){
+            $mesPasado=12;
+            $yearP=$year-1;
+        }
+        else{
+            $mesPasado=$month-1;
+        }
+        $day = date("d", mktime(0,0,0, $month+1, 0, $year));               
+        $fechaAc=new \DateTime($year."-".$month."-".$day);
+        $dayP = date("d", mktime(0,0,0, $mesPasado+1, 0, $yearP));
+        $fechaPasada=new \DateTime($yearP."-".$mesPasado."-".$dayP);        
+        //////////
+        $dql="select d, b from MainBundle:DetalleDepreciacionLSb d join d.lsubestacion b "
+                . "where b.id=:id and b.eliminado='NO' and d.fechaDepreciacion<:fecha ";
+        $query=$emdp->createQuery($dql);
+        $query->setParameter('id', $id);
+        //$query->setParameter('fechaPasada', $fechaPasada);
+        $query->setParameter('fecha', $fechaAc);
+        $depreciacion = $query->getResult();
+        
+        ////proceso para presentar en pdf
+        $facade = $this->get('ps_pdf.facade');
+        $response = new Response();
+        $this->render('MainBundle:LSubestacion:historial.html.twig', array(
+            'entities' => $depreciacion,
+        ),$response);
+        $xml = $response->getContent();        
+        $content = $facade->render($xml);
+        return new Response($content, 200, array('content-type' => 'application/pdf'));
+    }
+    
 }

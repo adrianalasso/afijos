@@ -5,17 +5,17 @@ namespace afijos\MainBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * DetalleDepreciacion
+ * DetalleDepreciacionLSt
  *
- * @ORM\Table(name="detalle_depreciacion")
+ * @ORM\Table(name="detalle_depreciacion_lsubtrans")
  * @ORM\Entity
  */
-class DetalleDepreciacion
+class DetalleDepreciacionLSt
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="dep_id", type="integer")
+     * @ORM\Column(name="dep_lsubtrans_id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -24,28 +24,28 @@ class DetalleDepreciacion
     /**
      * @var float
      *
-     * @ORM\Column(name="dep_deprec_acumulada", type="decimal", scale=2)
+     * @ORM\Column(name="dep_lsubtrans_deprec_acumulada", type="decimal", scale=2)
      */
     private $deprecAcumulada;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="dep_deprec_mensual", type="decimal", scale=2)
+     * @ORM\Column(name="dep_lsubtrans_deprec_mensual", type="decimal", scale=2)
      */
     private $deprecMensual;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dep_fecha_depreciacion", type="date")
+     * @ORM\Column(name="dep_lsubtrans_fecha_depreciacion", type="date")
      */
     private $fechaDepreciacion;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="dep_mes_depreciacion", type="string", length=255)
+     * @ORM\Column(name="dep_lsubtrans_mes_depreciacion", type="string", length=255)
      */
     private $mesDepreciacion;
 
@@ -63,7 +63,7 @@ class DetalleDepreciacion
      * Set deprecAcumulada
      *
      * @param float $deprecAcumulada
-     * @return DetalleDepreciacion
+     * @return DetalleDepreciacionLSt
      */
     public function setDeprecAcumulada($deprecAcumulada)
     {
@@ -86,7 +86,7 @@ class DetalleDepreciacion
      * Set deprecMensual
      *
      * @param float $deprecMensual
-     * @return DetalleDepreciacion
+     * @return DetalleDepreciacionLSt
      */
     public function setDeprecMensual($deprecMensual)
     {
@@ -109,7 +109,7 @@ class DetalleDepreciacion
      * Set fechaDepreciacion
      *
      * @param \DateTime $fechaDepreciacion
-     * @return DetalleDepreciacion
+     * @return DetalleDepreciacionLSt
      */
     public function setFechaDepreciacion($fechaDepreciacion)
     {
@@ -131,7 +131,7 @@ class DetalleDepreciacion
      * Set mesDepreciacion
      *
      * @param string $mesDepreciacion
-     * @return DetalleDepreciacion
+     * @return DetalleDepreciacionLSt
      */
     public function setMesDepreciacion($mesDepreciacion)
     {
@@ -151,16 +151,16 @@ class DetalleDepreciacion
     }
         
     /**
-     * @ORM\ManyToOne(targetEntity="\afijos\MainBundle\Entity\BienesCustodio")
+     * @ORM\ManyToOne(targetEntity="\afijos\MainBundle\Entity\LSubtransmision")
      * @ORM\JoinColumn(name="actv_id", referencedColumnName="actv_id", onDelete="CASCADE")
      * @return integer
      */
-    private $bienesCustodio;
-    public function setBienesCustodio(\afijos\MainBundle\Entity\BienesCustodio $bienesCustodio){
-            $this->bienesCustodio=$bienesCustodio;
+    private $lsubtransmision;
+    public function setLSubtransmision(\afijos\MainBundle\Entity\LSubtransmision $lsubtransmision){
+            $this->lsubtransmision=$lsubtransmision;
     }
 
-    public function getBienesCustodio(){
-            return $this->bienesCustodio;
+    public function getLSubtransmision(){
+            return $this->lsubtransmision;
     }    
 }

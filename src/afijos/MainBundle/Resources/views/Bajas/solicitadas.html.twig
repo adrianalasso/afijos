@@ -60,10 +60,12 @@
                                         <a class="blue" href="{{ path('abajas_show', { 'id': entity.id }) }}">
                                                 <i class="icon-zoom-in bigger-150"></i>
                                         </a>
-                                    {%if entity.estado == 'PENDIENTE' %}
-                                        <a class="green" href="{{ path('abajas_aprobar', { 'id': entity.id }) }}">
-                                                <i class="icon-ok bigger-150"></i>
-                                        </a>
+                                    {% if is_granted('ROLE_ADMINAF') %}
+                                        {%if entity.estado == 'PENDIENTE' %}
+                                            <a class="green" href="{{ path('abajas_aprobar', { 'id': entity.id }) }}">
+                                                    <i class="icon-ok bigger-150"></i>
+                                            </a>
+                                        {%endif%}
                                     {%endif%}
                                 </div>
                             </td>

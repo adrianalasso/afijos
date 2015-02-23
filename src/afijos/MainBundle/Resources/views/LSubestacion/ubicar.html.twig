@@ -11,7 +11,7 @@
                                 <tr>
                                     <td width="80%">
                                         <h1>C E N E L   E P </h1>
-                                        <h2>Reporte de Ubicación del activo {%if entities%}{{ entities[0].bienesCustodio.codigo ~' - ' ~entities[0].bienesCustodio.descripcion }}{%endif%}</h2>
+                                        <h2>Reporte de Ubicación del activo {%if depreciacion%}{{ depreciacion[0].lsubestacion.codigo ~' - ' ~depreciacion[0].lsubestacion.descripcion }}{%endif%}</h2>
                                     </td>
                                     <td>
                                         <div>{{ "now"|date("d/m/Y", "America/Guayaquil") }}</div>
@@ -29,55 +29,55 @@
                 <div class="span12">
                     <div class="space-10"></div>
                     <!--PAGE CONTENT BEGINS-->   
-                    {%if entities%}
+                    {%if depreciacion%}
                     <table  id="sample-table-2" class="table table-striped table-bordered table-hover">
-                    {% for entity in entities %}
+                    {% for entity in depreciacion %}
                             <tr>
                                 <td width="30%">Código</td>
-                                <td>{{ entity.bienesCustodio.codigo }}</td>
+                                <td>{{ entity.lsubestacion.codigo }}</td>
                             </tr>
                             <tr>
                                 <td>Descripción</td>
-                                <td>{{ entity.bienesCustodio.descripcion }}</td>
+                                <td>{{ entity.lsubestacion.descripcion }}</td>
                             </tr>
                             <tr>
                                 <td>Departamento</td>
-                                <td>{{ entity.bienesCustodio.trabajador.departamento}}</td>
+                                <td>{{ entity.lsubestacion.trabajador.departamento}}</td>
                             </tr>
                             <tr>
                                 <td>Responsable</td>
-                                <td>{{ entity.bienesCustodio.trabajador}}</td>
+                                <td>{{ entity.lsubestacion.trabajador}}</td>
                             </tr>
                             <tr>
                                 <td>Nº de Documento</td>
-                                <td>{{ entity.bienesCustodio.numeroDocumento}}</td>
+                                <td>{{ entity.lsubestacion.numeroDocumento}}</td>
                             </tr>
                             <tr>
                                 <td>Fecha de Documento</td>
-                                <td>{{ entity.bienesCustodio.fechAdquisicion|date('d/m/Y')}}</td>
+                                <td>{{ entity.lsubestacion.fechAdquisicion|date('d/m/Y')}}</td>
                             </tr>
                             <tr>
                                 <td>Marca</td>
-                                <td>{{ entity.bienesCustodio.marca }}</td>
+                                <td>{{ entity.lsubestacion.marca }}</td>
                             </tr>
                             <tr>
                                 <td>Serie</td>
-                                <td>{{ entity.bienesCustodio.serie }}</td>
+                                <td>{{ entity.lsubestacion.serie }}</td>
                             </tr>
                             <tr>
                                 <td>Estado</td>
-                                <td>{{ entity.bienesCustodio.estado }}</td>
+                                <td>{{ entity.lsubestacion.estado }}</td>
                             </tr>                                
                             <tr>
                                 <td>Fecha de Alta</td>
-                                <td>{{ entity.bienesCustodio.fechaRegistro|date('d/m/Y') }}</td>
+                                <td>{{ entity.lsubestacion.fechaRegistro|date('d/m/Y') }}</td>
                             </tr>                             
                             <tr>
                                 <td>Precio de Adquisición</td>
-                                <td>{{ entity.bienesCustodio.valorAdquisicion }}</td>
-                            </tr>                                             
+                                <td>{{ entity.lsubestacion.valorAdquisicion }}</td>
+                            </tr>              
                             <tr>
-                                <td>Depreciación Acumulada</td>
+                                <td>Depreciación Acumlada</td>
                                 <td>-{{ entity.deprecAcumulada }}</td>
                             </tr>
                             {% endfor %}

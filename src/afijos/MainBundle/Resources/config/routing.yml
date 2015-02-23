@@ -42,7 +42,7 @@ MainBundle_usuario:
      
 MainBundle_trabajador:
      resource: "@MainBundle/Resources/config/trabajador.yml"
-     prefix:   /empadmin/trabajador
+     prefix:   /astaf/trabajador
 
 MainBundle_rol:
      resource: "@MainBundle/Resources/config/rol.yml"
@@ -62,11 +62,11 @@ MainBundle_parroquia:
 
 MainBundle_subsistema:
      resource: "@MainBundle/Resources/config/subsistema.yml"
-     prefix:   /empadmin/subsistema
+     prefix:   /astaf/subsistema
      
 MainBundle_departamento:
      resource: "@MainBundle/Resources/config/departamento.yml"
-     prefix:   /empadmin/departamento
+     prefix:   /astaf/departamento
 
 MainBundle_agencia:
      resource: "@MainBundle/Resources/config/agencia.yml"
@@ -74,52 +74,52 @@ MainBundle_agencia:
 
 MainBundle_areaoperativa:
      resource: "@MainBundle/Resources/config/areaoperativa.yml"
-     prefix:   /empadmin/areaoperativa
+     prefix:   /astaf/areaoperativa
      
 MainBundle_dependencia:
      resource: "@MainBundle/Resources/config/dependencia.yml"
-     prefix:   /empadmin/dependencia
+     prefix:   /astaf/dependencia
      
 MainBundle_cuentacontable:
      resource: "@MainBundle/Resources/config/cuentacontable.yml"
-     prefix:   /empadmin/cuentacontable
+     prefix:   /astaf/cuentacontable
      
 MainBundle_unidadpropiedad:
      resource: "@MainBundle/Resources/config/unidadpropiedad.yml"
-     prefix:   /empadmin/unidadpropiedad
+     prefix:   /astaf/unidadpropiedad
      
 MainBundle_plan:
      resource: "@MainBundle/Resources/config/plan.yml"
-     prefix:   /empadmin/plan
+     prefix:   /astaf/plan
      
 MainBundle_subestacion:
      resource: "@MainBundle/Resources/config/subestacion.yml"
-     prefix:   /empadmin/subestacion
+     prefix:   /astaf/subestacion
      
 MainBundle_subtransmision:
      resource: "@MainBundle/Resources/config/subtransmision.yml"
-     prefix:   /empadmin/subtransmision
+     prefix:   /astaf/subtransmision
      
 MainBundle_bienescustodio:
      resource: "@MainBundle/Resources/config/bienescustodio.yml"
-     prefix:   /empadmin/bienescustodio
+     prefix:   /astaf/bienescustodio
      
 MainBundle_lsubestacion:
      resource: "@MainBundle/Resources/config/lsubestacion.yml"
-     prefix:   /empadmin/lsubestacion
+     prefix:   /astaf/lsubestacion
      
 MainBundle_lsubtransmision:
      resource: "@MainBundle/Resources/config/lsubtransmision.yml"
-     prefix:   /empadmin/lsubtransmision
+     prefix:   /astaf/lsubtransmision
      
 MainBundle_bajas:
      resource: "@MainBundle/Resources/config/bajas.yml"
-     prefix:   /empadmin/bajas
+     prefix:   /jf/bajas
      
 MainBundle_abajas:
      resource: "@MainBundle/Resources/config/abajas.yml"
-     prefix:   /directivo/abajas
+     prefix:   /astaf/abajas
      
 MainBundle_reportes:
      resource: "@MainBundle/Resources/config/reportes.yml"
-     prefix:   /empadmin/reportes
+     prefix:   /astaf/reportes

@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{#% extends '::base.html.twig' %}
 {% block titulo %}Acceso Denegado{%endblock%}
 
 {% block mapasitio%}
@@ -17,7 +17,9 @@
 {% block pagecontent%}
 <div class="page-content">
     <div class="page-header position-relative">        
-        <h1>Acceso denegado al contenido solicitado.{#{ status_code }#} {#{ status_text }#}</h1>        
+        <h1>Acceso denegado al contenido solicitado.{#{ status_code }#} {#{ status_text }#}
+{#
+</h1>        
     </div><!--/.page-header-->
     <div class="row-fluid">
         <div class="span12">
@@ -41,6 +43,13 @@
     
     {%block scripthijo%}{%endblock%}
     
-{%endblock%}
+{%endblock%#}
+
+<script type="text/javascript">
+    location.href="{{path('usuario_index')}}";
+</script>
+
+
+
 
 

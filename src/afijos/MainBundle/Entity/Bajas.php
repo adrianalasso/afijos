@@ -27,7 +27,7 @@ class Bajas
     /**
      * @var string
      *
-     * @ORM\Column(name="bj_detalle", type="string", length=255)
+     * @ORM\Column(name="bj_detalle", type="text",  nullable=true)
      */
     private $detalle;
     /**
