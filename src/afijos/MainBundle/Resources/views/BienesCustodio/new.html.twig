@@ -121,7 +121,13 @@
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Estado</label>
                                                     <div class="controls">
-                                                            {{form_widget(form.estado) }}
+                                                            {{form_widget(form.estado, {'attr' :  {'list' : 'lstestado'}}) }}
+                                                        <datalist id="lstestado">
+                                                                <option label="" value="BUENO">
+                                                                <option label="" value="REGULAR">
+                                                                <option label="" value="MALO">    
+                                                                    <option label="" value="N/D">    
+                                                            </datalist>
                                                     </div>
                                                 </div>          
                                                 <div class="control-group">
@@ -147,7 +153,12 @@
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Marca</label>
                                                     <div class="controls">
-                                                            {{form_widget(form.marca) }}
+                                                            {{form_widget(form.marca, {'attr' :  {'list' : 'lstmarca'}}) }}
+                                                         <datalist id="lstmarca">
+                                                                <option label="" value="ACER">
+                                                                <option label="" value="HP">
+                                                                <option label="" value="N/D">
+                                                            </datalist>
                                                     </div>
                                                 </div>
                                                 <div class="control-group">
@@ -233,7 +244,11 @@
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Bien Asegurable</label>
                                                     <div class="controls">
-                                                            {{form_widget(form.bienAsegurable) }}
+                                                            {{form_widget(form.bienAsegurable, {'attr' :  {'list' : 'lstasegurable'}}) }}
+                                                                  <datalist id="lstasegurable">
+                                                                <option label="" value="SI">
+                                                                <option label="" value="NO">
+                                                            </datalist>
                                                     </div>
                                                 </div>                                                
                                             </div>
@@ -241,13 +256,18 @@
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Calidad</label>
                                                     <div class="controls">
-                                                            {{form_widget(form.calidad) }}
+                                                            {{form_widget(form.calidad, {'attr' :  {'list' : 'lstestado'}}) }}
                                                     </div>
                                                 </div>
                                                 <div class="control-group">
                                                     <label class="control-label" for="">Factor de Estado</label>
                                                     <div class="controls">
-                                                            {{form_widget(form.factorEstado) }}
+                                                            {{form_widget(form.factorEstado, {'attr' :  {'list' : 'lstfactor'}}) }}
+                                                            <datalist id="lstfactor">
+                                                                <option label="" value="1">
+                                                                <option label="" value="1.5">
+                                                                <option label="" value="2">
+                                                            </datalist>
                                                     </div>
                                                 </div>
                                                 <div class="control-group">

@@ -3,7 +3,7 @@ parameters:
     database_host:     127.0.0.1
     database_port:     ~
     database_name:     afijos
-    database_user:     root
+    database_user:     afijos
     database_password: afijos
 
     mailer_transport:  smtp

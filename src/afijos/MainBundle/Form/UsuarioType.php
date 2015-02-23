@@ -14,7 +14,6 @@ class UsuarioType extends AbstractType
             ->add('id')
             ->add('apellidos')
             ->add('nombres')
-            ->add('username')
             ->add('password')
             ->add('userRoles')
         ;
